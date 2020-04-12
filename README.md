@@ -1,7 +1,5 @@
-# Code Institute
+# Pressie
 
-Welcome USER_NAME,
+A wishlist website helping people buy meaningful gifts for their loves ones.
 
-We have preinstalled all of the tools you need to get started.
-
-Happy coding!
+Comin soon to an internet near you.
