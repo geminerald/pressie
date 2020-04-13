@@ -1,3 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+
+h1, h2, h3{
+    text-align: center;
+}
+
 nav{
     background-color: #022449;
     color: #fafafa;
@@ -7,4 +15,34 @@ nav{
 .brand-logo{
     padding-left: 20px;
     margin-left: 20px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.card{
+    width: 100px;
+    height:200px;
+    border: 1px solid slateblue;
+}
+
+#step1{
+    background-color: #C8EFF9;
+}
+
+#step2{
+    background-color: #96FFFF;
+}
+
+#step3{
+    background-color: #55BDCA;
 }
