@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 * {
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+
 }
 
 h1,
@@ -26,6 +33,7 @@ nav {
 }
 
 .cards {
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -33,9 +41,16 @@ nav {
 }
 
 .card {
-    width: 100px;
-    height: 200px;
+    width: 180px;
+    height: 320px;
     border: 1px solid slateblue;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
+    text-align: center;
+    color: #022449;
 }
 
 #step1 {
@@ -58,26 +73,34 @@ nav {
     display: none;
 }
 
-#sign-in-up-list{
+#sign-in-up-list {
     display: flex;
     flex-direction: column;
-    width: 90px;
+    width: 120px;
     background-color: #022449;
     color: #fafafa;
     position: absolute;
-    top: -120px;
-    
-}
-.logins{
-    z-index: 2;
-}
-.logins:hover #sign-in-up-list{
-    animation: dropdown 1s ease; 
-    top: 60px;
+    right: -120px;
+    cursor: pointer;
+
 }
 
-@keyframes dropdown{
-    from {top: -120px;}
-    to {top: 60px;}
+.logins {
+    z-index: 2;
+}
+
+.logins:hover #sign-in-up-list {
+    right: 0px;
+    animation: dropdown 0.5s ease-in-out;
+}
+
+@keyframes dropdown {
+    from {
+        right: -120px;
+    }
+
+    to {
+        right: 0px;
+    }
 
 }
