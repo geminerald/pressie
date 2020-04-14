@@ -1,48 +1,83 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-h1, h2, h3{
+h1,
+h2,
+h3 {
     text-align: center;
 }
 
-nav{
+nav {
     background-color: #022449;
     color: #fafafa;
     font-weight: bold;
 }
 
-.brand-logo{
+.brand-logo {
     padding-left: 20px;
     margin-left: 20px;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.cards{
-    display:flex;
+.cards {
+    display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-evenly;
 }
-.card{
+
+.card {
     width: 100px;
-    height:200px;
+    height: 200px;
     border: 1px solid slateblue;
 }
 
-#step1{
+#step1 {
     background-color: #C8EFF9;
 }
 
-#step2{
+#step2 {
     background-color: #96FFFF;
 }
 
-#step3{
+#step3 {
     background-color: #55BDCA;
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}
+
+#sign-in-up-list{
+    display: flex;
+    flex-direction: column;
+    width: 90px;
+    background-color: #022449;
+    color: #fafafa;
+    position: absolute;
+    top: -120px;
+    
+}
+.logins{
+    z-index: 2;
+}
+.logins:hover #sign-in-up-list{
+    animation: dropdown 1s ease; 
+    top: 60px;
+}
+
+@keyframes dropdown{
+    from {top: -120px;}
+    to {top: 60px;}
+
 }
