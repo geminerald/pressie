@@ -126,6 +126,13 @@ nav {
     
 }
 
+.home-button{
+    height: 50px;
+    width: 150px;
+    background-color: #f27d42;
+    border: 2px #f7ba9c;
+}
+
 @keyframes dropdown {
     from {
         right: -120px;
