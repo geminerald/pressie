@@ -94,6 +94,25 @@ nav {
     animation: dropdown 0.5s ease-in-out;
 }
 
+.user-search{
+    margin-top: 80px;
+    border: 2px solid #022449;
+    background-color: #55BDCA;
+    padding: 50px;
+    border-radius: 10px;
+    color: #fafafa;
+}
+
+.user-search form label{
+    color: #fafafa;
+    font-size: 2em;
+}
+
+.searchbar{
+    background-color: #fafafa;
+    
+}
+
 @keyframes dropdown {
     from {
         right: -120px;
