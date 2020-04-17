@@ -113,6 +113,10 @@ nav {
     
 }
 
+.nav-wrapper{
+    padding-right: 30px;
+}
+
 @keyframes dropdown {
     from {
         right: -120px;
