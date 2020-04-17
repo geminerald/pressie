@@ -89,6 +89,19 @@ nav {
     z-index: 2;
 }
 
+.nav-wrapper{
+    padding-right: 30px;
+}
+
+.card a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .logins:hover #sign-in-up-list {
     right: 0px;
     animation: dropdown 0.5s ease-in-out;
@@ -111,10 +124,6 @@ nav {
 .searchbar{
     background-color: #fafafa;
     
-}
-
-.nav-wrapper{
-    padding-right: 30px;
 }
 
 @keyframes dropdown {
