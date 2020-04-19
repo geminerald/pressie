@@ -33,14 +33,54 @@
 		</nav>
 	</header>
 	<div class="container">
-		<form action="">
-			<input placeholder="First Name" name = "firstname" id = "firstname" type="text" class="firstname">
-			<label for="firstname">First Name</label>
-            <input placeholder="Last Name" name = "lastname" id = "lastname" type="text" class="lastname">
-			<label for="lastname">Last Name</label>
-            <input type="date" name = "duedate" id = "duedate" >
-            <label for="duedate">When is this wishlist valid until?</label>
-		</form>
+		<div class="row">
+			<h3>About your Wishlist</h3>
+			<form action="" method="POST" class="col s12">
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<input  id="first_name" name="first_name" type="text" class="validate">
+				<label for="first_name">First Name</label>
+			</div>
+			<div class="input-field col s6">
+				<input id="last_name" name="last_name" type="text" class="validate">
+				<label for="last_name">Last Name</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<p>Is your list ordered?</p>
+				<div class="switch">
+					<label>
+                    No, show my list in any order.
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    Yes, my list will be in order of how much the items mean to me.
+                </label>
+				</div>
+			</div>
+		</div>
+		<div class="input-field col s6">
+			<p>Do you want to know what has been bought?</p>
+			<div class="switch">
+				<label>
+                    No, keep it a surprise.
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    Yes, I want to know what has been bought.
+                </label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+		<a href="#" class="waves-effect waves-light btn red"><i class="material-icons right"></i>Back</a>
+
+	</div>
+
+	</form>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
