@@ -51,6 +51,11 @@ h3 {
     text-align: center;
 }
 
+.btn{
+    margin: 10px;
+    border-radius: 10px;
+}
+
 /*End Globals--------------------------------------------------------------------End Globals*/
 
 /*Nav--------------------------------------------------------------------Nav*/
@@ -154,6 +159,30 @@ nav {
     justify-content: space-evenly;
     flex-direction: column;
 }
+
+.submit-button{
+    background-color: #f27d42;
+    border: 2px solid #f7ba9c;
+}
+
+.submit-button:hover{
+    color: #f27d42;
+    background-color: #fafafa;
+    border: 2px solid #f27d42;
+}
+
+.back-button{
+    background-color: #96FFFF;
+    color: #022449;
+    border: 2px solid #fafafa;
+}
+
+.back-button:hover{
+    color: #fafafa;
+    background-color: #022449;
+    border: 2px solid #fafafa;
+}
+
 /*End Wishlist Page--------------------------------------------------------------------End Wishlist Page*/
 
 /*Finder Page--------------------------------------------------------------------Finder Page*/
