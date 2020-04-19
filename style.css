@@ -1,4 +1,26 @@
+
+/*Imports------------------------------------------------------------------------------Imports*/
+
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+
+
+/*End Imports--------------------------------------------------------------------------End Imports*/
+
+/*Colours------------------------------------------------------------------------------Colours*/
+
+/*
+
+Dark Blue: #022449;
+
+
+White: #fafafa;
+
+*/
+
+/*End Colours----------------------------------------------------------------------------End Colours*/
+
+/*Globals--------------------------------------------------------------------------------Globals*/
 
 * {
     box-sizing: border-box;
@@ -9,11 +31,21 @@ body {
 
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 h1,
 h2,
 h3 {
     text-align: center;
 }
+
+/*End Globals--------------------------------------------------------------------End Globals*/
+
+/*Nav--------------------------------------------------------------------Nav*/
+
 
 nav {
     background-color: #022449;
@@ -24,53 +56,6 @@ nav {
 .brand-logo {
     padding-left: 20px;
     margin-left: 20px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.cards {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-evenly;
-}
-
-.card {
-    width: 180px;
-    height: 320px;
-    border: 1px solid slateblue;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding: 20px;
-    text-align: center;
-    color: #022449;
-}
-
-#step1 {
-    background-color: #C8EFF9;
-}
-
-#step2 {
-    background-color: #96FFFF;
-}
-
-#step3 {
-    background-color: #55BDCA;
-}
-
-.visible {
-    display: block;
-}
-
-.invisible {
-    display: none;
 }
 
 #sign-in-up-list {
@@ -93,6 +78,35 @@ nav {
     padding-right: 30px;
 }
 
+.logins:hover #sign-in-up-list {
+    right: 0px;
+    animation: dropdown 0.5s ease-in-out;
+}
+
+/*End Nav--------------------------------------------------------------------End Nav*/
+/*Home Page--------------------------------------------------------------------Home Page*/
+
+.cards {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.card {
+    width: 180px;
+    height: 320px;
+    border: 1px solid slateblue;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
+    text-align: center;
+    color: #022449;
+}
+
 .card a{
     height: 100%;
     width: 100%;
@@ -102,10 +116,31 @@ nav {
     justify-content: space-evenly;
 }
 
-.logins:hover #sign-in-up-list {
-    right: 0px;
-    animation: dropdown 0.5s ease-in-out;
+#step1 {
+    background-color: #C8EFF9;
 }
+
+#step2 {
+    background-color: #96FFFF;
+}
+
+#step3 {
+    background-color: #55BDCA;
+}
+
+.home-button{
+    height: 50px;
+    width: 150px;
+    background-color: #f27d42;
+    border: 2px #f7ba9c;
+}
+/*End Home Page--------------------------------------------------------------------End Home Page*/
+
+/*Wishlist Page--------------------------------------------------------------------Wishlist Page*/
+/*End Wishlist Page--------------------------------------------------------------------End Wishlist Page*/
+
+/*Finder Page--------------------------------------------------------------------Finder Page*/
+
 
 .user-search{
     margin-top: 80px;
@@ -126,12 +161,20 @@ nav {
     
 }
 
-.home-button{
-    height: 50px;
-    width: 150px;
-    background-color: #f27d42;
-    border: 2px #f7ba9c;
+/*End Finder Page--------------------------------------------------------------------End Finder Page*/
+
+
+/*Temporary Styles--------------------------------------------------------------------Temporary Styles*/
+.visible {
+    display: block;
 }
+
+.invisible {
+    display: none;
+}
+
+/*End Temporary Styles--------------------------------------------------------------------End Temporary Styles*/
+/*Animations--------------------------------------------------------------------Animations*/
 
 @keyframes dropdown {
     from {
@@ -143,3 +186,5 @@ nav {
     }
 
 }
+
+/*End Animations--------------------------------------------------------------------End Animations*/
