@@ -146,6 +146,14 @@ nav {
 /*End Home Page--------------------------------------------------------------------End Home Page*/
 
 /*Wishlist Page--------------------------------------------------------------------Wishlist Page*/
+
+.wishlist-switch {
+    margin:20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
 /*End Wishlist Page--------------------------------------------------------------------End Wishlist Page*/
 
 /*Finder Page--------------------------------------------------------------------Finder Page*/
