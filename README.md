@@ -61,10 +61,15 @@ The website needs to be visually appealing and simple enough to allow and encour
 <em>""</em>
 
 
-#### Site Owner Goals:
+#### Site Current Goals:
 * Provide a great service for people looking for gifts.
 * Collect data on what gifts are popular to assist future projects.
-* Potentially offer a premium service which would allow for greater specification, ranking gifts in order etc. etc.
+
+
+#### Site Owner Future Goals:
+* Offer a premium (paid) service which would allow for greater specification, ranking gifts in order etc. etc.
+* Direct users towards specific websites such as Amazon, Groupon etc. with a view to taking a referral fee per click.
+
 
 ## User Requirements and Expectations:
 ##### Requirements:
@@ -119,7 +124,7 @@ Colours:
 Default Styling:
 
 ## Wireframes: 
-I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq mockups</a>. To view my mockups please visit my mockup folder above.
+I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq mockups</a>. To view my mockups please visit my mockup folder.
 
 View my wireframes <a href="https://github.com/geminerald/pressie/tree/master/wireframes">here.</a>
 
