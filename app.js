@@ -2,25 +2,33 @@ $(document).ready(function () {
     console.log("app.js is linked successfully");
 });
 
-    let loggedIn = false;
+let loggedIn = false;
 
-    const signUpModal = document.getElementById('sign-up-modal');
-    const loginModal = document.getElementById('login-modal');
+const signUpModal = document.getElementById('sign-up-modal');
+const loginModal = document.getElementById('login-modal');
 
 
-    signUpModal.addEventListener('click', () => {
-        let loggedIn = true;
-        console.log(loggedIn);
-    });
+signUpModal.addEventListener('click', () => {
+    let loggedIn = true;
+    console.log(loggedIn);
+    checkLogins();
+});
 
-    loginModal.addEventListener('click', () => {
-        let loggedIn = true;
-        console.log(loggedIn);
-    });
+loginModal.addEventListener('click', () => {
+    let loggedIn = true;
+    console.log(loggedIn);
+    checkLogins();
+});
+
+const checkLogins = () => {
+
     if (loggedIn) {
-        document.querySelectorAll('logged-in-view').classlist.add('visible')
-        document.querySelectorAll('logged-out-view').classlist.add('invisible')
+        document.getElementById('sign-in-up-list').classlist.remove('visible')
+        document.getElementById('sign-in-up-list').classlist.add('invisible')
+        document.getElementById('profile-nav').classlist.remove('invisible')
+        document.getElementById('profile-nav').classlist.add('visible')
     }
+};
 
 
 

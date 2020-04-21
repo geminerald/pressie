@@ -226,10 +226,12 @@ nav {
 /*Temporary Styles--------------------------------------------------------------------Temporary Styles*/
 .visible {
     display: block;
+    opacity: 1;
 }
 
 .invisible {
     display: none;
+    opacity: 0;
 }
 
 /*End Temporary Styles--------------------------------------------------------------------End Temporary Styles*/
