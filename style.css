@@ -157,7 +157,7 @@ nav {
 .submit-button{
     background-color: #f27d42;
     border: 2px solid #f7ba9c;
-    color: #022449;
+    color: #fafafa;
 }
 
 .submit-button:hover{
@@ -178,9 +178,14 @@ nav {
     border: 2px solid #022449;
 }
 
-.go-button{
-    background-color: #96FFFF;
-    color: 
+.done-button{
+    background-color: #55bdca;
+    color:#022449 ;
+}
+
+.done-button:hover{
+    background-color: #022449;
+    color:#55bdca;
 }
 
 /*End Wishlist Page--------------------------------------------------------------------End Wishlist Page*/
