@@ -185,6 +185,19 @@ nav {
 
 /*End Wishlist Page--------------------------------------------------------------------End Wishlist Page*/
 
+/*Add Item  Page--------------------------------------------------------------------Add Item Page*/
+
+.item{
+    margin: 65px;
+}
+
+.add-item-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*End Add Item Page--------------------------------------------------------------------End Add Item Page*/
 /*Finder Page--------------------------------------------------------------------Finder Page*/
 
 
