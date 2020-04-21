@@ -39,21 +39,26 @@
 		<form action="" method="POST" class="col s12">
 			<div class="row item">
 				<div class="input-field col s6">
-					<input  id="item-name" name="item-name" type="text" class="validate">
+					<input  id="item-name" name="item-name" type="text" class="validate" required>
 					<label for="item-name">Item Name</label>
 				</div>
-				
+				<div class="input-field col s6">
+					<input  id="item-link" name="item-link" type="text" class="validate" required>
+					<label for="item-link">Link to search for item</label>
+				</div>
+
 			</div>
 			<div class="row">
 				<button id="item-add" class="btn waves-effect waves-light add-item-button" type="submit" name="action">Add Another Item
                 <i class="material-icons right">add</i>
                 </button>
 				<a href="index.html"
-					class="waves-effect waves-light btn done-button"><i class="material-icons right">check</i>All Done!</a>
+					class="waves-effect waves-light btn done-button"><i class="material-icons right">check</i>All
+					Done!</a>
 
 			</div>
 		</form>
-        <p>Add as many items to your list as you wish, don't worry you can always edit it after you're done.</p>
+		<p>Add as many items to your list as you wish, don't worry you can always edit it after you're done.</p>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
