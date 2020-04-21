@@ -4,13 +4,27 @@ $(document).ready(function () {
         document.querySelectorAll('logged-in-view').classlist.add('visible')
         document.querySelectorAll('logged-out-view').classlist.add('invisible')
     }
-});
 
 
-const signUpModal = document.getElementById('sign-up-modal');
-const loginModal = document.getElementById('login-modal');
-const signInOrUp = document.getElementById('sign-in-up-list');
 
+
+    let loggedIn = false;
+
+    const signUpModal = document.getElementById('sign-up-modal');
+    const loginModal = document.getElementById('login-modal');
+
+
+    signUpModal.addEventListener('click', () => {
+        let loggedIn = true;
+    });
+
+    loginModal.addEventListener('click', () => {
+        let loggedIn = true;
+    });
+
+)};
+
+/*
 const logins = [
     {
         email: "zac@mail.com",
@@ -31,8 +45,8 @@ const addLogin = (email) => {
     logins.push(email);
 }
 
-let loggedIn = False;
 
+const newLocal = true;
 signUpModal.addEventListener('click', () => {
     Swal.mixin({
         input: 'text',
@@ -89,12 +103,13 @@ loginModal.addEventListener('click', () => {
                     title: 'All done!',
                     confirmButtonText: 'Lovely!',
                 })
+                loggedIn = True;
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Incorrect Email or Password',
-                    footer: '<a href>Why do I have this issue?</a>'
+                    footer: 'Try Again'
                 })
             }
         }
@@ -102,3 +117,5 @@ loginModal.addEventListener('click', () => {
 });
 
 console.log(loggedIn);
+
+*/
