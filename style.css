@@ -142,12 +142,6 @@ nav {
     background-color: #55BDCA;
 }
 
-#home-button{
-    height: 50px;
-    width: 150px;
-    background-color: #f27d42;
-    border: 2px #f7ba9c;
-}
 /*End Home Page--------------------------------------------------------------------End Home Page*/
 
 /*Wishlist Page--------------------------------------------------------------------Wishlist Page*/
@@ -163,6 +157,7 @@ nav {
 .submit-button{
     background-color: #f27d42;
     border: 2px solid #f7ba9c;
+    color: #022449;
 }
 
 .submit-button:hover{
@@ -172,15 +167,20 @@ nav {
 }
 
 .back-button{
-    background-color: #96FFFF;
-    color: #022449;
-    border: 2px solid #fafafa;
+    background-color: #022449;
+    color: #fafafa;
+    border: 2px solid #022449;
 }
 
 .back-button:hover{
-    color: #fafafa;
-    background-color: #022449;
-    border: 2px solid #fafafa;
+    color: #022449;
+    background-color: #fafafa;
+    border: 2px solid #022449;
+}
+
+.go-button{
+    background-color: #96FFFF;
+    color: 
 }
 
 /*End Wishlist Page--------------------------------------------------------------------End Wishlist Page*/
