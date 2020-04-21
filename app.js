@@ -1,12 +1,6 @@
 $(document).ready(function () {
     console.log("app.js is linked successfully");
-    if (loggedIn) {
-        document.querySelectorAll('logged-in-view').classlist.add('visible')
-        document.querySelectorAll('logged-out-view').classlist.add('invisible')
-    }
-
-
-
+});
 
     let loggedIn = false;
 
@@ -16,13 +10,19 @@ $(document).ready(function () {
 
     signUpModal.addEventListener('click', () => {
         let loggedIn = true;
+        console.log(loggedIn);
     });
 
     loginModal.addEventListener('click', () => {
         let loggedIn = true;
+        console.log(loggedIn);
     });
+    if (loggedIn) {
+        document.querySelectorAll('logged-in-view').classlist.add('visible')
+        document.querySelectorAll('logged-out-view').classlist.add('invisible')
+    }
 
-)};
+
 
 /*
 const logins = [
