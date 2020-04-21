@@ -11,13 +11,27 @@ const signUpModal = document.getElementById('sign-up-modal');
 const loginModal = document.getElementById('login-modal');
 const signInOrUp = document.getElementById('sign-in-up-list');
 
-const logins = []
+const logins = [
+    {
+        email: "zac@mail.com",
+        password: "123"
+    },
+    {
+        email: "deb@mail.com",
+        password: "Hello"
+    },
+    {
+        email: "niki@mail.com",
+        password: "Pass"
+    }
+
+]
 
 const addLogin = (email) => {
     logins.push(email);
 }
 
-let loggedIn = 0;
+let loggedIn = False;
 
 signUpModal.addEventListener('click', () => {
     Swal.mixin({
@@ -26,15 +40,15 @@ signUpModal.addEventListener('click', () => {
         showCancelButton: true,
         progressSteps: ['1', '2']
     }).queue([{
-            title: 'Step 1',
-            text: 'Enter your email',
-            input: 'email'
-        },
-        {
-            title: 'Step 2',
-            text: 'Enter your password',
-            input: 'password'
-        }
+        title: 'Step 1',
+        text: 'Enter your email',
+        input: 'email'
+    },
+    {
+        title: 'Step 2',
+        text: 'Enter your password',
+        input: 'password'
+    }
     ]).then((result) => {
         if (result.value) {
             const answers = JSON.stringify(result.value)
@@ -58,15 +72,15 @@ loginModal.addEventListener('click', () => {
         showCancelButton: true,
         progressSteps: ['1', '2']
     }).queue([{
-            title: 'Step 1',
-            text: 'Enter your email',
-            input: 'email'
-        },
-        {
-            title: 'Step 2',
-            text: 'Enter your password',
-            input: 'password'
-        }
+        title: 'Step 1',
+        text: 'Enter your email',
+        input: 'email'
+    },
+    {
+        title: 'Step 2',
+        text: 'Enter your password',
+        input: 'password'
+    }
     ]).then((result) => {
         if (result.value) {
             const answers = JSON.stringify(result.value)
@@ -75,7 +89,6 @@ loginModal.addEventListener('click', () => {
                     title: 'All done!',
                     confirmButtonText: 'Lovely!',
                 })
-                loggedIn ++
             } else {
                 Swal.fire({
                     icon: 'error',
