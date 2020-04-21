@@ -2,7 +2,7 @@
 
 Thankyou for visiting my project Pressie, a wishlist website designed to help people buy meaningful gifts for their loved ones. 
 
-Please feel free to read through this Read-me and browse my project, if you have any questions or suggestions head to my Github contact details or my own website. 
+Please feel free to read through this Readme and browse my project, if you have any questions or suggestions head to my Github contact details or <a href="geminerald.github.io/geminerals">my website</a>. 
 
 Happy Coding!‍
 
@@ -15,12 +15,9 @@ Happy Coding!‍
     * User Requirements and Expectations
     * Design Choices 
         * Fonts
-        * Icons
         * Colours
         * Styling
-        * Images
-        * Backgrounds
-* Wireframes 
+* Wireframes
 * Features 
     * Features that have been developed
     *  Features that will be implemented in the future
@@ -89,7 +86,11 @@ The website needs to be visually appealing and simple enough to allow and encour
 
 ## Design Choices: 
 
-The theme of this project is gift giving, as a result the design is themed around being upbeat, positive and happy. Using the resources in <a href='https://www.crazyegg.com/blog/colors-proven-to-boost-sales/'>this</a> blog I was able to pick out a colour scheme that has been proven to boost sales/interaction with a web page.
+The theme of this project is gift giving, as a result the design is themed around being upbeat and positive. Using the resources in <a href='https://www.crazyegg.com/blog/colors-proven-to-boost-sales/'>this</a> blog I was able to pick out a colour scheme that has been proven to boost sales/interaction with a web page.
+
+One key issue throughout this project is the fact that this website will often be used to bridge a generational gap. At times of gift giving it would be usual for people to buy gifts for someone in a different generation and it would often be more difficult to do so compared to someone in one's own generation. 
+
+As a result of this the project had to be developed with simplicity to the forefront and had to be equally so across all devices as there is a marked difference in device use based on age ranges. <a href="https://www.klarna.com/knowledge/articles/should-you-think-mobile-first-or-mobile-only/">This</a> research shows the differing device use across ages and so it is very possible that a list will be written on one device and read on another.
 
 ##### Fonts: 
 I chose the font <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> as it a very simple style which is easily readable and not in any way distracting. The content is there to facilitate the creation of lists and assist in getting the right gift at the right time and not to provide a distraction.
@@ -118,9 +119,9 @@ Colours:
 Default Styling:
 
 ## Wireframes: 
-I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq mockups</a> + <a href="https://moqups.com/">Moqups</a>. First I started by doing a very basic wireframe for Mobile/Tablet/Desktop on Balsamiq - these were to get a basic understanding of how structurally elements would appear on the page. Next I moved onto Moqups to produce a more fleshed out wireframe for each device size, this time using a bit more colour and style. You can view this wireframe <a href="https://app.moqups.com/w7v4igcNUn/view/page/aa9df7b72">here</a>.
+I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq mockups</a>. To view my mockups please visit my mockup folder above.
 
-View my wireframes <a href="#">here.</a>
+View my wireframes <a href="https://github.com/geminerald/pressie/tree/master/wireframes">here.</a>
 
 ## Features: 
 
@@ -139,6 +140,7 @@ View my wireframes <a href="#">here.</a>
 * <a href="https://www.w3schools.com/js/">JavaScript</a>
 * <a href="https://www.json.org/json-en.html">JSON</a>
 * <a href="https://www.python.org/">Python</a>
+
 
 ### Tools & Libraries:
 
@@ -242,17 +244,10 @@ Here is a list of known bugs that exist on the site:
 
 ## Deployment: 
 
-Pressie was developed on GitPod and VS Code, using git and Heroku to host the repository.
-
-When deploying Holiday Destinations using Heroku the following steps were made:
-
-
-#### Running Holiday Destinations Locally
-
+TBC
 
 ## Closing Notes:
 
-Developing this project has taught me alot about how to provide users with appropriate data based on their interaction, working with new concepts like <strong>JSON objects</strong> has pushed my knowledge further and has helped me better understand how to manipulate this type of code. In the future I would like to implement other features like the ability to add certain packages to a wishlist to then review, compare and send to the company for further enquiry. As mentioned in the testing section this was the first time using the <strong>Google Maps API</strong> and therefore was a challenge to get to grips, however thanks to the helpful documentation I was able to achieve a solution in-line with the user requirements and also my plan made in testing.
 
 ## Credits: 
 
