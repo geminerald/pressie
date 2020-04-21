@@ -188,6 +188,12 @@ nav {
     color:#55bdca;
 }
 
+.button-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 /*End Wishlist Page--------------------------------------------------------------------End Wishlist Page*/
 
 /*Add Item  Page--------------------------------------------------------------------Add Item Page*/
