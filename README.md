@@ -36,7 +36,7 @@ The website needs to be visually appealing and simple enough to allow and encour
 
 #### User Goals:
 * A website that serves as an online wishlist to be able to share with their friends and family.
-* Simple and consistent theme and styles throughout to encourage engagement and provide a good user experience.
+* Simple and consistent theme and styles throughout to encourage engagement and provide a good user experience across generations.
 * A website that allows one to quickly and easily locate gifts that someone actually wants.
 * Ensure no duplication of gifts purchased.
 * Easily share a wishlist. 
