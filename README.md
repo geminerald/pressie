@@ -30,7 +30,7 @@ Happy Coding!‍
 
 ## UX (User Experience) 
 ### Project Goals
-The goal of this project is to help users find meaningful gifts for people they care about or "Finding gifts they care about for the people you care about. 
+The goal of this project is to help users find meaningful gifts for people they care about or "Finding gifts they care about for the people you care about".
 The project is aimed toward people who either struggle to know what to get someone for a present or people who find that too often they get unwanted gifts which are then regifted or not enjoyed. 
 The website needs to be visually appealing and simple enough to allow and encourage use for all ages and technological abilities.
 
@@ -61,7 +61,7 @@ The website needs to be visually appealing and simple enough to allow and encour
 <em>""</em>
 
 
-#### Site Current Goals:
+#### Site Owner Current Goals:
 * Provide a great service for people looking for gifts.
 * Collect data on what gifts are popular to assist future projects.
 
@@ -78,7 +78,8 @@ The website needs to be visually appealing and simple enough to allow and encour
 * Be able to easily access the wishlist of someone.
 * Content displayed in a simple and consistent manner throughout.
 * Be directed to somewhere that their chosen gift can be purchased.
-* 
+* Personal Information is kept secure.
+* Every effort made to ensure that wishlists are accurate at all times.
 
 ##### Expectations:
 * Easy wishlist creation.
@@ -86,12 +87,12 @@ The website needs to be visually appealing and simple enough to allow and encour
 * Ability to locate someone's list and quickly select item of choice.
 * Navigation elements work as designed and are clear and intuitive. 
 * Website is fully responsive across all devices and navigation elements etc. alter as required.
-* 
-* 
+* Wishlists are fully configurable and editable.
+
 
 ## Design Choices: 
 
-The theme of this project is gift giving, as a result the design is themed around being upbeat and positive. Using the resources in <a href='https://www.crazyegg.com/blog/colors-proven-to-boost-sales/'>this</a> blog I was able to pick out a colour scheme that has been proven to boost sales/interaction with a web page.
+The theme of this project is gift giving, as a result the design is themed around being upbeat and positive. The Colour theme was taken from <a href="https://visme.co/blog/website-color-schemes/">Visme</a>
 
 One key issue throughout this project is the fact that this website will often be used to bridge a generational gap. At times of gift giving it would be usual for people to buy gifts for someone in a different generation and it would often be more difficult to do so compared to someone in one's own generation. 
 
@@ -101,11 +102,10 @@ As a result of this the project had to be developed with simplicity to the foref
 I chose the font <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> as it a very simple style which is easily readable and not in any way distracting. The content is there to facilitate the creation of lists and assist in getting the right gift at the right time and not to provide a distraction.
 
 ##### Colours:
-Using learned knowledge from prior research, bright and vibrant colours have a higher influence in terms of positivity and therefore more potential sales/leads and interactions: Using <a href='[Generate - Coolors.co](https://coolors.co/d9f0ff-5bc0eb-e55934-fa7921-fde74c)'>This</a> i was able to find a colour scheme that suited the afor mentioned points.
 
-* 
-* 
-* 
+* The colour theme is based across a blue spectrum which encourages positivity and calmness.
+* The submit buttons are orange to keep the contrast high and the theme of positivity throughout as orange is a colour associated with action.
+* Dark blue was used instead of black for text and similar elements as this colour is softer and therefore more in keeping with the theme.
 * 
 * 
 
@@ -116,17 +116,8 @@ Using learned knowledge from prior research, bright and vibrant colours have a h
 * 
 
 
-##### Example Variables:
-
-Colours: 
-
-
-Default Styling:
-
 ## Wireframes: 
-I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq mockups</a>. To view my mockups please visit my mockup folder.
-
-View my wireframes <a href="https://github.com/geminerald/pressie/tree/master/wireframes">here.</a>
+I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq mockups</a>. To view my mockups please visit my mockup <a href="https://github.com/geminerald/pressie/tree/master/wireframes">here.</a>
 
 ## Features: 
 
@@ -173,8 +164,8 @@ Test Overview
 ### Overall:
 
 <strong>Responsiveness - </strong>
-* <strong>Plan</strong> : 
-* <strong>Implementation</strong> : 
+* <strong>Plan</strong> : Responsiveness is important in this project as the system needs to function seamlessly across all devices.
+* <strong>Implementation</strong> : Materialize is used for CSS and JavaScript elements and also comes with built in responsive classes.
 * <strong>Result</strong> : 
 * <strong>Verdict</strong> :
 
@@ -186,43 +177,6 @@ Test Overview
 
 ### Features:
 
-<strong>Sliding Banner -</strong>
-* <strong>Plan</strong> : 
-* <strong>Implementation</strong> : 
-* <strong>Result</strong> : 
-* <strong>Verdict</strong> :
-
-<strong>Sliding Package Deals -</strong>
-* <strong>Plan</strong> : 
-* <strong>Implementation</strong> : 
-* <strong>Result</strong> : 
-* <strong>Verdict</strong> :
-
-<strong>Sliding Testimonials -</strong>
-* <strong>Plan</strong> : 
-* <strong>Implementation</strong> : 
-* <strong>Result</strong> : 
-* <strong>Verdict</strong> :
-
-<strong>Form Validation - </strong>
-* <strong>Plan</strong> : 
-* <strong>Implementation</strong> : 
-* <strong>Result</strong> : 
-* <strong>Verdict</strong> :
-
-
-<strong>Pop-Out Navigation (mobile/tablet) -</strong>
-* <strong>Plan</strong> : 
-* <strong>Implementation</strong> : 
-* <strong>Result</strong> : 
-* <strong>Verdict</strong> :
-
-
-<strong>Interactive Google Maps - </strong>
-* <strong>Plan</strong> : 
-* <strong>Implementation</strong> : 
-* <strong>Result</strong> : 
-* <strong>Verdict</strong> :
 
 
 ## Bugs: 
