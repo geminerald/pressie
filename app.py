@@ -19,6 +19,27 @@ mongo = PyMongo(app)
 def home():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/finder')
+def finder():
+    return render_template('finder.html')
+
+@app.route('/wishlist')
+def wishlist():
+    return render_template('wishlist.html')
+
+
+@app.route('/additems')
+def additems():
+    return render_template('additems.html')
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(
