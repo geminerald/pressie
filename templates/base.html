@@ -21,9 +21,9 @@
 			<div class="nav-wrapper">
 				<a href="{{url_for('home')}}" class="brand-logo"><i class="material-icons">card_giftcard</i>Pressie</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="wishlist.html">Make a List</a></li>
-					<li><a href="finder.html">Find a Gift</a></li>
-					<li><a href="about.html">About</a></li>
+					<li><a href="{{url_for('wishlist')}}">Make a List</a></li>
+					<li><a href="{{url_for('finder')}}">Find a Gift</a></li>
+					<li><a href="{{url_for('about')}}">About</a></li>
 					<li class="logins logged-out-view">Sign In/ Up
 						<ul id="sign-in-up-list">
 							<li id="login-modal"><a>Log In</a></li>
@@ -45,7 +45,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script src="app.js"></script>
+	<script src="{{url_for('static', filename='js/app.js')}}"></script>
 </body>
 
 </html>
