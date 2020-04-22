@@ -1,105 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Pressie</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="style.css" type="text/css" />
-</head>
-
-<body>
-	<header>
-		<nav>
-			<div class="nav-wrapper">
-				<a href="index.html" class="brand-logo"><i class="material-icons">card_giftcard</i>Pressie</a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="wishlist.html">Make a List</a></li>
-					<li><a href="finder.html">Find a Gift</a></li>
-					<li><a href="about.html">About</a></li>
-					<li class=logins>Sign In/ Up
-						<ul id="sign-in-up-list" class="invisible">
-							<li><a>Log In</a></li>
-							<li><a>Sign Up</a></li>
-						</ul>
-					</li>
-					<li class="hidden invisible">Profile</li>
-
-				</ul>
-			</div>
-		</nav>
-	</header>
-	<div class="container">
-		<div class="row">
-			<h3>About your Wishlist</h3>
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+	<h3>About your Wishlist</h3>
+</div>
+<form action="" method="POST" class="col s12">
+	<div class="row">
+		<div class="input-field col s6">
+			<input  id="first_name" name="first_name" type="text" class="validate">
+			<label for="first_name">First Name</label>
 		</div>
-		<form action="" method="POST" class="col s12">
-			<div class="row">
-				<div class="input-field col s6">
-					<input  id="first_name" name="first_name" type="text" class="validate">
-					<label for="first_name">First Name</label>
-				</div>
-				<div class="input-field col s6">
-					<input id="last_name" name="last_name" type="text" class="validate">
-					<label for="last_name">Last Name</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="wishlist-switch col s12">
-					<p>Is your list ordered?</p>
-					<div class="switch">
-						<label>
+		<div class="input-field col s6">
+			<input id="last_name" name="last_name" type="text" class="validate">
+			<label for="last_name">Last Name</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="wishlist-switch col s12">
+			<p>Is your list ordered?</p>
+			<div class="switch">
+				<label>
                     No, show my list in any order.
                     <input type="checkbox">
                     <span class="lever"></span>
                     Yes, I will put things I want more first.
                 </label>
-					</div>
-				</div>
 			</div>
-			<div class="row">
-				<div class="wishlist-switch col s12">
-					<p>Do you want to know what has been bought?</p>
-					<div class="switch">
-						<label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="wishlist-switch col s12">
+			<p>Do you want to know what has been bought?</p>
+			<div class="switch">
+				<label>
                     No, keep it a surprise.
                     <input type="checkbox">
                     <span class="lever"></span>
                     Yes, I want to know what has been bought.
                 </label>
-					</div>
-				</div>
 			</div>
-			<div class="row">
-				<div class="wishlist-switch col s12">
-					<p>Is your Wishlist private or public?</p>
-					<div class="switch">
-						<label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="wishlist-switch col s12">
+			<p>Is your Wishlist private or public?</p>
+			<div class="switch">
+				<label>
                     Public, anyone can locate it with my name.
                     <input type="checkbox">
                     <span class="lever"></span>
                     Private, I will enter phone numbers for people who can access my Wishlist.
                 </label>
-					</div>
-				</div>
 			</div>
-			<div class="row button-row">
-				<button id="submit" class="btn waves-effect waves-light submit-button" type="submit" name="action">Submit
+		</div>
+	</div>
+	<div class="row button-row">
+		<button id="submit" class="btn waves-effect waves-light submit-button" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
                 </button>
-				<a href="index.html"
-					class="waves-effect waves-light btn back-button"><i class="material-icons right"></i>Back</a>
+		<a href="index.html"
+			class="waves-effect waves-light btn back-button"><i class="material-icons right"></i>Back</a>
 
-			</div>
-		</form>
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script src="app.js"></script>
-</body>
-
-</html>
+</form>
+{% endblock %}
