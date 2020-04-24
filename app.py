@@ -5,6 +5,7 @@ from bson.objectid import ObjectId
 from os import path
 if path.exists("env.py"):
     import env
+from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
 
@@ -19,6 +20,17 @@ mongo = PyMongo(app)
 @app.route('/home')
 def home():
     return render_template('index.html', title='Home')
+
+@app.route('/register')
+def register():
+    form = RegistrationForm()
+    return render_template('register.html', title = 'Sign Up', form = form)
+
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title = 'Sign In', form = form)
 
 @app.route('/about')
 def about():
