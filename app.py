@@ -17,28 +17,28 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('index.html', title='home')
+    return render_template('index.html', title='Home')
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title='About')
 
 @app.route('/finder')
 def finder():
-    return render_template('finder.html')
+    return render_template('finder.html', title='Find a Wishlist')
 
 @app.route('/wishlist')
 def wishlist():
-    return render_template('wishlist.html')
+    return render_template('wishlist.html', title='Create a Wishlist')
 
 
 @app.route('/additems')
 def additems():
-    return render_template('additems.html')
+    return render_template('additems.html', title='Add Items to your Wishlist')
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    return render_template('profile.html', title='My Account')
 
 
 if __name__ == '__main__':
