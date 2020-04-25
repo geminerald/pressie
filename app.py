@@ -1,6 +1,6 @@
 from forms import RegistrationForm, LoginForm
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from os import path
@@ -22,9 +22,12 @@ def home():
     return render_template('index.html', title='Home')
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account Created for {form.username.data}!', 'success')
+        return redirect(url_for('home'))
     return render_template('register.html', title='Sign Up', form=form)
 
 
