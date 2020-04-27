@@ -9,9 +9,9 @@ if path.exists("env.py"):
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
 
@@ -63,7 +63,7 @@ def additems():
     return render_template('additems.html', title='Add Items to your Wishlist')
 
 
-@app.route('/profile')
+@app.route('/profile/<username>')
 def profile():
     return render_template('profile.html', title='My Account')
 
