@@ -101,7 +101,8 @@ nav {
     padding-right: 30px;
 }
 
-.logins:hover #sign-in-up-list {
+.logins:hover #sign-in-up-list,
+.logins:focus #sign-in-up-list {
     right: 0px;
     animation: dropdown 0.5s ease-in-out;
 }
@@ -178,7 +179,8 @@ nav {
     color: #fafafa;
 }
 
-.submit-button:hover{
+.submit-button:hover,
+.submit-button:focus{
     color: #f27d42;
     background-color: #fafafa;
     border: 2px solid #f27d42;
@@ -190,7 +192,8 @@ nav {
     border: 2px solid #022449;
 }
 
-.back-button:hover{
+.back-button:hover,
+.back-button:focus{
     color: #022449;
     background-color: #fafafa;
     border: 2px solid #022449;
@@ -201,7 +204,8 @@ nav {
     color:#022449 ;
 }
 
-.done-button:hover{
+.done-button:hover,
+.done-button:focus{
     background-color: #022449;
     color:#55bdca;
 }
