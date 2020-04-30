@@ -29,7 +29,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         password = form.password.data
-        pw_hash = bcrypt.generate_password_hash(password)
+        pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
         users = mongo.db.users
         users.insert_one({"username": form.username.data,"email":form.email.data,"password":pw_hash})
         flash(f'Account Created for {form.username.data}!', 'success')
@@ -61,6 +61,8 @@ def finder():
 
 @app.route('/wishlist')
 def wishlist():
+    lists = mongo.db.lists
+    lists.insert_one(request.form.to_dict())
     return render_template('wishlist.html', title='Create a Wishlist')
 
 
