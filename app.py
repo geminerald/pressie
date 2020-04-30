@@ -30,7 +30,8 @@ def register():
     if form.validate_on_submit():
         password = form.password.data
         pw_hash = bcrypt.generate_password_hash(password)
-        users = mongo.db.users.find()
+        users = mongo.db.users
+        users.insert_one({"username": form.username.data,"email":form.email.data,"password":pw_hash})
         flash(f'Account Created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Sign Up', form=form)
