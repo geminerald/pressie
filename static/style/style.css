@@ -151,6 +151,14 @@ nav {
     background-color: #55BDCA;
 }
 
+.welcome{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
 /*End Home Page--------------------------------------------------------------------End Home Page*/
 
 /*Wishlist Page--------------------------------------------------------------------Wishlist Page*/
