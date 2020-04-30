@@ -59,7 +59,7 @@ def finder():
     return render_template('finder.html', title='Find a Wishlist')
 
 
-@app.route('/wishlist')
+@app.route('/wishlist', methods=['GET', 'POST'])
 def wishlist():
     lists = mongo.db.lists
     lists.insert_one(request.form.to_dict())
