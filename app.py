@@ -63,7 +63,7 @@ def additems():
     return render_template('additems.html', title='Add Items to your Wishlist')
 
 
-@app.route('/profile/<username>')
+@app.route('/profile')
 def profile():
     return render_template('profile.html', title='My Account')
 
