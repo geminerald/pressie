@@ -65,7 +65,8 @@ def additems():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html', title='My Account')
+    users = mongo.db.users.find()
+    return render_template('profile.html',users=users, title='My Account')
 
 
 if __name__ == '__main__':
