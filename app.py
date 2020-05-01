@@ -3,6 +3,7 @@ from forms import RegistrationForm, LoginForm
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 from bson.objectid import ObjectId
 from os import path
 if path.exists("env.py"):
@@ -16,6 +17,7 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
 
 
 @app.route('/')
