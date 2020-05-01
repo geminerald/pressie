@@ -21,7 +21,7 @@ bcrypt = Bcrypt(app)
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('index.html', title='Home')
+    return render_template('index.html', title='Home', loggedin = False)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -31,7 +31,7 @@ def register():
         password = form.password.data
         pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
         users = mongo.db.users
-        users.insert_one({"username": form.username.data,"email":form.email.data,"password":pw_hash})
+        users.insert_one({"username": form.username.data,"email":form.email.data,"password":pw_hash,"admin":False})
         flash(f'Account Created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Sign Up', form=form)
@@ -43,7 +43,7 @@ def login():
     if form.validate_on_submit():
         if form.email.data == 'admin@pressie.com' and form.password.data == 'password':
             flash('You have been logged in!', 'success')
-            return redirect(url_for('home'))
+            return redirect(url_for('home',loggedin = True))
         else:
             flash('Login Unsuccessful, please check email and password', 'danger')
     return render_template('login.html', title='Sign In', form=form)

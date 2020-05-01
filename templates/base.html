@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	{% if title %}
-    <title>Pressie - {{title}}</title>
-    {% else %}
-    <title>Pressie</title>
-    {% endif %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<title>Pressie - {{title}}</title>
+	{% else %}
+	<title>Pressie</title>
+	{% endif %}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="{{url_for('static', filename='style/style.css')}}" type="text/css" />
@@ -25,28 +26,32 @@
 					<li><a href="{{url_for('wishlist')}}">Make a List</a></li>
 					<li><a href="{{url_for('finder')}}">Find a Gift</a></li>
 					<li><a href="{{url_for('about')}}">About</a></li>
-					<li class="logins logged-out-view">Sign In/ Up
+					{% if loggedin %}
+					<li id="profile-nav" class="hidden invisible logged-in-view"><a href="{{url_for('profile')}}">Profile</a></li>
+					{% else %}
+                    <li class="logins logged-out-view">Sign In/ Up
 						<ul id="sign-in-up-list">
 							<li id="login-modal"><a href="{{url_for('login')}}">Log In</a></li>
 							<li id="sign-up-modal"><a href="{{url_for('register')}}">Sign Up</a></li>
 						</ul>
-					<li id="profile-nav" class="hidden invisible logged-in-view">Profile</li>
 					</li>
+					
+                    {% endif %}
 
 				</ul>
 			</div>
 		</nav>
 	</header>
 	<div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category,message in messages%}
-                <div class="alert alert-{{ category }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+		{% for category,message in messages%}
+		<div class="alert alert-{{ category }}">
+			{{ message }}
+		</div>
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
 		{% block content %}
 		{% endblock %}
 
