@@ -21,19 +21,20 @@ bcrypt = Bcrypt(app)
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('index.html', title='Home', loggedin = False)
+    return render_template('index.html', title='Home')
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        username = form.username.data
         password = form.password.data
         pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
         users = mongo.db.users
         users.insert_one({"username": form.username.data,"email":form.email.data,"password":pw_hash,"admin":False})
         flash(f'Account Created for {form.username.data}!', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('home',loggedin = True, username = username))
     return render_template('register.html', title='Sign Up', form=form)
 
 
