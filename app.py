@@ -74,7 +74,7 @@ def wishlist():
 def insert_wishlist():
     lists = mongo.db.lists
     lists.insert_one(request.form.to_dict())
-    return redirect(url_for('additems'))
+    return redirect(url_for('profile'))
 
 
 @app.route('/delete_wishlist/<list_id>')
@@ -83,11 +83,17 @@ def delete_wishlist(list_id):
     return redirect(url_for('profile'))
 
 
-@app.route('/additems')
-def additems():
+@app.route('/additems/<list_id>')
+def additems(list_id):
+    the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
+    items = mongo.db.items
+    return render_template('additems.html', title='Add Items to your Wishlist', the_list=the_list)
 
-    return render_template('additems.html', title='Add Items to your Wishlist')
-
+@app.route('/insert_items', methods = ['GET','POST'])
+def insert_items(the_list):
+    items = mongo.db.items
+    items.insert_one(request.form.to_dict())
+    return redirect('additems')
 
 @app.route('/profile')
 def profile():

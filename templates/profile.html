@@ -15,7 +15,8 @@
 		<div class="wishlist">
 			<h3>{{wishlist.list_name}}</h3>
             <button class = "btn btn-small">View</button>
-            <button class = "btn btn-small">Add Items</button>
+            <a href="{{url_for('additems', list_id = wishlist._id)}}"
+					class="btn btn-small"><i class="material-icons right"></i>Add Items</a>
             <a href="{{url_for('delete_wishlist', list_id = wishlist._id)}}"
 					class="btn btn-small"><i class="material-icons right"></i>Delete</a>
             <button class = "btn btn-small">Edit</button>
