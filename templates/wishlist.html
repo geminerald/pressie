@@ -12,12 +12,12 @@
 		</div>
 		<div class="input-field col s6">
 			<div class="form-group">
-				<select class="form-control" id="username">
+				<select class="form-control" id="username" name = "list_username">
                     {% for user in users %}
                         <option>{{user.username}}</option>
                     {% endfor %}
                 </select>
-				<label for="username">Username</label>
+				<label for="list_username">Username</label>
 			</div>
 		</div>
 	</div>
