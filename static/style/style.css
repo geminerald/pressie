@@ -53,7 +53,7 @@ h3 {
 
 .btn{
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 3px;
 }
 
 /*End Globals--------------------------------------------------------------------End Globals*/
@@ -239,7 +239,7 @@ nav {
     border: 2px solid #022449;
     background-color: #55BDCA;
     padding: 50px;
-    border-radius: 10px;
+    border-radius: 3px;
     color: #fafafa;
 }
 
