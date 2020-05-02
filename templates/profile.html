@@ -2,14 +2,20 @@
 {% block content %}
 <div class="row my-info">
 	<h2>Personal Info</h2>
-    </div><div class="row">
-    {% for user in users %}
+</div>
+<div class="row">
 	<p>{{user.username}}</p>
-    <p>{{user.email}}</p>
-    <p>{{user.firstname}} {{user.lastname}}</p>
-    {% endfor %}</div>
-
+	<p>{{user.email}}</p>
+	<p>{{user.firstname}} {{user.lastname}}</p>
+</div>
 <div class="my-wishlists row">
 	<h2>Wishlists</h2>
+	
+	</div><div class="row">
+		<div class="wishlists">
+			{% for wishlist in lists %}
+			<p>{{wishlist.list_name}}</p>
+			{% endfor %}
+		</div>
 </div>
 {% endblock %}

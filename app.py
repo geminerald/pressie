@@ -74,7 +74,9 @@ def wishlist():
 def insert_wishlist():
     lists = mongo.db.lists
     lists.insert_one(request.form.to_dict())
-    wishlist_id = request.form.get('first_name')
+    username = request.form.get('username')
+    list_user = mongo.db.users.find_one({"username": ObjectId(username)})
+    wishlist_id = list_user.username
     return redirect(url_for('additems', wishlist_id = wishlist_id))
 
 @app.route('/additems/<wishlist_id>')
@@ -85,8 +87,9 @@ def additems(wishlist_id):
 
 @app.route('/profile')
 def profile():
-    users = mongo.db.users.find()
-    return render_template('profile.html',users=users, title='My Account')
+    my_account = mongo.db.users.find_one({"username": "geminerald"})
+    my_lists = mongo.db.lists.find({"list_username": "geminerald"})
+    return render_template('profile.html',user=my_account, lists=my_lists, title='My Account')
 
 
 if __name__ == '__main__':
