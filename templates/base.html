@@ -29,14 +29,9 @@
 					{% if loggedin %}
 					<li><a href="{{url_for('profile')}}">Profile</a></li>
 					{% else %}
-                    <li class="logins">Sign In/ Up
-						<ul id="sign-in-up-list">
-							<li id="login-modal"><a href="{{url_for('login')}}">Log In</a></li>
-							<li id="sign-up-modal"><a href="{{url_for('register')}}">Sign Up</a></li>
-						</ul>
-					</li>
-					
-                    {% endif %}
+					<li id="login-modal"><a href="{{url_for('login')}}">Log In</a></li>
+					<li id="sign-up-modal"><a href="{{url_for('register')}}">Sign Up</a></li>
+					{% endif %}
 
 				</ul>
 			</div>

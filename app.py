@@ -3,7 +3,7 @@ from forms import RegistrationForm, LoginForm
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
+from flask_login import LoginManager, login_user, current_user, logout_user
 from bson.objectid import ObjectId
 from os import path
 if path.exists("env.py"):
