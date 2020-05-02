@@ -77,7 +77,10 @@ def insert_wishlist():
     return redirect(url_for('additems'))
 
 
-
+@app.route('/delete_wishlist/<list_id>')
+def delete_wishlist(list_id):
+    mongo.db.lists.remove({'_id': ObjectId(list_id)})
+    return redirect(url_for('profile'))
 
 
 @app.route('/additems')
