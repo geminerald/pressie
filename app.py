@@ -3,7 +3,7 @@ from forms import RegistrationForm, LoginForm
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, login_user, current_user, logout_user, login_required
+from flask_login import LoginManager, login_user, current_user, logout_user, login_required, UserMixin
 from bson.objectid import ObjectId
 from os import path
 if path.exists("env.py"):
@@ -68,19 +68,20 @@ def finder():
 @app.route('/wishlist')
 def wishlist():
     users = mongo.db.users.find()
-    return render_template('wishlist.html', title='Create a Wishlist', users = users)
+    return render_template('wishlist.html', title='Create a Wishlist', users=users)
 
 @app.route('/insert_wishlist', methods=['GET', 'POST'])
 def insert_wishlist():
     lists = mongo.db.lists
     lists.insert_one(request.form.to_dict())
-    username = request.form.get('username')
-    list_user = mongo.db.users.find_one({"username": ObjectId(username)})
-    wishlist_id = list_user.username
-    return redirect(url_for('additems', wishlist_id = wishlist_id))
+    return redirect(url_for('additems'))
 
-@app.route('/additems/<wishlist_id>')
-def additems(wishlist_id):
+
+
+
+
+@app.route('/additems')
+def additems():
 
     return render_template('additems.html', title='Add Items to your Wishlist')
 

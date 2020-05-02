@@ -3,7 +3,7 @@
 <div class="row">
 	<h3>About your Wishlist</h3>
 </div>
-<form action="" method="POST" class="col s12">
+<form action="{{url_for('insert_wishlist')}}" method="POST" class="col s12">
 	<div class="row">
 		<div class="input-field col s6">
 			<input  id="list_name" name="list_name" type="text" class="validate" required>
@@ -71,10 +71,10 @@
 		</div>
 	</div>
 	<div class="row button-row">
-		<a href="{{url_for('insert_wishlist')}}" id="submit" class="btn waves-effect waves-light submit-button"
+		<button id="submit" class="btn waves-effect waves-light submit-button"
 			type="submit" name="action">Submit
 			<i class="material-icons right">send</i>
-		</a>
+		</button>
 		<a href="{{url_for('home')}}"
 			class="waves-effect waves-light btn back-button"><i class="material-icons right"></i>Back</a>
 
