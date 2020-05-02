@@ -67,18 +67,19 @@ def finder():
 
 @app.route('/wishlist')
 def wishlist():
-    user = mongo.db.users.find()
-    return render_template('wishlist.html', title='Create a Wishlist')
+    users = mongo.db.users.find()
+    return render_template('wishlist.html', title='Create a Wishlist', users = users)
 
 @app.route('/insert_wishlist', methods=['GET', 'POST'])
 def insert_wishlist():
     lists = mongo.db.lists
     lists.insert_one(request.form.to_dict())
-    return redirect('additems')
+    wishlist_id = request.form.get('first_name')
+    return redirect(url_for('additems', wishlist_id = wishlist_id))
 
 @app.route('/additems/<wishlist_id>')
 def additems(wishlist_id):
-    
+
     return render_template('additems.html', title='Add Items to your Wishlist')
 
 

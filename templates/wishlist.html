@@ -4,12 +4,23 @@
 	<h3>About your Wishlist</h3>
 </div>
 <form action="" method="POST" class="col s12">
-<div class="row">
-<div class="input-field col s12">
+	<div class="row">
+		<div class="input-field col s6">
 			<input  id="list_name" name="list_name" type="text" class="validate" required>
 			<label for="list_name">List Name</label>
+
 		</div>
-</div>
+		<div class="input-field col s6">
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Username</label>
+				<select class="form-control" id="exampleFormControlSelect1">
+                    {% for user in users %}
+                        <option>{{user.username}}</option>
+                    {% endfor %}
+                </select>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="input-field col s6">
 			<input  id="first_name" name="first_name" type="text" class="validate" required>
@@ -60,9 +71,10 @@
 		</div>
 	</div>
 	<div class="row button-row">
-		<a href = "{{url_for('insert_wishlist')}}" id="submit" class="btn waves-effect waves-light submit-button" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-                </a>
+		<a href="{{url_for('insert_wishlist')}}" id="submit" class="btn waves-effect waves-light submit-button"
+			type="submit" name="action">Submit
+			<i class="material-icons right">send</i>
+		</a>
 		<a href="{{url_for('home')}}"
 			class="waves-effect waves-light btn back-button"><i class="material-icons right"></i>Back</a>
 
