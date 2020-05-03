@@ -82,8 +82,8 @@ def insert_wishlist():
 
 @app.route('/view_wishlist/<list_id>')
 def view_wishlist(list_id):
-    the_list = list_id
-    items = mongo.db.items.find({"list_id": ObjectId(the_list)})
+    myquery = {"list_id": list_id}
+    items = mongo.db.items.find(myquery)
     return render_template('view_wishlist.html', items=items)
 
 @app.route('/delete_wishlist/<list_id>')
