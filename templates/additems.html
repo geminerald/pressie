@@ -3,8 +3,12 @@
 <div class="row">
 	<h3>Create your Wishlist</h3>
 </div>
-<form action="{{url_for('insert_items', the_list = list_id)}}" method="POST" class="col s12">
+<form action="{{url_for('insert_items')}}" method="POST" class="col s12">
 	<div class="row item">
+        
+		<div class="input-field col s12 m6">
+            <input type="text" name = "{{item_list_id}}">
+        </div>
 		<div class="input-field col s12 m6">
 			<input  id="item-name" name="item-name" type="text" class="validate" required>
 			<label for="item-name">Item Name</label>
