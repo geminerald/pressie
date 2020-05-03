@@ -18,3 +18,9 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me?')
     submit = SubmitField('Log In')
+
+class CreateWishlist(FlaskForm):
+    listname = StringField('List Name', validators=[DataRequired()])
+    username = StringField('Your Name', validators=[DataRequired()])
+    private = BooleanField('Is your list private?')
+    submit = SubmitField('Create List')
