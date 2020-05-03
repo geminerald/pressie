@@ -108,6 +108,14 @@ def insert_items():
     return redirect('profile')
 
 
+@app.route('/delete_item/<item_id>')
+def delete_item(item_id):
+    the_item = mongo.db.items
+    the_list = the_item.list_id
+    the_item.remove({'_id': ObjectId(item_id)})
+    return redirect(url_for('view_wishlist',list_id=the_list))
+
+
 @app.route('/profile')
 def profile():
     my_account = mongo.db.users.find_one({"username": "geminerald"})
