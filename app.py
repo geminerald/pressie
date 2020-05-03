@@ -86,8 +86,9 @@ def delete_wishlist(list_id):
 @app.route('/additems/<list_id>')
 def additems(list_id):
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
+    the_list_id = the_list['_id']
     items = mongo.db.items
-    return render_template('additems.html', title='Add Items to your Wishlist', item_list_id = the_list)
+    return render_template('additems.html', title='Add Items to your Wishlist', item_list_id = the_list_id)
 
 @app.route('/insert_items', methods = ['GET','POST'])
 def insert_items():
