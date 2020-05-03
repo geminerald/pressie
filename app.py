@@ -19,9 +19,11 @@ mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
+
 
 @app.route('/')
 @app.route('/home')
@@ -37,9 +39,10 @@ def register():
         password = form.password.data
         pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
         users = mongo.db.users
-        users.insert_one({"username": form.username.data,"email":form.email.data,"password":pw_hash,"admin":False})
+        users.insert_one({"username": form.username.data,
+                          "email": form.email.data, "password": pw_hash, "admin": False})
         flash(f'Account Created for {form.username.data}!', 'success')
-        return redirect(url_for('home',loggedin = True, username = username))
+        return redirect(url_for('home', loggedin=True, username=username))
     return render_template('register.html', title='Sign Up', form=form)
 
 
@@ -49,7 +52,7 @@ def login():
     if form.validate_on_submit():
         if form.email.data == 'admin@pressie.com' and form.password.data == 'password':
             flash('You have been logged in!', 'success')
-            return redirect(url_for('home',loggedin = True))
+            return redirect(url_for('home', loggedin=True))
         else:
             flash('Login Unsuccessful, please check email and password', 'danger')
     return render_template('login.html', title='Sign In', form=form)
@@ -70,12 +73,16 @@ def wishlist():
     users = mongo.db.users.find()
     return render_template('wishlist.html', title='Create a Wishlist', users=users)
 
+
 @app.route('/insert_wishlist', methods=['GET', 'POST'])
 def insert_wishlist():
     lists = mongo.db.lists
     lists.insert_one(request.form.to_dict())
     return redirect(url_for('profile'))
 
+@app.route('/view_wishlist/<list_id>')
+def view_wishlist(list_id):
+    return render_template('view_wishlist.html')
 
 @app.route('/delete_wishlist/<list_id>')
 def delete_wishlist(list_id):
@@ -88,19 +95,21 @@ def additems(list_id):
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
     the_list_id = the_list['_id']
     items = mongo.db.items
-    return render_template('additems.html', title='Add Items to your Wishlist', item_list_id = the_list_id)
+    return render_template('additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
 
-@app.route('/insert_items', methods = ['GET','POST'])
+
+@app.route('/insert_items', methods=['GET', 'POST'])
 def insert_items():
     items = mongo.db.items
     items.insert_one(request.form.to_dict())
     return redirect('profile')
 
+
 @app.route('/profile')
 def profile():
     my_account = mongo.db.users.find_one({"username": "geminerald"})
     my_lists = mongo.db.lists.find({"list_username": "geminerald"})
-    return render_template('profile.html',user=my_account, lists=my_lists, title='My Account')
+    return render_template('profile.html', user=my_account, lists=my_lists, title='My Account')
 
 
 if __name__ == '__main__':
