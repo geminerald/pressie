@@ -124,6 +124,12 @@ def profile():
     my_lists = mongo.db.lists.find({"list_username": "geminerald"})
     return render_template('profile.html', user=my_account, lists=my_lists, title='My Account')
 
+@app.route('/list_search')
+def list_search():
+    user = request.form.get('search')
+    the_list = mongo.db.lists.find_one({'first_name':user})
+    return redirect(url_for('view_wishlist', list_id=the_list))
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(
