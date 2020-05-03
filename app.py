@@ -82,7 +82,9 @@ def insert_wishlist():
 
 @app.route('/view_wishlist/<list_id>')
 def view_wishlist(list_id):
-    return render_template('view_wishlist.html')
+    the_list = list_id
+    items = mongo.db.items.find({"list_id": ObjectId(the_list)})
+    return render_template('view_wishlist.html', items=items)
 
 @app.route('/delete_wishlist/<list_id>')
 def delete_wishlist(list_id):
