@@ -127,8 +127,9 @@ def profile():
 @app.route('/list_search')
 def list_search():
     user = request.form.get('search')
-    the_list = mongo.db.lists.find_one({'first_name':user})
-    return redirect(url_for('view_wishlist', list_id=the_list))
+    the_list = mongo.db.lists.find_one({'first_name': user})
+    the_list_id = the_list._id
+    return redirect(url_for('view_wishlist', list_id=the_list_id))
 
 
 if __name__ == '__main__':
