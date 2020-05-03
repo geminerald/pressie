@@ -231,6 +231,20 @@ nav {
 }
 
 /*End Add Item Page--------------------------------------------------------------------End Add Item Page*/
+
+.view-wishlist{
+    width: 100%;
+    border: 1px solid #022449;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+
+
 /*Finder Page--------------------------------------------------------------------Finder Page*/
 
 
