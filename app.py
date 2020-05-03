@@ -80,12 +80,14 @@ def insert_wishlist():
     lists.insert_one(request.form.to_dict())
     return redirect(url_for('profile'))
 
+
 @app.route('/view_wishlist/<list_id>')
 def view_wishlist(list_id):
     myquery = {"list_id": list_id}
     items = mongo.db.items.find(myquery)
     pass_in_list_id = list_id
     return render_template('view_wishlist.html', items=items, list_id=pass_in_list_id)
+
 
 @app.route('/delete_wishlist/<list_id>')
 def delete_wishlist(list_id):
@@ -113,7 +115,7 @@ def delete_item(item_id):
     the_item = mongo.db.items
     the_list = the_item.list_id
     the_item.remove({'_id': ObjectId(item_id)})
-    return redirect(url_for('view_wishlist',list_id=the_list))
+    return redirect(url_for('view_wishlist', list_id=the_list))
 
 
 @app.route('/profile')
