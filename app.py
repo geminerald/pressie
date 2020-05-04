@@ -52,9 +52,9 @@ def register():
         password = form.password.data
         pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
         users = mongo.db.users
-        users.insert_one({"username": form.username.data,
+        users.insert_one({"username": username,
                           "email": form.email.data, "password": pw_hash, "admin": False})
-        flash(f'Account Created for {form.username.data}!', 'success')
+        flash(f'Account Created for {username}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Sign Up', form=form)
 
@@ -137,7 +137,6 @@ def delete_item(item_id):
 
 
 @app.route('/profile')
-@login_required
 def profile():
     my_account = mongo.db.users.find_one({"username": "geminerald"})
     my_lists = mongo.db.lists.find({"list_username": "geminerald"})
