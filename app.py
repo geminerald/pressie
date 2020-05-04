@@ -37,7 +37,6 @@ class User(sqla.Model, UserMixin):
         return f"User('{self.username}', '{self.email}')"
 
 
-
 @app.route('/')
 @app.route('/home')
 def home():
@@ -73,9 +72,6 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
-
-
-
 @app.route('/about')
 def about():
     return render_template('about.html', title='About')
@@ -106,10 +102,12 @@ def view_wishlist(list_id):
     pass_in_list_id = list_id
     return render_template('view_wishlist.html', items=items, list_id=pass_in_list_id)
 
+
 @app.route('/edit_wishlist/<list_id>')
 def edit_wishlist(list_id):
-    
-    return
+    the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
+    return render_template('editlist.html', the_list=the_list)
+
 
 @app.route('/delete_wishlist/<list_id>')
 def delete_wishlist(list_id):
