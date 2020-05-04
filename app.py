@@ -1,6 +1,7 @@
 import os
 from forms import RegistrationForm, LoginForm, CreateWishlist
 from flask import Flask, render_template, redirect, request, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user, current_user, logout_user, login_required, UserMixin
@@ -18,11 +19,23 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
+sqla = SQLAlchemy(app)
 
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+    return User.get(user)
+
+
+class User(sqla.Model, UserMixin):
+    id = sqla.Column(sqla.Integer, primary_key=True)
+    username = sqla.Column(sqla.String(20), unique=True, nullable=False)
+    email = sqla.Column(sqla.String(120), unique=True, nullable=False)
+    password = sqla.Column(sqla.String(60), nullable=False)
+
+    def __repr__(self):
+        return f"User('{self.username}', '{self.email}')"
+
 
 
 @app.route('/')
@@ -42,7 +55,7 @@ def register():
         users.insert_one({"username": form.username.data,
                           "email": form.email.data, "password": pw_hash, "admin": False})
         flash(f'Account Created for {form.username.data}!', 'success')
-        return redirect(url_for('home', loggedin=True, username=username))
+        return redirect(url_for('home'))
     return render_template('register.html', title='Sign Up', form=form)
 
 
@@ -50,12 +63,17 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'admin@pressie.com' and form.password.data == 'password':
-            flash('You have been logged in!', 'success')
-            return redirect(url_for('home', loggedin=True))
+        email = form.email.data
+        user = mongo.db.users.find_one({'email': email})
+        if user:
+            login_user(user, remember=form.remember.data)
+            return redirect(url_for('home'))
         else:
             flash('Login Unsuccessful, please check email and password', 'danger')
     return render_template('login.html', title='Sign In', form=form)
+
+
+
 
 
 @app.route('/about')
@@ -119,6 +137,7 @@ def delete_item(item_id):
 
 
 @app.route('/profile')
+@login_required
 def profile():
     my_account = mongo.db.users.find_one({"username": "geminerald"})
     my_lists = mongo.db.lists.find({"list_username": "geminerald"})
