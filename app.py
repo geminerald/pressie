@@ -129,7 +129,8 @@ def profile():
 def list_search():
     user = request.form.get('search')
     the_list = mongo.db.lists.find_one({'phone_number': user})
-    return redirect(url_for('view_wishlist', list_id=the_list))
+    list_id = the_list['_id']
+    return redirect(url_for('view_wishlist', list_id=list_id))
 
 
 if __name__ == '__main__':
