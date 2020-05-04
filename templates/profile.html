@@ -3,17 +3,17 @@
 <div class="row my-info">
 	<h2>Personal Info</h2>
 </div>
-<div class="row">
-	<p>{{user.username}}</p>
-	<p>{{user.email}}</p>
-	<p>{{user.firstname}} {{user.lastname}}</p>
+<div class="row sort-column">
+	Username: <p>{{user.username}}</p>
+	Email: <p>{{user.email}}</p>
+	Name: <p>{{user.firstname}} {{user.lastname}}</p>
 </div>
 <div class="my-wishlists row">
 	<div class="wishlists">
 		<h2>Wishlists</h2>
 		{% for wishlist in lists %}
 		<div class="wishlist">
-			<h3>{{wishlist.list_name}}</h3>
+			<h3>{{wishlist.first_name}}'s List</h3>
             <a href="{{url_for('view_wishlist', list_id = wishlist._id)}}"
 					class="btn btn-small"><i class="material-icons right"></i>View</a>
             <a href="{{url_for('additems', list_id = wishlist._id)}}"

@@ -160,6 +160,10 @@ nav {
     justify-content: space-evenly;
 
 }
+.sort-column{
+    display: flex;
+    flex-direction: column;
+}
 
 /*End Home Page--------------------------------------------------------------------End Home Page*/
 
