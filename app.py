@@ -106,6 +106,10 @@ def view_wishlist(list_id):
     pass_in_list_id = list_id
     return render_template('view_wishlist.html', items=items, list_id=pass_in_list_id)
 
+@app.route('/edit_wishlist/<list_id>')
+def edit_wishlist(list_id):
+    
+    return
 
 @app.route('/delete_wishlist/<list_id>')
 def delete_wishlist(list_id):
