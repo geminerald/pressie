@@ -114,6 +114,19 @@ def delete_wishlist(list_id):
     mongo.db.lists.remove({'_id': ObjectId(list_id)})
     return redirect(url_for('profile'))
 
+@app.route('/update_wishlist/<list_id>', methods=["GET","POST"])
+def update_wishlist(list_id):
+    lists = mongo.db.lists
+    lists.update({'_id': ObjectId(list_id)},
+                {
+                    'phone_number': request.form.get('phone_number'),
+                    'list_username': request.form.get('list_username'),
+                    'first_name': request.form.get('first_name'),
+                    'last_name': request.form.get('last_name')
+                })
+    return redirect(url_for('profile'))
+
+
 
 @app.route('/additems/<list_id>')
 def additems(list_id):
