@@ -163,6 +163,13 @@ def load_user(user_id):
         return None
 
 
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+
 """
 About function - returns about page
 """
