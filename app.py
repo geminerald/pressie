@@ -93,11 +93,6 @@ class User(UserMixin):
 
 
 @app.route('/')
-"""
-Home function - returns home page for website
-"""
-
-
 def home():
     return render_template('index.html', title='Home')
 
@@ -113,7 +108,6 @@ Currently bugged.
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-
         if request.method == 'POST':
             username = request.form["username"]
             email = request.form["email"]
@@ -213,7 +207,7 @@ def insert_wishlist():
 
 
 """
-View Wishlist function - returns wishlist html page and all associated items. 
+View Wishlist function - returns wishlist html page and all associated items.
 """
 @app.route('/viewwishlist/<list_id>')
 def view_wishlist(list_id):
@@ -271,7 +265,6 @@ Parameters: List Id - this is used to add the items to the db with a specific wi
 def additems(list_id):
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
     the_list_id = the_list['_id']
-    items = mongo.db.items
     return render_template('additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
 
 
