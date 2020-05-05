@@ -23,6 +23,16 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
 
+
+@login_manager.user_loader
+def load_user(user_id):
+    user = User.get_by_id(user_id)
+    if user is not None:
+        return User(user["_id"])
+    else:
+        return None
+
+
 class User(UserMixin):
 
     def __init__(self, username, email, password, _id=None):
@@ -152,15 +162,6 @@ def login():
 """
 User loader function - returns user ID for login attempt. Needed for flask-login
 """
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    user = User.get_by_id(user_id)
-    if user is not None:
-        return User(user["_id"])
-    else:
-        return None
 
 
 @app.route("/logout")
