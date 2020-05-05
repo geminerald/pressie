@@ -94,7 +94,7 @@ class User(UserMixin):
 
 
 @app.route('/')
-@app.route('/home')
+
 def home():
     return render_template('index.html', title='Home')
 
@@ -163,34 +163,34 @@ def wishlist():
     return render_template('wishlist.html', title='Create a Wishlist', users=users)
 
 
-@app.route('/insert_wishlist', methods=['GET', 'POST'])
+@app.route('/insertwishlist', methods=['GET', 'POST'])
 def insert_wishlist():
     lists = mongo.db.lists
     lists.insert_one(request.form.to_dict())
     return redirect(url_for('profile'))
 
 
-@app.route('/view_wishlist/<list_id>')
+@app.route('/viewwishlist/<list_id>')
 def view_wishlist(list_id):
     myquery = {"list_id": list_id}
     items = mongo.db.items.find(myquery)
     pass_in_list_id = list_id
-    return render_template('view_wishlist.html', items=items, list_id=pass_in_list_id)
+    return render_template('viewwishlist.html', items=items, list_id=pass_in_list_id)
 
 
-@app.route('/edit_wishlist/<list_id>')
+@app.route('/editwishlist/<list_id>')
 def edit_wishlist(list_id):
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
     return render_template('editlist.html', the_list=the_list)
 
 
-@app.route('/delete_wishlist/<list_id>')
+@app.route('/deletewishlist/<list_id>')
 def delete_wishlist(list_id):
     mongo.db.lists.remove({'_id': ObjectId(list_id)})
     return redirect(url_for('profile'))
 
 
-@app.route('/update_wishlist/<list_id>', methods=["GET", "POST"])
+@app.route('/updatewishlist/<list_id>', methods=["GET", "POST"])
 def update_wishlist(list_id):
     lists = mongo.db.lists
     lists.update({'_id': ObjectId(list_id)},
@@ -211,14 +211,14 @@ def additems(list_id):
     return render_template('additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
 
 
-@app.route('/insert_items', methods=['GET', 'POST'])
+@app.route('/insertitems', methods=['GET', 'POST'])
 def insert_items():
     items = mongo.db.items
     items.insert_one(request.form.to_dict())
     return redirect('profile')
 
 
-@app.route('/delete_item/<item_id>')
+@app.route('/deleteitem/<item_id>')
 def delete_item(item_id):
     the_item = mongo.db.items
     the_list = the_item.list_id
@@ -233,7 +233,7 @@ def profile():
     return render_template('profile.html', user=my_account, lists=my_lists, title='My Account')
 
 
-@app.route('/list_search')
+@app.route('/listsearch')
 def list_search():
     user = request.form.get('search')
     the_list = mongo.db.lists.find_one({'phone_number': user})
