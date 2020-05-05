@@ -12,7 +12,6 @@ if path.exists("env.py"):
     import env
 
 
-
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -94,9 +93,20 @@ class User(UserMixin):
 
 
 @app.route('/')
+"""
+Home function - returns home page for website
+"""
+
 
 def home():
     return render_template('index.html', title='Home')
+
+
+"""
+Register function - takes register form info, adds to db and updates user to logged in.
+
+Currently bugged.
+"""
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -120,6 +130,13 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
+"""
+Login function - takes user login info and sets to logged in
+
+Currently bugged
+"""
+
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -138,6 +155,11 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
+"""
+User loader function - returns user ID for login attempt. Needed for flask-login
+"""
+
+
 @login_manager.user_loader
 def load_user(user_id):
     user = User.get_by_id(user_id)
@@ -147,9 +169,19 @@ def load_user(user_id):
         return None
 
 
+"""
+About function - returns about page
+"""
+
+
 @app.route('/about')
 def about():
     return render_template('about.html', title='About')
+
+
+"""
+Finder function - returns find wishlist page for buyers.
+"""
 
 
 @app.route('/finder')
@@ -157,10 +189,20 @@ def finder():
     return render_template('finder.html', title='Find a Wishlist')
 
 
+"""
+Wishlist function - returns wishlist page for listers and allows them to create a new one.
+"""
+
+
 @app.route('/wishlist')
 def wishlist():
     users = mongo.db.users.find()
     return render_template('wishlist.html', title='Create a Wishlist', users=users)
+
+
+"""
+Insert Wishlist function - takes user data from wishlist page and inserts to db. Then redirects to profile (likely to be changed to add items.)
+"""
 
 
 @app.route('/insertwishlist', methods=['GET', 'POST'])
@@ -170,6 +212,9 @@ def insert_wishlist():
     return redirect(url_for('profile'))
 
 
+"""
+View Wishlist function - returns wishlist html page and all associated items. 
+"""
 @app.route('/viewwishlist/<list_id>')
 def view_wishlist(list_id):
     myquery = {"list_id": list_id}
@@ -178,16 +223,29 @@ def view_wishlist(list_id):
     return render_template('viewwishlist.html', items=items, list_id=pass_in_list_id)
 
 
+"""
+Edit Wishlist function - returns wishlist page for listers and allows them to update existing one.
+"""
 @app.route('/editwishlist/<list_id>')
 def edit_wishlist(list_id):
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
     return render_template('editlist.html', the_list=the_list)
 
 
+"""
+Delete Wishlist function - Permanently deletes wishlist.
+"""
+
+
 @app.route('/deletewishlist/<list_id>')
 def delete_wishlist(list_id):
     mongo.db.lists.remove({'_id': ObjectId(list_id)})
     return redirect(url_for('profile'))
+
+
+"""
+Update Wishlist function - Updates basic wishlist parameters in the DB.
+"""
 
 
 @app.route('/updatewishlist/<list_id>', methods=["GET", "POST"])
@@ -203,6 +261,12 @@ def update_wishlist(list_id):
     return redirect(url_for('profile'))
 
 
+"""
+Add Items function - Adds items to a specific wishlist. 
+
+Parameters: List Id - this is used to add the items to the db with a specific wishlist.
+
+"""
 @app.route('/additems/<list_id>')
 def additems(list_id):
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
@@ -211,11 +275,21 @@ def additems(list_id):
     return render_template('additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
 
 
+"""
+Insert Items function - Adds items to db from user form. 
+"""
+
+
 @app.route('/insertitems', methods=['GET', 'POST'])
 def insert_items():
     items = mongo.db.items
     items.insert_one(request.form.to_dict())
     return redirect('profile')
+
+
+"""
+Delete Item function - Permanently deletes Item.
+"""
 
 
 @app.route('/deleteitem/<item_id>')
@@ -226,6 +300,11 @@ def delete_item(item_id):
     return redirect(url_for('view_wishlist', list_id=the_list))
 
 
+"""
+Profile function - Takes user to their profile page where they can view and update their info and lists.
+"""
+
+
 @app.route('/profile')
 def profile():
     my_account = mongo.db.users.find_one({"username": "geminerald"})
@@ -233,6 +312,9 @@ def profile():
     return render_template('profile.html', user=my_account, lists=my_lists, title='My Account')
 
 
+"""
+List Search function - Takes a buyer to their desiered wishlist for someone they want to buy for. 
+"""
 @app.route('/listsearch')
 def list_search():
     user = request.form.get('search')
