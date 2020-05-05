@@ -110,7 +110,6 @@ def home():
 """
 Register function - takes register form info, adds to db and updates user to logged in.
 
-Currently bugged.
 """
 
 
@@ -137,7 +136,6 @@ def register():
 """
 Login function - takes user login info and sets to logged in
 
-Currently bugged
 """
 
 

@@ -26,8 +26,9 @@
 					<li><a href="{{url_for('wishlist')}}">Make a List</a></li>
 					<li><a href="{{url_for('finder')}}">Find a Gift</a></li>
 					<li><a href="{{url_for('about')}}">About</a></li>
+                    <li>Hi {{current_user.username}}</li>
+                    
 					{% if current_user.is_authenticated %}
-                    <li>Hi {{current_user}}</li>
 					<li><a href="{{url_for('profile')}}">Profile</a></li>
                     <li><a href="{{url_for('logout')}}">Sign Out</a></li>
 					{% else %}
