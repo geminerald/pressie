@@ -46,19 +46,19 @@ class User(UserMixin):
 
     @classmethod
     def get_by_username(cls, username):
-        data = mongo.db.find_one("users", {"username": username})
+        data = mongo.db.users.find_one({"username": username})
         if data is not None:
             return cls(**data)
 
     @classmethod
     def get_by_email(cls, email):
-        data = mongo.db.find_one("users", {"email": email})
+        data = mongo.db.users.find_one({"email": email})
         if data is not None:
             return cls(**data)
 
     @classmethod
     def get_by_id(cls, _id):
-        data = mongo.db.find_one("users", {"_id": _id})
+        data = mongo.db.users.find_one({"_id": _id})
         if data is not None:
             return cls(**data)
 
@@ -89,7 +89,7 @@ class User(UserMixin):
         }
 
     def save_to_mongo(self):
-        mongo.db.insert("users", self.json())
+        mongo.db.users.insert(self.json())
 
 
 @app.route('/')
@@ -137,7 +137,7 @@ def login():
     if form.validate_on_submit():
         email = request.form["email"]
         password = request.form["password"]
-        find_user = mongo.db.find_one("users", {"email": email})
+        find_user = mongo.db.users.find_one({"email": email})
         if User.login_valid(email, password):
             loguser = User(find_user["_id"],
                            find_user["email"], find_user["password"])
@@ -299,6 +299,7 @@ Profile function - Takes user to their profile page where they can view and upda
 
 
 @app.route('/profile')
+@login_required
 def profile():
     my_account = mongo.db.users.find_one({"username": "geminerald"})
     my_lists = mongo.db.lists.find({"list_username": "geminerald"})

@@ -26,9 +26,13 @@
 					<li><a href="{{url_for('wishlist')}}">Make a List</a></li>
 					<li><a href="{{url_for('finder')}}">Find a Gift</a></li>
 					<li><a href="{{url_for('about')}}">About</a></li>
+					{% if current_user.is_authenticated %}
+                    <li>Hi {{current_user}}</li>
 					<li><a href="{{url_for('profile')}}">Profile</a></li>
+					{% else %}
 					<li id="login-modal"><a href="{{url_for('login')}}">Log In</a></li>
 					<li id="sign-up-modal"><a href="{{url_for('register')}}">Sign Up</a></li>
+					{% endif %}
 				</ul>
 			</div>
 		</nav>
