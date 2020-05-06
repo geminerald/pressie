@@ -28,11 +28,11 @@ def home():
 def login():
     # Check if user is not logged in already
     if 'user' in session:
-        user_in_db = mongo.db.users.find_one({"username": session['user']})
+        user_in_db = mongo.db.users.find_one({"email": session['user']})
         if user_in_db:
             # If so redirect user to his profile
             flash("You are logged in already!")
-            return redirect(url_for('profile', user=user_in_db['username']))
+            return redirect(url_for('profile', user=user_in_db['email']))
     else:
         # Render the page for user to be able to log in
         return render_template("login.html", form=LoginForm())
@@ -45,10 +45,10 @@ def user_auth():
     # Check for user in database
     if user_in_db:
         # If passwords match (hashed / real password)
-        
+
         # Changed this
         # if check_password_hash(user_in_db['password'], form['password']):
-        if bcrypt.hashpw(request.form['password'].encode('utf-8'), user_in_db['password'].encode('utf-8')) == user_in_db['password'].encode('utf-8'):
+        if bcrypt.hashpw(request.form['password'].encode('utf-8'), user_in_db['password']) == user_in_db['password']:
             # Log user in (add to session)
             session['user'] = form['email']
             # If the user is admin redirect him to admin area
@@ -82,7 +82,8 @@ def register():
             # If user does not exist register new user
             else:
                 # Hash password
-                hash_pass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+                hash_pass = bcrypt.hashpw(
+                    request.form['password'].encode('utf-8'), bcrypt.gensalt())
                 # Create new user with hashed password
                 mongo.db.users.insert_one(
                     {
@@ -122,7 +123,7 @@ def profile(user):
     # Check if user is logged in
     if 'user' in session:
         # If so get the user and pass him to template for now
-        user_in_db = mongo.db.users.find_one({"username": user})
+        user_in_db = mongo.db.users.find_one({"email": user})
         return render_template('profile.html', user=user_in_db)
     else:
         flash("You must be logged in!")
@@ -154,10 +155,18 @@ Wishlist function - returns wishlist page for listers and allows them to create 
 """
 
 
-@app.route('/wishlist')
-def wishlist():
-    users = mongo.db.users.find()
-    return render_template('wishlist.html', title='Create a Wishlist', users=users)
+@app.route('/wishlist/<user>')
+def wishlist(user):
+    if 'user' in session:
+        user_in_db = mongo.db.users.find_one({"email": session['email']})
+        if user_in_db:
+            # If so redirect user to his profile
+            flash("You are logged in already!")
+            return render_template('wishlist.html', title='Create a Wishlist', user=user_in_db)
+    else:
+        # Render the page for user to be able to log in
+        return render_template("login.html", form=LoginForm())
+    
 
 
 """
@@ -167,14 +176,22 @@ Insert Wishlist function - takes user data from wishlist page and inserts to db.
 
 @app.route('/insertwishlist', methods=['GET', 'POST'])
 def insert_wishlist():
-    lists = mongo.db.lists
-    lists.insert_one(request.form.to_dict())
-    return redirect(url_for('profile'))
+    if 'user' in session:
+        # If so get the user and pass him to template for now
+        user_in_db = mongo.db.users.find_one({"email": user})
+        lists = mongo.db.lists
+        lists.insert_one(request.form.to_dict())
+        return render_template('profile.html', user=user_in_db)
+    else:
+        flash("You must be logged in!")
+        return redirect(url_for('home'))
 
 
 """
 View Wishlist function - returns wishlist html page and all associated items.
 """
+
+
 @app.route('/viewwishlist/<list_id>')
 def view_wishlist(list_id):
     myquery = {"list_id": list_id}
@@ -257,7 +274,6 @@ def delete_item(item_id):
     the_list = the_item.list_id
     the_item.remove({'_id': ObjectId(item_id)})
     return redirect(url_for('view_wishlist', list_id=the_list))
-
 
 
 """

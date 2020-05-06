@@ -23,10 +23,10 @@
 			<div class="nav-wrapper">
 				<a href="{{url_for('home')}}" class="brand-logo"><i class="material-icons">card_giftcard</i>Pressie</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="{{url_for('wishlist')}}">Make a List</a></li>
 					<li><a href="{{url_for('finder')}}">Find a Gift</a></li>
 					<li><a href="{{url_for('about')}}">About</a></li>
                     {% if session.user %}
+                    <li><a href="{{url_for('wishlist', user=session.user)}}">Make a List</a></li>
 					<li><a href="{{url_for('profile', user=session.user)}}">Profile</a></li>
 					<li><a href="{{url_for('logout')}}">Sign Out</a></li>
                     {% else %}
