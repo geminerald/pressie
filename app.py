@@ -124,8 +124,8 @@ def profile(user):
     if 'user' in session:
         # If so get the user and pass him to template for now
         user_in_db = mongo.db.users.find_one({"email": user})
-        lists = mongo.db.lists.find({})
-        return render_template('profile.html', user=user_in_db)
+        user_lists = mongo.db.lists.find({"list_username": user_in_db["email"]})
+        return render_template('profile.html', wishlists=user_lists, user=user_in_db)
     else:
         flash("You must be logged in!")
         return redirect(url_for('home'))
