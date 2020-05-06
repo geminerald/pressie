@@ -53,7 +53,7 @@ def user_auth():
             session['user'] = form['email']
             # If the user is admin redirect him to admin area
 
-            flash("You were logged in!")
+            flash("You were logged in!", 'success')
             return redirect(url_for('profile', user=user_in_db['username']))
 
         else:
