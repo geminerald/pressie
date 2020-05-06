@@ -2,10 +2,8 @@ import os
 from forms import RegistrationForm, LoginForm
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, login_user, current_user, logout_user, login_required, UserMixin
+import bcrypt
 from bson.objectid import ObjectId
-from werkzeug.security import generate_password_hash, check_password_hash
 from os import path
 if path.exists("env.py"):
     import env
@@ -18,7 +16,7 @@ app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
-bcrypt = Bcrypt(app)
+# bcrypt = Bcrypt(app)
 
 
 @app.route('/')
@@ -30,7 +28,7 @@ def home():
 def login():
     # Check if user is not logged in already
     if 'user' in session:
-        user_in_db = users_collection.find_one({"username": session['user']})
+        user_in_db = mongo.db.users.find_one({"username": session['user']})
         if user_in_db:
             # If so redirect user to his profile
             flash("You are logged in already!")
@@ -47,7 +45,10 @@ def user_auth():
     # Check for user in database
     if user_in_db:
         # If passwords match (hashed / real password)
-        if check_password_hash(user_in_db['password'], form['password']):
+        
+        # Changed this
+        # if check_password_hash(user_in_db['password'], form['password']):
+        if bcrypt.hashpw(request.form['password'].encode('utf-8'), user_in_db['password'].encode('utf-8')) == user_in_db['password'].encode('utf-8'):
             # Log user in (add to session)
             session['user'] = form['email']
             # If the user is admin redirect him to admin area
@@ -72,16 +73,16 @@ def register():
     if request.method == 'POST':
         form = request.form.to_dict()
         # Check if the password and password1 actualy match
-        if form['user_password'] == form['user_password1']:
+        if form['password'] == form['confirm_password']:
             # If so try to find the user in db
-            user = users_collection.find_one({"username": form['username']})
+            user = mongo.db.users.find_one({"username": form['username']})
             if user:
                 flash(f"{form['username']} already exists!")
                 return redirect(url_for('register'))
             # If user does not exist register new user
             else:
                 # Hash password
-                hash_pass = generate_password_hash(form['user_password'])
+                hash_pass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
                 # Create new user with hashed password
                 mongo.db.users.insert_one(
                     {
@@ -105,7 +106,7 @@ def register():
             flash("Passwords dont match!")
             return redirect(url_for('register'))
 
-    return render_template("register.html")
+    return render_template("register.html", form=RegistrationForm())
 
 # Log out
 @app.route('/logout')
@@ -121,7 +122,7 @@ def profile(user):
     # Check if user is logged in
     if 'user' in session:
         # If so get the user and pass him to template for now
-        user_in_db = users_collection.find_one({"username": user})
+        user_in_db = mongo.db.users.find_one({"username": user})
         return render_template('profile.html', user=user_in_db)
     else:
         flash("You must be logged in!")
@@ -258,10 +259,6 @@ def delete_item(item_id):
     return redirect(url_for('view_wishlist', list_id=the_list))
 
 
-"""
-Profile function - Takes user to their profile page where they can view and update their info and lists.
-"""
-
 
 """
 List Search function - Takes a buyer to their desiered wishlist for someone they want to buy for. 
@@ -270,7 +267,7 @@ List Search function - Takes a buyer to their desiered wishlist for someone they
 def list_search():
     user = request.form.get('search')
     the_list = mongo.db.lists.find_one({'phone_number': user})
-    return redirect(url_for('view_wishlist', list_id=list_id))
+    return redirect(url_for('view_wishlist', list_id=the_list))
 
 
 if __name__ == '__main__':
