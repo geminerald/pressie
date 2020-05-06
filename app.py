@@ -174,8 +174,8 @@ Insert Wishlist function - takes user data from wishlist page and inserts to db.
 """
 
 
-@app.route('/insertwishlist', methods=['GET', 'POST'])
-def insert_wishlist():
+@app.route('/insertwishlist/<user>', methods=['GET', 'POST'])
+def insert_wishlist(user):
     if 'user' in session:
         # If so get the user and pass him to template for now
         user_in_db = mongo.db.users.find_one({"email": user})
