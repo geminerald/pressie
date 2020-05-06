@@ -1,12 +1,11 @@
 import os
-import datetime
-import uuid
 from forms import RegistrationForm, LoginForm
-from flask import Flask, render_template, redirect, request, url_for, flash, session, make_response
+from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user, current_user, logout_user, login_required, UserMixin
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 from os import path
 if path.exists("env.py"):
     import env
@@ -20,153 +19,113 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
-
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    user = User.get_by_id(user_id)
-    if user is not None:
-        return User(user["_id"])
-    else:
-        return None
-
-
-class User(UserMixin):
-
-    def __init__(self, username, email, password, _id=None):
-
-        self.username = username
-        self.email = email
-        self.password = password
-        self._id = uuid.uuid4().hex if _id is None else _id
-
-    def is_authenticated(self):
-        return True
-
-    def is_active(self):
-        return True
-
-    def is_anonymous(self):
-        return False
-
-    def get_id(self):
-        return self._id
-
-    @classmethod
-    def get_by_username(cls, username):
-        data = mongo.db.users.find_one({"username": username})
-        if data is not None:
-            return cls(**data)
-
-    @classmethod
-    def get_by_email(cls, email):
-        data = mongo.db.users.find_one({"email": email})
-        if data is not None:
-            return cls(**data)
-
-    @classmethod
-    def get_by_id(cls, _id):
-        data = mongo.db.users.find_one({"_id": _id})
-        if data is not None:
-            return cls(**data)
-
-    @staticmethod
-    def login_valid(email, password):
-        verify_user = User.get_by_email(email)
-        if verify_user is not None:
-            return bcrypt.check_password_hash(verify_user.password, password)
-        return False
-
-    @classmethod
-    def register(cls, username, email, password):
-        user = cls.get_by_email(email)
-        if user is None:
-            new_user = cls(username, email, password)
-            new_user.save_to_mongo()
-            session['email'] = email
-            return True
-        else:
-            return False
-
-    def json(self):
-        return {
-            "username": self.username,
-            "email": self.email,
-            "_id": self._id,
-            "password": self.password
-        }
-
-    def save_to_mongo(self):
-        mongo.db.users.insert(self.json())
 
 
 @app.route('/')
 def home():
-    return render_template('index.html', title='Home')
+    return render_template('index.html')
 
 
-"""
-Register function - takes register form info, adds to db and updates user to logged in.
-
-"""
-
-
-@app.route("/register", methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        if request.method == 'POST':
-            username = request.form["username"]
-            email = request.form["email"]
-            password = bcrypt.generate_password_hash(
-                request.form["password"]).decode('utf-8')
-            find_user = User.get_by_email(email)
-            if find_user is None:
-                User.register(username, email, password)
-                flash(f'Account created for {form.username.data}!', 'success')
-                return redirect(url_for('home'))
-            else:
-                flash(
-                    f'Account already exists for {form.username.data}!', 'success')
-    return render_template('register.html', title='Register', form=form)
-
-
-"""
-Login function - takes user login info and sets to logged in
-
-"""
-
-
-@app.route("/login", methods=['GET', 'POST'])
+@app.route('/login', methods=['GET'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        email = request.form["email"]
-        password = request.form["password"]
-        find_user = mongo.db.users.find_one({"email": email})
-        if User.login_valid(email, password):
-            loguser = User(find_user["_id"],
-                           find_user["email"], find_user["password"])
-            login_user(loguser, remember=form.remember.data)
-            flash('You have been logged in!', 'success')
-            return redirect(url_for('home'))
+    # Check if user is not logged in already
+    if 'user' in session:
+        user_in_db = users_collection.find_one({"username": session['user']})
+        if user_in_db:
+            # If so redirect user to his profile
+            flash("You are logged in already!")
+            return redirect(url_for('profile', user=user_in_db['username']))
+    else:
+        # Render the page for user to be able to log in
+        return render_template("login.html", form=LoginForm())
+
+# Check user login details from login form
+@app.route('/user_auth', methods=['POST'])
+def user_auth():
+    form = request.form.to_dict()
+    user_in_db = mongo.db.users.find_one({"email": form['email']})
+    # Check for user in database
+    if user_in_db:
+        # If passwords match (hashed / real password)
+        if check_password_hash(user_in_db['password'], form['password']):
+            # Log user in (add to session)
+            session['user'] = form['email']
+            # If the user is admin redirect him to admin area
+
+            flash("You were logged in!")
+            return redirect(url_for('profile', user=user_in_db['username']))
+
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
-    return render_template('login.html', title='Login', form=form)
+            flash("Wrong password or user name!")
+            return redirect(url_for('login'))
+    else:
+        flash("You must be registered!")
+        return redirect(url_for('register'))
 
+# Sign up
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    # Check if user is not logged in already
+    if 'user' in session:
+        flash('You are already sign in!')
+        return redirect(url_for('home'))
+    if request.method == 'POST':
+        form = request.form.to_dict()
+        # Check if the password and password1 actualy match
+        if form['user_password'] == form['user_password1']:
+            # If so try to find the user in db
+            user = users_collection.find_one({"username": form['username']})
+            if user:
+                flash(f"{form['username']} already exists!")
+                return redirect(url_for('register'))
+            # If user does not exist register new user
+            else:
+                # Hash password
+                hash_pass = generate_password_hash(form['user_password'])
+                # Create new user with hashed password
+                mongo.db.users.insert_one(
+                    {
+                        'username': form['username'],
+                        'email': form['email'],
+                        'password': hash_pass
+                    }
+                )
+                # Check if user is actualy saved
+                user_in_db = mongo.db.users.find_one(
+                    {"username": form['username']})
+                if user_in_db:
+                    # Log user in (add to session)
+                    session['user'] = user_in_db['email']
+                    return redirect(url_for('profile', user=user_in_db['email']))
+                else:
+                    flash("There was a problem savaing your profile")
+                    return redirect(url_for('register'))
 
-"""
-User loader function - returns user ID for login attempt. Needed for flask-login
-"""
+        else:
+            flash("Passwords dont match!")
+            return redirect(url_for('register'))
 
+    return render_template("register.html")
 
-@app.route("/logout")
-@login_required
+# Log out
+@app.route('/logout')
 def logout():
-    logout_user()
+    # Clear the session
+    session.clear()
+    flash('You were logged out!')
     return redirect(url_for('home'))
+
+# Profile Page
+@app.route('/profile/<user>')
+def profile(user):
+    # Check if user is logged in
+    if 'user' in session:
+        # If so get the user and pass him to template for now
+        user_in_db = users_collection.find_one({"username": user})
+        return render_template('profile.html', user=user_in_db)
+    else:
+        flash("You must be logged in!")
+        return redirect(url_for('home'))
 
 
 """
@@ -302,14 +261,6 @@ def delete_item(item_id):
 """
 Profile function - Takes user to their profile page where they can view and update their info and lists.
 """
-
-
-@app.route('/profile')
-@login_required
-def profile():
-    my_account = mongo.db.users.find_one({"username": "geminerald"})
-    my_lists = mongo.db.lists.find({"list_username": "geminerald"})
-    return render_template('profile.html', user=my_account, lists=my_lists, title='My Account')
 
 
 """

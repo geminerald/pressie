@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="POST" action="" class ="login-form">
-	{{ form.hidden_tag() }}
+<form method="POST" action="{{url_for('user_auth')}}" class ="login-form">
 	<fieldset class="form-group">
 		<legend class="border-bottom mb-4">Log In</legend>
 		<div class="form-group">
