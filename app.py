@@ -158,7 +158,7 @@ Wishlist function - returns wishlist page for listers and allows them to create 
 @app.route('/wishlist/<user>')
 def wishlist(user):
     if 'user' in session:
-        user_in_db = mongo.db.users.find_one({"email": session['email']})
+        user_in_db = mongo.db.users.find_one({"email": user})
         if user_in_db:
             # If so redirect user to his profile
             flash("You are logged in already!")
