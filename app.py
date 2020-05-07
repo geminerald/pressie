@@ -113,7 +113,7 @@ def register():
 def logout():
     # Clear the session
     session.clear()
-    flash('You were logged out!')
+    flash('You were logged out!', 'success')
     return redirect(url_for('home'))
 
 # Profile Page
@@ -267,8 +267,8 @@ def delete_item(item_id):
 # Search for a list from Finder page form.
 @app.route('/listsearch')
 def list_search():
-    user = request.form.get('search')
-    the_list = mongo.db.lists.find_one({'phone_number': user})
+    form = request.form.to_dict()
+    the_list = mongo.db.lists.find({"phone_number": form["search"]})
     return redirect(url_for('view_wishlist', list_id=the_list))
 
 
