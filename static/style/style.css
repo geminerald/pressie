@@ -54,6 +54,15 @@ h3 {
 .btn{
     margin: 10px;
     border-radius: 3px;
+    background-color: #022449;
+    color: #fafafa;
+    animation-duration: 0.5s ease;
+}
+
+.btn:hover,
+.btm:focus{
+    background-color: #fafafa;
+    color: #022449;
 }
 
 /*End Globals--------------------------------------------------------------------End Globals*/
