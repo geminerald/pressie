@@ -153,19 +153,28 @@ I built the wireframes for this project using <a href="https://balsamiq.com/">Ba
 
 ## Testing: 
 
-##### Test Planning: 
+##### Test Overview: 
 
-Test Overview
+Testing was conducted on an ongoing basis throughout development. 
 
-##### Testing Stories:
+As each feature was added it was thoroughly tested and each feature that it interacted with was also tested to ensure that they were not affected.
 
-* 
+##### Testing Against the User Goals:
 
-* 
-
-* 
-
-* 
+* A website that serves as an online wishlist to be able to share with their friends and family.
+ - The website does store wishlists on a database which can be securely accessed by a third party.
+* Simple and consistent theme and styles throughout to encourage engagement and provide a good user experience across generations.
+ - The design is kept simple and consistent with relatively few elements on each page.
+* A website that allows one to quickly and easily locate gifts that someone actually wants.
+ - The finder function returns the specific wishlist with just one piece of input.
+* Ensure no duplication of gifts purchased.
+ - This feature remains in delveopment at this time. 
+* Easily share a wishlist. 
+ - Users will only need to provide their phone number (or another number of their choice) to direct people to their wishlist. 
+* Do everything possible to ensure that a gift will be purchased before being removed from a wishlist.
+ - This feature remains in delveopment at this time. . 
+* Interact across all devices of all sizes.
+ - Testing was conducted across different screen sized at each deployment push to ensure responsiveness.
 
 ### Overall:
 
