@@ -268,11 +268,18 @@ def delete_item(item_id):
 
 
 # Search for a list from Finder page form.
-@app.route('/listsearch')
+@app.route('/listsearch', methods = ["GET"])
 def list_search():
-    form = request.form.to_dict()
-    the_list = mongo.db.lists.find({"phone_number": form["search"]})
-    return redirect(url_for('view_wishlist', list_id=the_list))
+    the_list = request.form.get('search')
+    list_id = mongo.db.lists.find_one({'phone_number': the_list})
+    if list_id:
+        flash('List Located!', 'success')
+        return redirect(url_for('view_wishlist', list_id=list_id['_id']))
+    else:
+        flash('No list located for that number', 'info')
+        return redirect(url_for('finder'))
+
+    
 
 
 # Main Init function - currently in development mode. TODO update to debug is false
