@@ -282,5 +282,5 @@ def list_search():
 
 # Main Init function - currently in development mode. TODO update to debug is false
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'), port=int(
-        os.environ.get('PORT')), debug=True)
+    app.run(host=os.environ.get('IP'), port=
+        os.environ.get('PORT'), debug=os.environ.get('DEBUG'))
