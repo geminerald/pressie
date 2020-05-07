@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row my-info">
+<div class="row my-info sort-column">
 	<h2>Personal Info</h2>
-</div>
-<div class="row sort-column">
-	Username: <p>{{user.username}}</p>
-	Email: <p>{{user.email}}</p>
-	Name: <p>{{user.firstname}} {{user.lastname}}</p>
+
+	<div class="row sort-column">
+		<div class="col-lg-3 col-md-6 col-xs-12">
+			Username: <p>{{user.username}}</p>
+		</div>
+		<div class="col-lg-3 col-md-6 col-xs-12">
+			Email: <p>{{user.email}}</p>
+		</div>
+	</div>
 </div>
 <div class="my-wishlists row">
 	<div class="wishlists">
@@ -24,7 +28,8 @@
 				class="btn waves-effect waves-light submit-button"><i class="material-icons right"></i>Edit</a>
 		</div>
 		{% endfor %}
-		<a href="{{url_for('wishlist', user=session.user)}}" class="btn waves-effect waves-light submit-button">Make a
+		<a href="{{url_for('wishlist', user=session.user)}}" class="btn waves-effect waves-light submit-button">Make
+			a
 			List</a>
 	</div>
 </div>
