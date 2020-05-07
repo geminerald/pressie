@@ -4,8 +4,6 @@ Thankyou for visiting my project Pressie, a wishlist website designed to help pe
 
 Please feel free to read through this Readme and browse my project, if you have any questions or suggestions head to my Github contact details or <a href="geminerald.github.io/geminerals">my website</a>. 
 
-Happy Coding!‍
-
 ## Contents:
 
 * UX 
@@ -57,8 +55,6 @@ The website needs to be visually appealing and simple enough to allow and encour
 ##### Mr Adeolokun: 
 <em>"I want to be able to share my choices with my loved ones without compromising my security or personal information"</em>
 
-##### Mr Nguyen: 
-<em>""</em>
 
 
 #### Site Owner Current Goals:
@@ -109,8 +105,7 @@ I chose the font <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> a
 * The colour theme is based across a blue spectrum which encourages positivity and calmness.
 * The submit buttons are orange to keep the contrast high and the theme of positivity throughout as orange is a colour associated with action.
 * Dark blue was used instead of black for text and similar elements as this colour is softer and therefore more in keeping with the theme.
-* 
-* 
+
 
 ##### Styling: 
 
@@ -188,7 +183,7 @@ Test Overview
 
 Overview:
 
-<strong>BugNameHere</strong>:
+<strong>Invalid Email Throwing Incorrect Error</strong>:
 * <strong>Bug</strong> : When an invalid email was entered to the email field the error message was displayed in the Password input area.
 * <strong>Fix</strong> :  The issue was resolved in forms.py - the email validation logic was applied to password field in error.
 * <strong>Verdict</strong> : Bug Effectively Squashed!
@@ -218,7 +213,7 @@ Special thanks to my mentor at Code Institute Simen who gave me the encouragemen
 
 I would also like to especially thank the tutors at Code Institute for their seemingly endless patience. They are while(true) willing to help.
 
-Also a special mention for all the people who helped me without knowing it on Stack Overflow and similar servies. 
+Also a special mention for all the people who helped me without knowing it on Stack Overflow and similar servies and everyone at Nescafe without whom this would not have been possible.
 
 ## Credits: 
 
