@@ -25,14 +25,14 @@
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="{{url_for('finder')}}">Find a Gift</a></li>
 					<li><a href="{{url_for('about')}}">About</a></li>
-                    {% if session.user %}
-                    <li><a href="{{url_for('wishlist', user=session.user)}}">Make a List</a></li>
+					{% if session.user %}
+					<li><a href="{{url_for('wishlist', user=session.user)}}">Make a List</a></li>
 					<li><a href="{{url_for('profile', user=session.user)}}">Profile</a></li>
 					<li><a href="{{url_for('logout')}}">Sign Out</a></li>
-                    {% else %}
+					{% else %}
 					<li id="login-modal"><a href="{{url_for('login')}}">Log In</a></li>
 					<li id="sign-up-modal"><a href="{{url_for('register')}}">Sign Up</a></li>
-                    {% endif %}
+					{% endif %}
 				</ul>
 			</div>
 		</nav>

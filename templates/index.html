@@ -7,26 +7,27 @@
 
 <h3>How it works:</h3>
 <div class="row cards">
-	<div class="col card" id="step1"> 
-        <a href="{{url_for('login')}}">
-            <i class="large material-icons">format_list_bulleted</i>
-            Log in to set a wishlist
-        </a>
-    </div>
-	<div class="col card" id="step2"> 
-        <a href="{{url_for('finder')}}">
+	<div class="col card" id="step1">
+		<a href="{{url_for('login')}}">
+			<i class="large material-icons">format_list_bulleted</i>
+			Log in to set a wishlist
+		</a>
+	</div>
+	<div class="col card" id="step2">
+		<a href="{{url_for('finder')}}">
 			<i class="large material-icons">search</i>
-            Find what others want and how to get it
-        </a>
-    </div>
+			Find what others want and how to get it
+		</a>
+	</div>
 	<div class="card d-none d-lg-block col" id="step3">
-        <a href="#">
-            <i class="large material-icons">card_giftcard</i>
-            <p>Deliver meaningful gifts to your loved ones!</p>
-        </a>
-    </div>
+		<a href="#">
+			<i class="large material-icons">card_giftcard</i>
+			<p>Deliver meaningful gifts to your loved ones!</p>
+		</a>
+	</div>
 </div>
 <div class="row">
-	<a id="home-button" class="btn waves-effect waves-light submit-button" href="{{url_for('wishlist', user=session.user)}}">Got it!</a>
+	<a id="home-button" class="btn waves-effect waves-light submit-button"
+		href="{{url_for('wishlist', user=session.user)}}">Got it!</a>
 </div>
 {% endblock %}
