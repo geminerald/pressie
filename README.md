@@ -46,13 +46,13 @@ The website needs to be visually appealing and simple enough to allow and encour
 #### User Stories:
 
 ##### Mr Smith: 
-<em>""</em>
+<em>"I want to be able to locate gifts for my loved ones without having to ask them."</em>
 
 ##### Mr Jones: 
-<em>""</em>
+<em>"I want to be able to share my choice of gifts with my loved ones without it being awkward."</em>
 
 ##### Mr Brown: 
-<em>""</em>
+<em>"I want to be able to access websites easily and quickly"</em>
 
 ##### Mr Adeolokun: 
 <em>""</em>
@@ -69,6 +69,9 @@ The website needs to be visually appealing and simple enough to allow and encour
 #### Site Owner Future Goals:
 * Offer a premium (paid) service which would allow for greater specification, ranking gifts in order etc. etc.
 * Direct users towards specific websites such as Amazon, Groupon etc. with a view to taking a referral fee per click.
+* Sell ad space on wishlist creation page to give the buyer ideas for what they may want based on their web use.
+* Add Premium Links to View Wishlist page so that buyers can be directed to a specific shop for a fee
+* Add a feature that checks for other places to buy an item apart from the one provided and advises the buyer if they could get the gift cheaper elsewhere. 
 
 
 ## User Requirements and Expectations:
