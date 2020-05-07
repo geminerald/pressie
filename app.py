@@ -215,10 +215,17 @@ Delete Wishlist function - Permanently deletes wishlist.
 """
 
 
-@app.route('/deletewishlist/<list_id>')
-def delete_wishlist(list_id):
-    mongo.db.lists.remove({'_id': ObjectId(list_id)})
-    return redirect(url_for('profile'))
+@app.route('/deletewishlist/<user>/<list_id>')
+def delete_wishlist(user, list_id):
+    if 'user' in session:
+        mongo.db.lists.remove({'_id': ObjectId(list_id)})
+        user_in_db = mongo.db.users.find_one({"email": session['user']})
+        user_lists = mongo.db.lists.find({"list_username": user_in_db["email"]})    
+        return redirect(url_for('profile', wishlists=user_lists, user=user))
+    else:
+        flash("You must be logged in!", 'alert')
+        return redirect(url_for('login'))
+         
 
 
 """
