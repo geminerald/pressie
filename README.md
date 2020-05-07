@@ -167,10 +167,10 @@ Test Overview
 ### Overall:
 
 <strong>Responsiveness - </strong>
-* <strong>Plan</strong> : Responsiveness is important in this project as the system needs to function seamlessly across all devices.
-* <strong>Implementation</strong> : Materialize is used for CSS and JavaScript elements and also comes with built in responsive classes.
-* <strong>Result</strong> : 
-* <strong>Verdict</strong> :
+* <strong>Plan</strong> : Responsiveness is important in this project as the system needs to function seamlessly across all devices due to the generational differences in device use.
+* <strong>Implementation</strong> : Materialize and Bootstrap are used for CSS and JavaScript elements and also comes with built in responsive classes.
+* <strong>Result</strong> : The site does transform seamlessly across different sizes of device and the theme and functionality is consistent across all platforms. 
+* <strong>Verdict</strong> : The site is responsive and a user should not be slowed down on any device. 
 
 <strong>Design -</strong>
 * <strong>Plan</strong> : 
@@ -214,14 +214,16 @@ This project remains a work in progress. I intend to use and improve it myself a
 
 I would like to thank everyone who helped me on this project and detail their specific assistance but to do so would fill the entirety of GitHub.
 
-Special thanks to my mentor at Code Institute Simen who gave me the encouragement and real world feedback I needed to know how to accomplish this. 
+Special thanks to my mentor at Code Institute Simen who gave me the encouragement and real world feedback I needed to know how to accomplish this. He believed in me far more than I did. 
 
 I would also like to especially thank the tutors at Code Institute for their seemingly endless patience. They are while(true) willing to help.
 
+Also a special mention for all the people who helped me without knowing it on Stack Overflow and similar servies. 
+
 ## Credits: 
 
-* 
-* 
+* Corey Schafer https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog
+* visme
 * 
 * 
 * 
