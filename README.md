@@ -188,16 +188,19 @@ Overview:
 * <strong>Fix</strong> :  The issue was resolved in forms.py - the email validation logic was applied to password field in error.
 * <strong>Verdict</strong> : Bug Effectively Squashed!
 
-<strong>BugNameHere</strong>:
-* <strong>Bug</strong> : 
-* <strong>Fix</strong> :  
-* <strong>Verdict</strong> :
+<strong>Registration Form Fields Error</strong>:
+* <strong>Bug</strong> : The Registration form was pushing incorrect info to the database. 
+* <strong>Fix</strong> :  The form fields were corrected and the labels updated to match the correct information that was to be updated to the DB.
+* <strong>Verdict</strong> : Bug Effectively Squashed!
 
 #### Known Bugs:
 
 Here is a list of known bugs that exist on the site: 
 
-* 
+<strong>BugNameHere</strong>:
+* <strong>Bug</strong> : 
+* <strong>Fix</strong> :  
+* <strong>Verdict</strong> :
 
 ## Deployment: 
 
