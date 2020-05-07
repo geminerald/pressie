@@ -204,6 +204,7 @@ def delete_wishlist(user, list_id):
         # Confirms user is logged in - if so removes the specified wishlist
         # from the DB and redirects back to the profile page with the user info
         mongo.db.lists.remove({'_id': ObjectId(list_id)})
+        mongo.db.items.remove({'list_id': ObjectId(list_id)})
         user_in_db = mongo.db.users.find_one({"email": session['user']})
         user_lists = mongo.db.lists.find(
             {"list_username": user_in_db["email"]})
