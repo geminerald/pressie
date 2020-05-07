@@ -3,7 +3,7 @@
 <div class="row">
 	<h3>Create your Wishlist</h3>
 </div>
-<form action="{{url_for('insert_items')}}" method="POST" class="col s12">
+<form action="{{url_for('insert_items', user=session.username)}}" method="POST" class="col s12">
 	<div class="row item">
 
 		<div class="input-field col s12 m6">

@@ -228,7 +228,7 @@ def update_wishlist(list_id):
         'last_name': request.form.get('last_name')
     })
     # Redirect back to profile.
-    return redirect(url_for('profile'))
+    return redirect(url_for('profile', user=request.form.get('list_username')))
 
 
 # Page where one can add items to a wishlist in the DB
@@ -247,8 +247,10 @@ def insert_items():
     # insert items into items collection in db
     items = mongo.db.items
     items.insert_one(request.form.to_dict())
-    # and redirect to profile.
-    return redirect('profile')
+    list_id = request.form['list_id']
+    # and redirect to page to add more.
+    return redirect(url_for('view_wishlist', list_id=list_id))
+    
 
 
 # Function to permanently delete an item .
