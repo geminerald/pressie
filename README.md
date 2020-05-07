@@ -242,8 +242,4 @@ Also a special mention for all the people who helped me without knowing it on St
 
 ## Credits: 
 
-* Corey Schafer https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog
-* visme
-* 
-* 
 * 
