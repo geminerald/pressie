@@ -54,7 +54,7 @@ def user_auth():
             # If the user is admin redirect him to admin area
 
             flash("You were logged in!", 'success')
-            return redirect(url_for('profile', user=user_in_db['username']))
+            return redirect(url_for('profile', user=user_in_db['email']))
 
         else:
             flash("Wrong password or user name!")
