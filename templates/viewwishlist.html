@@ -9,15 +9,20 @@
 	<div class="item-link-viewer col-s-4">
 		<a href="{{item.item_link}}" target="_blank">Link to Item</a>
 	</div>
+
 	<div class="col-s-4 right-align">
+
 		<a href="{{url_for('delete_item', item_id=item._id)}}"
 			class="btn btn-small"><i class="material-icons right"></i>Delete</a>
+
 	</div>
+
 </div>
 {% endfor %}
 <div class="row">
 	<a href="{{url_for('additems', list_id=list_id)}}" class="btn btn-small"><i class="material-icons right"></i>Add
 		Items</a>
-	<a href="{{url_for('profile', user=session.user)}}" class="btn btn-small"><i class="material-icons right"></i>Back</a>
+	<a href="{{url_for('profile', user=session.user)}}"
+		class="btn btn-small"><i class="material-icons right"></i>Back</a>
 </div>
 {% endblock %}
