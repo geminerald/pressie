@@ -11,18 +11,8 @@
 
 		</div>
 		<div class="input-field col s6">
-			<div class="form-group">
-				<select class="form-control" id="list_username" name = "list_username" value="{{the_list.list_username}}">
-                    {% for user in users %}
-                        {% if the_list.list_username %}
-                            <option selected>{{the_list.list_username}}</option>
-                        {% else %}
-                            <option>{{user.username}}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-				<label for="list_username">Username</label>
-			</div>
+			<input  id="list_username" name="list_username" type="text" class="validate" value="{{user.email}}" required>
+			<label for="list_username">{{user.email}}</label>
 		</div>
 	</div>
 	<div class="row">
