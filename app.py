@@ -193,7 +193,7 @@ def view_wishlist(list_id):
 @app.route('/editwishlist/<list_id>')
 def edit_wishlist(list_id):
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
-    return render_template('editlist.html', the_list=the_list)
+    return render_template('editlist.html', the_list=the_list, user=session['user'])
 
 
 # Remove a wishlist from the database
