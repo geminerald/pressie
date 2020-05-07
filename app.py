@@ -182,7 +182,7 @@ def insert_wishlist(user):
         user_in_db = mongo.db.users.find_one({"email": user})
         lists = mongo.db.lists
         lists.insert_one(request.form.to_dict())
-        return render_template('profile.html', user=user_in_db)
+        return redirect(url_for('profile', user=user_in_db['email']))
     else:
         flash("You must be logged in!")
         return redirect(url_for('home'))
