@@ -16,7 +16,6 @@ app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
-# bcrypt = Bcrypt(app)
 
 
 @app.route('/')
@@ -124,59 +123,48 @@ def profile(user):
     if 'user' in session:
         # If so get the user and pass him to template for now
         user_in_db = mongo.db.users.find_one({"email": user})
-        user_lists = mongo.db.lists.find({"list_username": user_in_db["email"]})
+        user_lists = mongo.db.lists.find(
+            {"list_username": user_in_db["email"]})
         return render_template('profile.html', wishlists=user_lists, user=user_in_db)
     else:
         flash("You must be logged in!")
         return redirect(url_for('home'))
 
 
-"""
-About function - returns about page
-"""
-
-
+# About Page
 @app.route('/about')
 def about():
+    # Return about page html - nothing fancy.
     return render_template('about.html', title='About')
 
 
-"""
-Finder function - returns find wishlist page for buyers.
-"""
-
-
+# Wishlist Finder Page
 @app.route('/finder')
 def finder():
+    # Locate a wishlist using a number.
     return render_template('finder.html', title='Find a Wishlist')
 
 
-"""
-Wishlist function - returns wishlist page for listers and allows them to create a new one.
-"""
-
-
+# Create a new Wishlist Page
 @app.route('/wishlist/<user>')
 def wishlist(user):
+    # Checks for logged in user
     if 'user' in session:
+        # If so takes session info
         user_in_db = mongo.db.users.find_one({"email": user})
         if user_in_db:
-            # If so redirect user to his profile
+            # If so redirect user to his wishlist html page and capture session
             flash("You are logged in already!")
             return render_template('wishlist.html', title='Create a Wishlist', user=user_in_db)
     else:
         # Render the page for user to be able to log in
         return render_template("login.html", form=LoginForm())
-    
 
 
-"""
-Insert Wishlist function - takes user data from wishlist page and inserts to db. Then redirects to profile (likely to be changed to add items.)
-"""
-
-
+# Insert wishlist to DB from form
 @app.route('/insertwishlist/<user>', methods=['GET', 'POST'])
 def insert_wishlist(user):
+    # Confirms user is logged in
     if 'user' in session:
         # If so get the user and pass him to template for now
         user_in_db = mongo.db.users.find_one({"email": user})
@@ -184,58 +172,54 @@ def insert_wishlist(user):
         lists.insert_one(request.form.to_dict())
         return redirect(url_for('profile', user=user_in_db['email']))
     else:
+        # Otherwise redirects to login page
         flash("You must be logged in!")
         return redirect(url_for('home'))
 
 
-"""
-View Wishlist function - returns wishlist html page and all associated items.
-"""
-
-
+# View an individual wishlist's items
 @app.route('/viewwishlist/<list_id>')
 def view_wishlist(list_id):
+    # Gets the Wishlist ID
     myquery = {"list_id": list_id}
+    # Checks for it in the DB
     items = mongo.db.items.find(myquery)
     pass_in_list_id = list_id
+    # passes both into the template
     return render_template('viewwishlist.html', items=items, list_id=pass_in_list_id)
 
 
-"""
-Edit Wishlist function - returns wishlist page for listers and allows them to update existing one.
-"""
+# Page to get list info and be able to edit it.
 @app.route('/editwishlist/<list_id>')
 def edit_wishlist(list_id):
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
     return render_template('editlist.html', the_list=the_list)
 
 
-"""
-Delete Wishlist function - Permanently deletes wishlist.
-"""
-
-
+# Remove a wishlist from the database
 @app.route('/deletewishlist/<user>/<list_id>')
 def delete_wishlist(user, list_id):
+    # Takes User and list ID
     if 'user' in session:
+        # Confirms user is logged in - if so removes the specified wishlist
+        # from the DB and redirects back to the profile page with the user info
         mongo.db.lists.remove({'_id': ObjectId(list_id)})
         user_in_db = mongo.db.users.find_one({"email": session['user']})
-        user_lists = mongo.db.lists.find({"list_username": user_in_db["email"]})    
+        user_lists = mongo.db.lists.find(
+            {"list_username": user_in_db["email"]})
         return redirect(url_for('profile', wishlists=user_lists, user=user))
     else:
+        # If not logged in will redirect back to login page with appropriate alert.
         flash("You must be logged in!", 'alert')
         return redirect(url_for('login'))
-         
 
 
-"""
-Update Wishlist function - Updates basic wishlist parameters in the DB.
-"""
-
-
+# Update a wishlist in the database
 @app.route('/updatewishlist/<list_id>', methods=["GET", "POST"])
 def update_wishlist(list_id):
+    # Get the wishlist by ID
     lists = mongo.db.lists
+    # Update it based on the form
     lists.update({'_id': ObjectId(list_id)},
                  {
         'phone_number': request.form.get('phone_number'),
@@ -243,50 +227,44 @@ def update_wishlist(list_id):
         'first_name': request.form.get('first_name'),
         'last_name': request.form.get('last_name')
     })
+    # Redirect back to profile.
     return redirect(url_for('profile'))
 
 
-"""
-Add Items function - Adds items to a specific wishlist. 
-
-Parameters: List Id - this is used to add the items to the db with a specific wishlist.
-
-"""
+# Page where one can add items to a wishlist in the DB
 @app.route('/additems/<list_id>')
 def additems(list_id):
+    # Get list to add to by passed in ID
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
     the_list_id = the_list['_id']
+    # Pass into html page
     return render_template('additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
 
 
-"""
-Insert Items function - Adds items to db from user form. 
-"""
-
-
+# Function to write to db
 @app.route('/insertitems', methods=['GET', 'POST'])
 def insert_items():
+    # insert items into items collection in db
     items = mongo.db.items
     items.insert_one(request.form.to_dict())
+    # and redirect to profile.
     return redirect('profile')
 
 
-"""
-Delete Item function - Permanently deletes Item.
-"""
-
-
+# Function to permanently delete an item .
 @app.route('/deleteitem/<item_id>')
+# get item by ID
 def delete_item(item_id):
+    # locate item in DB
     the_item = mongo.db.items
     the_list = the_item.list_id
+    # Remove item - TODO: update to mark for archive for a period of time.
     the_item.remove({'_id': ObjectId(item_id)})
+    # return to the wishlist.
     return redirect(url_for('view_wishlist', list_id=the_list))
 
 
-"""
-List Search function - Takes a buyer to their desiered wishlist for someone they want to buy for. 
-"""
+# Search for a list from Finder page form.
 @app.route('/listsearch')
 def list_search():
     user = request.form.get('search')
@@ -294,6 +272,7 @@ def list_search():
     return redirect(url_for('view_wishlist', list_id=the_list))
 
 
+# Main Init function - currently in development mode. TODO update to debug is false
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(
         os.environ.get('PORT')), debug=True)
