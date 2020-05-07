@@ -1,6 +1,9 @@
-# Pressie
+Pressie
+================
 
 Thankyou for visiting my project Pressie, a wishlist website designed to help people buy meaningful gifts for their loved ones. 
+
+[View Pressie](https://mypressie.herokuapp.com/)
 
 Please feel free to read through this Readme and browse my project, if you have any questions or suggestions head to my Github contact details or <a href="geminerald.github.io/geminerals">my website</a>. 
 
@@ -55,6 +58,8 @@ The website needs to be visually appealing and simple enough to allow and encour
 ##### Mr Adeolokun: 
 <em>"I want to be able to share my choices with my loved ones without compromising my security or personal information"</em>
 
+##### Mr Wong: 
+<em>"As a user I want to be able to quickly grasp what I want from a website and have clear instructions throughout. "</em>
 
 
 #### Site Owner Current Goals:
@@ -109,9 +114,12 @@ I chose the font <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> a
 
 ##### Styling: 
 
-* 
-* 
-* 
+
+* Elements were given rounder corners to soften the look of the project and ensure that it kept the feeling of being a simlpe "app style" site.
+
+* The site is designed and styled so there are relatively few moving parts. These are all central and intuitive and all instructions are designed to be easy to grasp and intuitive.
+
+* These choices are made to cater to the wide variety of users - unlike many projects there is no single "target demographic" and this needs simplicity baked into the style to allow for a universal feel.
 
 
 ## Wireframes: 
@@ -119,11 +127,11 @@ I built the wireframes for this project using <a href="https://balsamiq.com/">Ba
 
 ## Features: 
 
-* 
-* 
-* 
-* 
-* 
+* Login/ Authentication system.
+* Wishlist creator
+* Ability to add items to wishlists and edit wishlists at any time.
+* Ability to find a wishlist easily yet keep it secure.
+* Logout system to clear the session for security of Authentication
 
 ## Technologies Used: 
 
@@ -197,10 +205,15 @@ Overview:
 
 Here is a list of known bugs that exist on the site: 
 
-<strong>BugNameHere</strong>:
-* <strong>Bug</strong> : 
-* <strong>Fix</strong> :  
-* <strong>Verdict</strong> :
+<strong>Finder not finding</strong>:
+* <strong>Bug</strong> : The finder function is not currently returning the correct wishlist page. 
+* <strong>Fix</strong> :  TBC. Have tried changing type of objects and how they are accessed.
+* <strong>Verdict</strong> : Fix efforts are ongoing
+
+<strong>My List Logic</strong>:
+* <strong>Bug</strong> : The view wishlist page needs to show different options if the current user is the list owner. Currently this is non functional.
+* <strong>Fix</strong> :  TBC. Have tried input boolean values based on user but this creates further issues with the CSS not displaying correctly.
+* <strong>Verdict</strong> : Fix efforts are ongoing
 
 ## Deployment: 
 
