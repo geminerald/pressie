@@ -271,7 +271,7 @@ def delete_item(item_id):
 def list_search():
     list_search = request.form.get('list_search')
     the_list = list(mongo.db.lists.find({'phone_number': list_search}))
-    list_id = the_list[1]
+    list_id = the_list
     if list_id:
         flash('List Located!', 'success')
         return redirect(url_for('view_wishlist', list_id=list_id))
