@@ -55,7 +55,7 @@ The website needs to be visually appealing and simple enough to allow and encour
 <em>"I want to be able to access websites easily and quickly"</em>
 
 ##### Mr Adeolokun: 
-<em>""</em>
+<em>"I want to be able to share my choices with my loved ones without compromising my security or personal information"</em>
 
 ##### Mr Nguyen: 
 <em>""</em>
@@ -63,7 +63,7 @@ The website needs to be visually appealing and simple enough to allow and encour
 
 #### Site Owner Current Goals:
 * Provide a great service for people looking for gifts.
-* Collect data on what gifts are popular to assist future projects.
+* Be able to use this myself and direct my family towards it as well
 
 
 #### Site Owner Future Goals:
@@ -72,7 +72,7 @@ The website needs to be visually appealing and simple enough to allow and encour
 * Sell ad space on wishlist creation page to give the buyer ideas for what they may want based on their web use.
 * Add Premium Links to View Wishlist page so that buyers can be directed to a specific shop for a fee
 * Add a feature that checks for other places to buy an item apart from the one provided and advises the buyer if they could get the gift cheaper elsewhere. 
-
+* Collect data on what gifts are popular to assist future projects.
 
 ## User Requirements and Expectations:
 ##### Requirements:
@@ -189,9 +189,9 @@ Test Overview
 Overview:
 
 <strong>BugNameHere</strong>:
-* <strong>Bug</strong> : 
-* <strong>Fix</strong> :  
-* <strong>Verdict</strong> : 
+* <strong>Bug</strong> : When an invalid email was entered to the email field the error message was displayed in the Password input area.
+* <strong>Fix</strong> :  The issue was resolved in forms.py - the email validation logic was applied to password field in error.
+* <strong>Verdict</strong> : Bug Effectively Squashed!
 
 <strong>BugNameHere</strong>:
 * <strong>Bug</strong> : 
@@ -210,6 +210,13 @@ TBC
 
 ## Closing Notes:
 
+This project remains a work in progress. I intend to use and improve it myself and I sincerely believe that with time, development and effort it could have useful real world application.
+
+I would like to thank everyone who helped me on this project and detail their specific assistance but to do so would fill the entirety of GitHub.
+
+Special thanks to my mentor at Code Institute Simen who gave me the encouragement and real world feedback I needed to know how to accomplish this. 
+
+I would also like to especially thank the tutors at Code Institute for their seemingly endless patience. They are while(true) willing to help.
 
 ## Credits: 
 
