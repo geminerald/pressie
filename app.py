@@ -269,8 +269,9 @@ def delete_item(item_id):
 # Search for a list from Finder page form.
 @app.route('/listsearch', methods=["GET"])
 def list_search():
-    the_list = request.form.get('list_search')
-    list_id = mongo.db.lists.find({'phone_number': the_list},{ '_id': 1})
+    list_search = request.form.get('list_search')
+    the_list = list(mongo.db.lists.find({'phone_number': list_search}))
+    list_id = the_list[1]
     if list_id:
         flash('List Located!', 'success')
         return redirect(url_for('view_wishlist', list_id=list_id))
