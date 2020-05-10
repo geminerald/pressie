@@ -17,6 +17,12 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 
+#Collections:
+
+users_collection = mongo.db.users
+lists_collection = mongo.db.lists
+items_collection = mongo.db.items
+
 
 @app.route('/')
 def home():
@@ -28,7 +34,7 @@ def home():
 def login():
     """ Logs a user in"""
     if 'user' in session:
-        user_in_db = mongo.db.users.find_one({"email": session['user']})
+        user_in_db = users_collection.find_one({"email": session['user']})
         if user_in_db:
 
             flash("You are logged in already!")
@@ -42,7 +48,7 @@ def login():
 def user_auth():
     """Check's a user's credentials against the db"""
     form = request.form.to_dict()
-    user_in_db = mongo.db.users.find_one({"email": form['email']})
+    user_in_db = users_collection.find_one({"email": form['email']})
 
     if user_in_db:
 
@@ -68,21 +74,21 @@ def register():
     if request.method == 'POST':
         form = request.form.to_dict()
         if form['password'] == form['confirm_password']:
-            user = mongo.db.users.find_one({"username": form['username']})
+            user = users_collection.find_one({"username": form['username']})
             if user:
                 flash(f"{form['username']} already exists!")
                 return redirect(url_for('register'))
             else:
                 hash_pass = bcrypt.hashpw(
                     request.form['password'].encode('utf-8'), bcrypt.gensalt())
-                mongo.db.users.insert_one(
+                users_collection.insert_one(
                     {
                         'username': form['username'],
                         'email': form['email'],
                         'password': hash_pass
                     }
                 )
-                user_in_db = mongo.db.users.find_one(
+                user_in_db = users_collection.find_one(
                     {"username": form['username']})
                 if user_in_db:
                     session['user'] = user_in_db['email']
@@ -110,8 +116,8 @@ def logout():
 def profile(user):
     """Shows profile page for user in session"""
     if 'user' in session:
-        user_in_db = mongo.db.users.find_one({"email": user})
-        user_lists = mongo.db.lists.find(
+        user_in_db = users_collection.find_one({"email": user})
+        user_lists = lists_collection.find(
             {"list_username": user_in_db["email"]})
         return render_template('profile.html', wishlists=user_lists, user=user_in_db)
     else:
@@ -136,12 +142,12 @@ def wishlist(user):
     """Page to add and insert wishlist into db"""
     if 'user' in session:
         if request.method == "POST":
-            user_in_db = mongo.db.users.find_one({"email": user})
-            lists = mongo.db.lists
+            user_in_db = users_collection.find_one({"email": user})
+            lists = lists_collection
             lists.insert_one(request.form.to_dict())
             return redirect(url_for('profile', user=user_in_db['email']))
         else:
-            user_in_db = mongo.db.users.find_one({"email": user})
+            user_in_db = users_collection.find_one({"email": user})
             if user_in_db:
                 flash("You are logged in already!")
                 return render_template('wishlist.html', title='Create a Wishlist', user=user_in_db)
@@ -153,7 +159,7 @@ def wishlist(user):
 def view_wishlist(list_id):
     """View a specific wishlist"""
     myquery = {"list_id": list_id}
-    items = mongo.db.items.find(myquery)
+    items = items_collection.find(myquery)
     pass_in_list_id = list_id
     return render_template('viewwishlist.html', items=items, list_id=pass_in_list_id)
 
@@ -161,7 +167,7 @@ def view_wishlist(list_id):
 @app.route('/editwishlist/<list_id>')
 def edit_wishlist(list_id):
     """Update a wishlist in the DB"""
-    the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
+    the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
     return render_template('editlist.html', the_list=the_list, user=session['user'])
 
 
@@ -169,10 +175,10 @@ def edit_wishlist(list_id):
 def delete_wishlist(user, list_id):
     """Removes a wishlist from the DB"""
     if 'user' in session:
-        mongo.db.lists.remove({'_id': ObjectId(list_id)})
-        mongo.db.items.remove({'list_id': ObjectId(list_id)})
-        user_in_db = mongo.db.users.find_one({"email": session['user']})
-        user_lists = mongo.db.lists.find(
+        lists_collection.remove({'_id': ObjectId(list_id)})
+        items_collection.remove({'list_id': ObjectId(list_id)})
+        user_in_db = users_collection.find_one({"email": session['user']})
+        user_lists = lists_collection.find(
             {"list_username": user_in_db["email"]})
         return redirect(url_for('profile', wishlists=user_lists, user=user))
     else:
@@ -183,7 +189,7 @@ def delete_wishlist(user, list_id):
 @app.route('/updatewishlist/<list_id>', methods=["GET", "POST"])
 def update_wishlist(list_id):
     """Updates record in the DB"""
-    lists = mongo.db.lists
+    lists = lists_collection
     lists.update({'_id': ObjectId(list_id)},
                  {
         'phone_number': request.form.get('phone_number'),
@@ -197,7 +203,7 @@ def update_wishlist(list_id):
 @app.route('/additems/<list_id>')
 def additems(list_id):
     """Shows the add items page"""
-    the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
+    the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
     the_list_id = the_list['_id']
     return render_template('additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
 
@@ -205,7 +211,7 @@ def additems(list_id):
 @app.route('/insertitems', methods=['GET', 'POST'])
 def insert_items():
     """Adds items to the db"""
-    items = mongo.db.items
+    items = items_collection
     items.insert_one(request.form.to_dict())
     list_id = request.form['list_id']
     return redirect(url_for('view_wishlist', list_id=list_id))
@@ -214,7 +220,7 @@ def insert_items():
 @app.route('/deleteitem/<item_id>')
 def delete_item(item_id):
     """Removes an item from the DB"""
-    the_item = mongo.db.items
+    the_item = items_collection
     the_list = the_item.list_id
     the_item.remove({'_id': ObjectId(item_id)})
     return redirect(url_for('view_wishlist', list_id=the_list))
@@ -224,7 +230,7 @@ def delete_item(item_id):
 def list_search():
     """Locates a specific wishlist from info entered"""
     list_search = request.form.get('list_search')
-    the_list = list(mongo.db.lists.find({'phone_number': list_search}))
+    the_list = list(lists_collection.find({'phone_number': list_search}))
     list_id = the_list
     if list_id:
         flash('List Located!', 'success')
