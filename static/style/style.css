@@ -6,6 +6,11 @@
 
 /*Colours------------------------------------------------------------------------------Colours*/
 
+:root{
+    --dark-blue: #022449;
+    --white: #fafafa;
+}
+
 /*
 
 Dark Blue: #022449;
@@ -51,15 +56,15 @@ h3 {
 .btn{
     margin: 10px;
     border-radius: 3px;
-    background-color: #022449;
-    color: #fafafa;
+    background-color: var(--dark-blue);
+    color: var(--white);
     animation-duration: 0.5s ease;
 }
 
 .btn:hover,
 .btm:focus{
-    background-color: #fafafa;
-    color: #022449;
+    background-color: var(--white);
+    color: var(--dark-blue);
 }
 
 .alert{
@@ -78,8 +83,8 @@ h3 {
 
 
 nav {
-    background-color: #022449;
-    color: #fafafa;
+    background-color: var(--dark-blue);
+    color: var(--white);
     font-weight: bold;
 }
 
@@ -92,8 +97,8 @@ nav {
     display: flex;
     flex-direction: column;
     width: 120px;
-    background-color: #022449;
-    color: #fafafa;
+    background-color: var(--dark-blue);
+    color: var(--white);
     position: absolute;
     right: -120px;
     cursor: pointer;
@@ -134,7 +139,7 @@ nav {
     justify-content: space-evenly;
     padding: 20px;
     text-align: center;
-    color: #022449;
+    color:var(--dark-blue);
     margin:25px;
 }
 
@@ -184,37 +189,37 @@ nav {
 .submit-button{
     background-color: #f27d42;
     border: 2px solid #f7ba9c;
-    color: #fafafa;
+    color: var(--white);
 }
 
 .submit-button:hover,
 .submit-button:focus{
     color: #f27d42;
-    background-color: #fafafa;
+    background-color: var(--white);
     border: 2px solid #f27d42;
 }
 
 .back-button{
-    background-color: #022449;
-    color: #fafafa;
-    border: 2px solid #022449;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: 2px solid var(--dark-blue);
 }
 
 .back-button:hover,
 .back-button:focus{
-    color: #022449;
-    background-color: #fafafa;
-    border: 2px solid #022449;
+    color: var(--dark-blue);
+    background-color: var(--white);
+    border: 2px solid var(--dark-blue);
 }
 
 .done-button{
     background-color: #55bdca;
-    color:#022449 ;
+    color:var(--dark-blue);
 }
 
 .done-button:hover,
 .done-button:focus{
-    background-color: #022449;
+    background-color: var(--dark-blue);
     color:#55bdca;
 }
 
@@ -240,7 +245,7 @@ nav {
 
 .view-wishlist{
     width: 100%;
-    border: 1px solid #022449;
+    border: 1px solid var(--dark-blue);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
     align-items: center;
@@ -258,20 +263,20 @@ nav {
 
 .user-search{
     margin-top: 80px;
-    border: 2px solid #022449;
+    border: 2px solid var(--dark-blue);
     background-color: #55BDCA;
     padding: 50px;
     border-radius: 3px;
-    color: #fafafa;
+    color: var(--white);
 }
 
 .user-search form label{
-    color: #fafafa;
+    color: var(--white);
     font-size: 2em;
 }
 
 .searchbar{
-    background-color: #fafafa;
+    background-color: var(--white);
     
 }
 
