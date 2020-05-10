@@ -1,11 +1,8 @@
 
-/*Imports------------------------------------------------------------------------------Imports*/
+/*Imports*/
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-
-
-/*End Imports--------------------------------------------------------------------------End Imports*/
 
 /*Colours------------------------------------------------------------------------------Colours*/
 
@@ -29,7 +26,7 @@ White: #fafafa;
 
 /*End Colours----------------------------------------------------------------------------End Colours*/
 
-/*Globals--------------------------------------------------------------------------------Globals*/
+/*Globals*/
 
 * {
     box-sizing: border-box;
@@ -69,9 +66,7 @@ h3 {
     margin: 20px;
 }
 
-/*End Globals--------------------------------------------------------------------End Globals*/
-
-/*Logins--------------------------------------------------------------------Logins*/
+/*Logins*/
 
 .login-form, .register-form{
     width: 60%;
@@ -79,8 +74,7 @@ h3 {
 }
 
 
-/*End Logins--------------------------------------------------------------------End Logins*/
-/*Nav--------------------------------------------------------------------Nav*/
+/*Nav*/
 
 
 nav {
@@ -120,8 +114,7 @@ nav {
     animation: dropdown 0.5s ease-in-out;
 }
 
-/*End Nav--------------------------------------------------------------------End Nav*/
-/*Home Page--------------------------------------------------------------------Home Page*/
+/*Home Page*/
 
 .cards {
     margin-top: 50px;
@@ -178,9 +171,7 @@ nav {
     flex-direction: column;
 }
 
-/*End Home Page--------------------------------------------------------------------End Home Page*/
-
-/*Wishlist Page--------------------------------------------------------------------Wishlist Page*/
+/*Wishlist Page*/
 
 .wishlist-switch {
     margin:20px;
@@ -233,9 +224,7 @@ nav {
     justify-content: space-evenly;
 }
 
-/*End Wishlist Page--------------------------------------------------------------------End Wishlist Page*/
-
-/*Add Item  Page--------------------------------------------------------------------Add Item Page*/
+/*Add Item Page*/
 
 .item{
     margin: 65px;
@@ -247,7 +236,7 @@ nav {
     justify-content: center;
 }
 
-/*End Add Item Page--------------------------------------------------------------------End Add Item Page*/
+/*View Wishlist Page*/
 
 .view-wishlist{
     width: 100%;
@@ -264,7 +253,7 @@ nav {
 
 
 
-/*Finder Page--------------------------------------------------------------------Finder Page*/
+/*Finder Page*/
 
 
 .user-search{
@@ -286,22 +275,7 @@ nav {
     
 }
 
-/*End Finder Page--------------------------------------------------------------------End Finder Page*/
-
-
-/*Temporary Styles--------------------------------------------------------------------Temporary Styles*/
-.visible {
-    display: block;
-    opacity: 1;
-}
-
-.invisible {
-    display: none;
-    opacity: 0;
-}
-
-/*End Temporary Styles--------------------------------------------------------------------End Temporary Styles*/
-/*Animations--------------------------------------------------------------------Animations*/
+/*Animations*/
 
 @keyframes dropdown {
     from {
@@ -313,5 +287,3 @@ nav {
     }
 
 }
-
-/*End Animations--------------------------------------------------------------------End Animations*/
