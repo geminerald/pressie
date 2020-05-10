@@ -20,38 +20,34 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def home():
+    """Renders the home page template"""
     return render_template('index.html')
 
 
 @app.route('/login', methods=['GET'])
 def login():
-    # Check if user is not logged in already
+    """ Logs a user in"""
     if 'user' in session:
         user_in_db = mongo.db.users.find_one({"email": session['user']})
         if user_in_db:
-            # If so redirect user to his profile
+
             flash("You are logged in already!")
             return redirect(url_for('profile', user=user_in_db['email']))
     else:
-        # Render the page for user to be able to log in
+
         return render_template("login.html", form=LoginForm())
 
-# Check user login details from login form
+
 @app.route('/user_auth', methods=['POST'])
 def user_auth():
+    """Check's a user's credentials against the db"""
     form = request.form.to_dict()
     user_in_db = mongo.db.users.find_one({"email": form['email']})
-    # Check for user in database
+
     if user_in_db:
-        # If passwords match (hashed / real password)
 
-        # Changed this
-        # if check_password_hash(user_in_db['password'], form['password']):
         if bcrypt.hashpw(request.form['password'].encode('utf-8'), user_in_db['password']) == user_in_db['password']:
-            # Log user in (add to session)
             session['user'] = form['email']
-            # If the user is admin redirect him to admin area
-
             flash("You were logged in!", 'success')
             return redirect(url_for('profile', user=user_in_db['email']))
 
@@ -62,28 +58,23 @@ def user_auth():
         flash("You must be registered!")
         return redirect(url_for('register'))
 
-# Sign up
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    # Check if user is not logged in already
+    """Creates a new user in the DB"""
     if 'user' in session:
         flash('You are already sign in!')
         return redirect(url_for('home'))
     if request.method == 'POST':
         form = request.form.to_dict()
-        # Check if the password and password1 actualy match
         if form['password'] == form['confirm_password']:
-            # If so try to find the user in db
             user = mongo.db.users.find_one({"username": form['username']})
             if user:
                 flash(f"{form['username']} already exists!")
                 return redirect(url_for('register'))
-            # If user does not exist register new user
             else:
-                # Hash password
                 hash_pass = bcrypt.hashpw(
                     request.form['password'].encode('utf-8'), bcrypt.gensalt())
-                # Create new user with hashed password
                 mongo.db.users.insert_one(
                     {
                         'username': form['username'],
@@ -91,11 +82,9 @@ def register():
                         'password': hash_pass
                     }
                 )
-                # Check if user is actualy saved
                 user_in_db = mongo.db.users.find_one(
                     {"username": form['username']})
                 if user_in_db:
-                    # Log user in (add to session)
                     session['user'] = user_in_db['email']
                     return redirect(url_for('profile', user=user_in_db['email']))
                 else:
@@ -108,20 +97,19 @@ def register():
 
     return render_template("register.html", form=RegistrationForm())
 
-# Log out
+
 @app.route('/logout')
 def logout():
-    # Clear the session
+    """Clears the user session"""
     session.clear()
     flash('You were logged out!', 'success')
     return redirect(url_for('home'))
 
-# Profile Page
+
 @app.route('/profile/<user>')
 def profile(user):
-    # Check if user is logged in
+    """Shows profile page for user in session"""
     if 'user' in session:
-        # If so get the user and pass him to template for now
         user_in_db = mongo.db.users.find_one({"email": user})
         user_lists = mongo.db.lists.find(
             {"list_username": user_in_db["email"]})
@@ -131,24 +119,21 @@ def profile(user):
         return redirect(url_for('home'))
 
 
-# About Page
 @app.route('/about')
 def about():
-    # Return about page html - nothing fancy.
+    """Shows the about page"""
     return render_template('about.html', title='About')
 
 
-# Wishlist Finder Page
 @app.route('/finder')
 def finder():
-    # Locate a wishlist using a number.
+    """Shows the find a wishlist page"""
     return render_template('finder.html', title='Find a Wishlist')
 
 
-# Create a new Wishlist Page
-@app.route('/wishlist/<user>', methods = ['GET', 'POST'])
+@app.route('/wishlist/<user>', methods=['GET', 'POST'])
 def wishlist(user):
-    # Checks for logged in user
+    """Page to add and insert wishlist into db"""
     if 'user' in session:
         if request.method == "POST":
             user_in_db = mongo.db.users.find_one({"email": user})
@@ -161,36 +146,29 @@ def wishlist(user):
                 flash("You are logged in already!")
                 return render_template('wishlist.html', title='Create a Wishlist', user=user_in_db)
     else:
-        # Render the page for user to be able to log in
         return render_template("login.html", form=LoginForm())
 
 
-# View an individual wishlist's items
 @app.route('/viewwishlist/<list_id>')
 def view_wishlist(list_id):
-    # Gets the Wishlist ID
+    """View a specific wishlist"""
     myquery = {"list_id": list_id}
-    # Checks for it in the DB
     items = mongo.db.items.find(myquery)
     pass_in_list_id = list_id
-    # passes both into the template
     return render_template('viewwishlist.html', items=items, list_id=pass_in_list_id)
 
 
-# Page to get list info and be able to edit it.
 @app.route('/editwishlist/<list_id>')
 def edit_wishlist(list_id):
+    """Update a wishlist in the DB"""
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
     return render_template('editlist.html', the_list=the_list, user=session['user'])
 
 
-# Remove a wishlist from the database
 @app.route('/deletewishlist/<user>/<list_id>')
 def delete_wishlist(user, list_id):
-    # Takes User and list ID
+    """Removes a wishlist from the DB"""
     if 'user' in session:
-        # Confirms user is logged in - if so removes the specified wishlist
-        # from the DB and redirects back to the profile page with the user info
         mongo.db.lists.remove({'_id': ObjectId(list_id)})
         mongo.db.items.remove({'list_id': ObjectId(list_id)})
         user_in_db = mongo.db.users.find_one({"email": session['user']})
@@ -198,17 +176,14 @@ def delete_wishlist(user, list_id):
             {"list_username": user_in_db["email"]})
         return redirect(url_for('profile', wishlists=user_lists, user=user))
     else:
-        # If not logged in will redirect back to login page with appropriate alert.
         flash("You must be logged in!", 'alert')
         return redirect(url_for('login'))
 
 
-# Update a wishlist in the database
 @app.route('/updatewishlist/<list_id>', methods=["GET", "POST"])
 def update_wishlist(list_id):
-    # Get the wishlist by ID
+    """Updates record in the DB"""
     lists = mongo.db.lists
-    # Update it based on the form
     lists.update({'_id': ObjectId(list_id)},
                  {
         'phone_number': request.form.get('phone_number'),
@@ -216,47 +191,38 @@ def update_wishlist(list_id):
         'first_name': request.form.get('first_name'),
         'last_name': request.form.get('last_name')
     })
-    # Redirect back to profile.
     return redirect(url_for('profile', user=request.form.get('list_username')))
 
 
-# Page where one can add items to a wishlist in the DB
 @app.route('/additems/<list_id>')
 def additems(list_id):
-    # Get list to add to by passed in ID
+    """Shows the add items page"""
     the_list = mongo.db.lists.find_one({"_id": ObjectId(list_id)})
     the_list_id = the_list['_id']
-    # Pass into html page
     return render_template('additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
 
 
-# Function to write to db
 @app.route('/insertitems', methods=['GET', 'POST'])
 def insert_items():
-    # insert items into items collection in db
+    """Adds items to the db"""
     items = mongo.db.items
     items.insert_one(request.form.to_dict())
     list_id = request.form['list_id']
-    # and redirect to page to add more.
     return redirect(url_for('view_wishlist', list_id=list_id))
 
 
-# Function to permanently delete an item .
 @app.route('/deleteitem/<item_id>')
-# get item by ID
 def delete_item(item_id):
-    # locate item in DB
+    """Removes an item from the DB"""
     the_item = mongo.db.items
     the_list = the_item.list_id
-    # Remove item - TODO: update to mark for archive for a period of time.
     the_item.remove({'_id': ObjectId(item_id)})
-    # return to the wishlist.
     return redirect(url_for('view_wishlist', list_id=the_list))
 
 
-# Search for a list from Finder page form.
 @app.route('/listsearch', methods=["GET"])
 def list_search():
+    """Locates a specific wishlist from info entered"""
     list_search = request.form.get('list_search')
     the_list = list(mongo.db.lists.find({'phone_number': list_search}))
     list_id = the_list
