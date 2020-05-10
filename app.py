@@ -146,35 +146,23 @@ def finder():
 
 
 # Create a new Wishlist Page
-@app.route('/wishlist/<user>')
+@app.route('/wishlist/<user>', methods = ['GET', 'POST'])
 def wishlist(user):
     # Checks for logged in user
     if 'user' in session:
-        # If so takes session info
-        user_in_db = mongo.db.users.find_one({"email": user})
-        if user_in_db:
-            # If so redirect user to his wishlist html page and capture session
-            flash("You are logged in already!")
-            return render_template('wishlist.html', title='Create a Wishlist', user=user_in_db)
+        if request.method == "POST":
+            user_in_db = mongo.db.users.find_one({"email": user})
+            lists = mongo.db.lists
+            lists.insert_one(request.form.to_dict())
+            return redirect(url_for('profile', user=user_in_db['email']))
+        else:
+            user_in_db = mongo.db.users.find_one({"email": user})
+            if user_in_db:
+                flash("You are logged in already!")
+                return render_template('wishlist.html', title='Create a Wishlist', user=user_in_db)
     else:
         # Render the page for user to be able to log in
         return render_template("login.html", form=LoginForm())
-
-
-# Insert wishlist to DB from form
-@app.route('/insertwishlist/<user>', methods=['GET', 'POST'])
-def insert_wishlist(user):
-    # Confirms user is logged in
-    if 'user' in session:
-        # If so get the user and pass him to template for now
-        user_in_db = mongo.db.users.find_one({"email": user})
-        lists = mongo.db.lists
-        lists.insert_one(request.form.to_dict())
-        return redirect(url_for('profile', user=user_in_db['email']))
-    else:
-        # Otherwise redirects to login page
-        flash("You must be logged in!")
-        return redirect(url_for('home'))
 
 
 # View an individual wishlist's items
@@ -282,5 +270,5 @@ def list_search():
 
 # Main Init function - currently in development mode. TODO update to debug is false
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'), port=
-        os.environ.get('PORT'), debug=os.environ.get('DEBUG'))
+    app.run(host=os.environ.get('IP'), port=os.environ.get(
+        'PORT'), debug=os.environ.get('DEBUG'))
