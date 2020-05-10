@@ -11,6 +11,10 @@
     --white: #fafafa;
 }
 
+html{
+    font-size: 62.5%;
+}
+
 /*
 
 Dark Blue: #022449;
@@ -39,7 +43,6 @@ White: #fafafa;
 
 body {
     font-family: 'Roboto', sans-serif;
-    font-size: 62.5%;
 }
 
 a{
@@ -94,6 +97,12 @@ nav {
 .brand-logo {
     padding-left: 2rem;
     margin-left: 2rem;
+    text-decoration: none;
+}
+
+.brand-logo :hover{
+    background-color: var(--white);
+    color: var(--dark-blue)
 }
 
 .nav-wrapper{
@@ -118,7 +127,7 @@ nav {
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 2rem
+    padding: 2rem;
     text-align: center;
     color:var(--dark-blue);
     margin: 2.5rem;
@@ -131,6 +140,15 @@ nav {
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
+    text-decoration: none;
+}
+
+.navlink a{
+    text-decoration: none;
+}
+
+.navlink a:hover{
+    background-color: var(--white)
 }
 
 #step1 {
@@ -150,6 +168,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-direction: column;
 
 }
 .sort-column{
