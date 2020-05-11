@@ -162,10 +162,6 @@ nav {
     background-color: #96FFFF;
 }
 
-#step3 {
-    background-color: #C8EFF9;
-}
-
 .welcome{
 
     display: flex;
@@ -174,6 +170,12 @@ nav {
     flex-direction: column;
 
 }
+
+.home-link:hover{
+    background-color: var(--white);
+}
+
+
 .sort-column{
     display: flex;
     flex-direction: column;
