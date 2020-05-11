@@ -9,6 +9,8 @@
 :root{
     --dark-blue: #022449;
     --white: #fafafa;
+    --yellow: #ffc107;
+    --light-blue: 
 }
 
 html{
@@ -122,7 +124,7 @@ nav {
 .card {
     width: 18rem;
     height: 32rem;
-    border: 1px solid slateblue;
+    border: 1px solid var(--dark-blue);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -131,6 +133,7 @@ nav {
     text-align: center;
     color:var(--dark-blue);
     margin: 2.5rem;
+    font: 1em sans-serif;
 }
 
 .card a{
@@ -187,16 +190,16 @@ nav {
 }
 
 .submit-button{
-    background-color: #f27d42;
-    border: 2px solid #f7ba9c;
+    background-color: var(--yellow)
+    border: 2px solid var(--white);
     color: var(--white);
 }
 
 .submit-button:hover,
 .submit-button:focus{
-    color: #f27d42;
+    color: var(--yellow);
     background-color: var(--white);
-    border: 2px solid #f27d42;
+    border: 2px solid #var(--yellow);
 }
 
 .back-button{
@@ -213,7 +216,7 @@ nav {
 }
 
 .done-button{
-    background-color: #55bdca;
+    background-color: var(--white);
     color:var(--dark-blue);
 }
 
