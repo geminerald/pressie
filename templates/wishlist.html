@@ -65,13 +65,8 @@
 		</div>
 	</div>
 	<div class="row button-row">
-		<button id="submit" class="btn waves-effect waves-light submit-button"
-			type="submit" name="action">Submit
-			<i class="material-icons right">send</i>
-		</button>
         {% include 'components/submitbutton.html' %}
-		<a href="{{url_for('home')}}"
-			class="waves-effect waves-light btn back-button"><i class="material-icons right"></i>Back</a>
+		{% include 'components/backtoprofile.html' %}
 
 	</div>
 </form>
