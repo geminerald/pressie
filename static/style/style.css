@@ -10,7 +10,7 @@
     --dark-blue: #022449;
     --white: #fafafa;
     --yellow: #ffc107;
-    --light-blue: 
+    --light-blue: #55BDCA;
 }
 
 html{
@@ -45,6 +45,8 @@ White: #fafafa;
 
 body {
     font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    
 }
 
 a{
@@ -100,6 +102,10 @@ nav {
     padding-left: 2rem;
     margin-left: 2rem;
     text-decoration: none;
+}
+
+.navlink a{
+    font-size: 1.5rem;
 }
 
 .brand-logo :hover{
@@ -261,10 +267,6 @@ nav {
     justify-content: space-evenly;
     margin: 2rem auto;
 }
-
-
-
-
 
 
 /*Finder Page*/
