@@ -77,6 +77,20 @@ h3 {
     color: var(--dark-blue);
 }
 
+
+
+.submit-button{
+    
+    color: var(--white);
+}
+
+.button-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
 .alert{
     margin: 2rem;
 }
@@ -204,48 +218,6 @@ nav .brand-logo{
     flex-direction: column;
 }
 
-.submit-button{
-    background-color: var(--dark-blue)
-    border: 2px solid var(--white);
-    color: var(--white);
-}
-
-.submit-button:hover,
-.submit-button:focus{
-    color: var(--dark-blue);
-    background-color: var(--white);
-    border: 2px solid var(--dark-blue);
-}
-
-.back-button{
-    background-color: var(--dark-blue);
-    color: var(--white);
-    border: 2px solid var(--dark-blue);
-}
-
-.back-button:hover,
-.back-button:focus{
-    color: var(--dark-blue);
-    background-color: var(--white);
-    border: 2px solid var(--dark-blue);
-}
-
-.done-button{
-    background-color: var(--white);
-    color:var(--dark-blue);
-}
-
-.done-button:hover,
-.done-button:focus{
-    background-color: var(--dark-blue);
-    color:#55bdca;
-}
-
-.button-row{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
 
 /*Add Item Page*/
 
