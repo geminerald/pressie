@@ -27,7 +27,7 @@ items_collection = mongo.db.items
 @app.route('/')
 def home():
     """Renders the home page template"""
-    return render_template('index.html')
+    return render_template('pages/index.html')
 
 
 @app.route('/login', methods=['GET'])
@@ -41,7 +41,7 @@ def login():
             return redirect(url_for('profile', user=user_in_db['email']))
     else:
 
-        return render_template("login.html", form=LoginForm())
+        return render_template("pages/login.html", form=LoginForm())
 
 
 @app.route('/user_auth', methods=['POST'])
@@ -101,7 +101,7 @@ def register():
             flash("Passwords dont match!")
             return redirect(url_for('register'))
 
-    return render_template("register.html", form=RegistrationForm())
+    return render_template("pages/register.html", form=RegistrationForm())
 
 
 @app.route('/logout')
@@ -119,7 +119,7 @@ def profile(user):
         user_in_db = users_collection.find_one({"email": user})
         user_lists = lists_collection.find(
             {"list_username": user_in_db["email"]})
-        return render_template('profile.html', wishlists=user_lists, user=user_in_db)
+        return render_template('pages/profile.html', wishlists=user_lists, user=user_in_db)
     else:
         flash("You must be logged in!")
         return redirect(url_for('home'))
@@ -128,13 +128,13 @@ def profile(user):
 @app.route('/about')
 def about():
     """Shows the about page"""
-    return render_template('about.html', title='About')
+    return render_template('pages/about.html', title='About')
 
 
 @app.route('/finder')
 def finder():
     """Shows the find a wishlist page"""
-    return render_template('finder.html', title='Find a Wishlist')
+    return render_template('pages/finder.html', title='Find a Wishlist')
 
 
 @app.route('/wishlist/<user>', methods=['GET', 'POST'])
@@ -150,7 +150,7 @@ def wishlist(user):
             user_in_db = users_collection.find_one({"email": user})
             if user_in_db:
                 flash("You are logged in already!")
-                return render_template('wishlist.html', title='Create a Wishlist', user=user_in_db)
+                return render_template('pages/wishlist.html', title='Create a Wishlist', user=user_in_db)
     else:
         return render_template("login.html", form=LoginForm())
 
@@ -161,14 +161,14 @@ def view_wishlist(list_id):
     myquery = {"list_id": list_id}
     items = items_collection.find(myquery)
     pass_in_list_id = list_id
-    return render_template('viewwishlist.html', items=items, list_id=pass_in_list_id)
+    return render_template('pages/viewwishlist.html', items=items, list_id=pass_in_list_id)
 
 
 @app.route('/editwishlist/<list_id>')
 def edit_wishlist(list_id):
     """Update a wishlist in the DB"""
     the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
-    return render_template('editlist.html', the_list=the_list, user=session['user'])
+    return render_template('pages/editlist.html', the_list=the_list, user=session['user'])
 
 
 @app.route('/deletewishlist/<user>/<list_id>')
@@ -205,7 +205,7 @@ def additems(list_id):
     """Shows the add items page"""
     the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
     the_list_id = the_list['_id']
-    return render_template('additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
+    return render_template('pages/additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
 
 
 @app.route('/insertitems', methods=['GET', 'POST'])
