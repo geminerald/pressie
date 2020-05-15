@@ -17,7 +17,7 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 
-#Collections:
+# Collections:
 
 users_collection = mongo.db.users
 lists_collection = mongo.db.lists
@@ -200,21 +200,18 @@ def update_wishlist(list_id):
     return redirect(url_for('profile', user=request.form.get('list_username')))
 
 
-@app.route('/additems/<list_id>')
+@app.route('/additems/<list_id>', methods=['GET', 'POST'])
 def additems(list_id):
-    """Shows the add items page"""
-    the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
-    the_list_id = the_list['_id']
-    return render_template('pages/additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
-
-
-@app.route('/insertitems', methods=['GET', 'POST'])
-def insert_items():
-    """Adds items to the db"""
-    items = items_collection
-    items.insert_one(request.form.to_dict())
-    list_id = request.form['list_id']
-    return redirect(url_for('view_wishlist', list_id=list_id))
+    """Shows the add items page or inserts to DB if method is post"""
+    if request.method == "POST":
+        items = items_collection
+        items.insert_one(request.form.to_dict())
+        list_id = request.form['list_id']
+        return redirect(url_for('view_wishlist', list_id=list_id))
+    else:
+        the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
+        the_list_id = the_list['_id']
+        return render_template('pages/additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
 
 
 @app.route('/deleteitem/<item_id>')
