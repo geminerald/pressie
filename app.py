@@ -201,8 +201,7 @@ def delete_wishlist(user, list_id):
 def additems(list_id):
     """Shows the add items page or inserts to DB if method is post"""
     if request.method == "POST":
-        items = items_collection
-        items.insert_one(request.form.to_dict())
+        items_collection.insert_one(request.form.to_dict())
         list_id = request.form['list_id']
         return redirect(url_for('view_wishlist', list_id=list_id))
     else:
