@@ -164,11 +164,22 @@ def view_wishlist(list_id):
     return render_template('pages/viewwishlist.html', items=items, list_id=pass_in_list_id)
 
 
-@app.route('/editwishlist/<list_id>')
+@app.route('/editwishlist/<list_id>', methods=["GET", "POST"])
 def edit_wishlist(list_id):
-    """Update a wishlist in the DB"""
-    the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
-    return render_template('pages/editlist.html', the_list=the_list, user=session['user'])
+    """Show a specific wishlist and update it in the DB"""
+    if request.method == "POST":
+        lists = lists_collection
+        lists.update({'_id': ObjectId(list_id)},
+                     {
+            'phone_number': request.form.get('phone_number'),
+            'list_username': request.form.get('list_username'),
+            'first_name': request.form.get('first_name'),
+            'last_name': request.form.get('last_name')
+        })
+        return redirect(url_for('profile', user=request.form.get('list_username')))
+    else:
+        the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
+        return render_template('pages/editlist.html', the_list=the_list, user=session['user'])
 
 
 @app.route('/deletewishlist/<user>/<list_id>')
@@ -184,20 +195,6 @@ def delete_wishlist(user, list_id):
     else:
         flash("You must be logged in!", 'alert')
         return redirect(url_for('login'))
-
-
-@app.route('/updatewishlist/<list_id>', methods=["GET", "POST"])
-def update_wishlist(list_id):
-    """Updates record in the DB"""
-    lists = lists_collection
-    lists.update({'_id': ObjectId(list_id)},
-                 {
-        'phone_number': request.form.get('phone_number'),
-        'list_username': request.form.get('list_username'),
-        'first_name': request.form.get('first_name'),
-        'last_name': request.form.get('last_name')
-    })
-    return redirect(url_for('profile', user=request.form.get('list_username')))
 
 
 @app.route('/additems/<list_id>', methods=['GET', 'POST'])
