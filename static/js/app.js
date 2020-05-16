@@ -1,10 +1,18 @@
 $(document).ready(function () {
     console.log("app.js is linked successfully");
 
+    // Page Element Selectors
+    const wishSwitch = document.getElementById('wishlist-switch');
+    const filterSearch = document.getElementById('finder-search');
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+
+
+    /**
+     * Navigation Slide function for small devices
+     */
     const navSlide = () => {
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        const navLinks = document.querySelectorAll('.nav-links li');
 
         burger.addEventListener('click', () => {
             nav.classList.toggle('nav-active');
@@ -21,42 +29,24 @@ $(document).ready(function () {
 
     navSlide();
 
-    const wishSwitch = document.getElementById('wishlist-switch');
-    const filterSearch = document.getElementById('finder-search')
+    /**
+     * 
+     * @param Element
+     * Takes an element in beta and notifies user via an alert 
+     */
+    const betaNotification = (element) => {
+        element.addEventListener('click', () => {
+            Swal.fire(
+                'Hi There',
+                'This feature is currently in Beta and non operational. It will be implemented in Final Release. <br><br> Apologies! ',
+                'info'
+            )
+        });
+    };
     if (wishSwitch) {
-        wishSwitch.addEventListener('click', () => {
-
-
-            Swal.fire(
-                'Hi There',
-                'This feature is currently in Beta and non operational. It will be implemented in Final Release. <br><br> Apologies! ',
-                'info'
-            )
-        });
+        betaNotification(wishSwitch);
     }
-
-
     if (filterSearch) {
-
-        filterSearch.addEventListener('click', () => {
-            Swal.fire(
-                'Hi There',
-                'This feature is currently in Beta and non operational. It will be implemented in Final Release. <br><br> Apologies! ',
-                'info'
-            )
-        });
-
+        betaNotification(filterSearch);
     }
 });
-
-
-
-/**
- *
- * Swal.fire(
-  'The Internet?',
-  'That thing is still around?',
-  'question'
-)
- *
- */
