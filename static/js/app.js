@@ -45,6 +45,8 @@ $(document).ready(function () {
             )
         });
     };
+
+    // Add beta notifications to beta elements on page
     if (surpriseSwitch) {
         betaNotification(surpriseSwitch);
     }
