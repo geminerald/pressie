@@ -284,10 +284,10 @@ nav .brand-logo{
 
 @media screen and (max-width:1068px){
     .nav-links{
-        width: 50%;
+        width: 35%;
     }
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:992px){
 body{
     overflow-x: hidden;
 }
