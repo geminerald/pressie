@@ -99,7 +99,7 @@ nav {
 
 nav .brand-logo{
     height: 100%;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
     text-decoration: none;
     padding-left: 2rem;
     padding-right: 2rem;

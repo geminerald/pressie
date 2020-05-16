@@ -22,7 +22,7 @@ $(document).ready(function () {
                 if (link.style.animation) {
                     link.style.animation = '';
                 } else {
-                    link.style.animation = `navLinkFade 0.2s ease forwards ${index / 2 + 1}s`;
+                    link.style.animation = `navLinkFade 0.3s ease-in forwards ${index/7+1}s`;
                 }
             });
             burger.classList.toggle('toggle');
