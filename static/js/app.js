@@ -51,10 +51,10 @@ $(document).ready(function () {
     if (filterSearch) {
         betaNotification(filterSearch);
     }
-    if (orderedSwitch){
+    if (orderedSwitch) {
         betaNotification(orderedSwitch);
     }
-    if (privateSwitch){
+    if (privateSwitch) {
         betaNotification(privateSwitch);
     }
 });
