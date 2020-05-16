@@ -155,15 +155,6 @@ def wishlist(user):
         return render_template("login.html", form=LoginForm())
 
 
-@app.route('/viewwishlist/<list_id>')
-def view_wishlist(list_id):
-    """View a specific wishlist"""
-    myquery = {"list_id": list_id}
-    items = items_collection.find(myquery)
-    pass_in_list_id = list_id
-    return render_template('pages/viewwishlist.html', items=items, list_id=pass_in_list_id)
-
-
 @app.route('/editwishlist/<list_id>', methods=["GET", "POST"])
 def edit_wishlist(list_id):
     """Show a specific wishlist and update it in the DB"""
@@ -180,6 +171,24 @@ def edit_wishlist(list_id):
     else:
         the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
         return render_template('pages/editlist.html', the_list=the_list, user=session['user'])
+
+
+@app.route('/deleteitem/<item_id>')
+def delete_item(item_id):
+    """Removes an item from the wishlist and DB"""
+    the_item = items_collection.find_one({'_id': ObjectId(item_id)})
+    the_list = the_item['list_id']
+    items_collection.remove(the_item)
+    return redirect(url_for('view_wishlist', list_id=the_list))
+
+
+@app.route('/viewwishlist/<list_id>')
+def view_wishlist(list_id):
+    """View a specific wishlist"""
+    myquery = {"list_id": list_id}
+    items = items_collection.find(myquery)
+    pass_in_list_id = list_id
+    return render_template('pages/viewwishlist.html', items=items, list_id=pass_in_list_id)
 
 
 @app.route('/deletewishlist/<user>/<list_id>')
@@ -208,15 +217,6 @@ def additems(list_id):
         the_list = lists_collection.find_one({"_id": ObjectId(list_id)})
         the_list_id = the_list['_id']
         return render_template('pages/additems.html', title='Add Items to your Wishlist', item_list_id=the_list_id)
-
-
-@app.route('/deleteitem/<item_id>')
-def delete_item(item_id):
-    """Removes an item from the DB"""
-    the_item = items_collection
-    the_list = the_item.list_id
-    the_item.remove({'_id': ObjectId(item_id)})
-    return redirect(url_for('view_wishlist', list_id=the_list))
 
 
 @app.route('/listsearch', methods=["GET"])
