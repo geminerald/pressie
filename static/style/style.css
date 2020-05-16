@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 
-/*Colours------------------------------------------------------------------------------Colours*/
+/*Colours*/
 
 :root{
     --dark-blue: #022449;
@@ -16,26 +16,6 @@
 html{
     font-size: 62.5%;
 }
-
-/*
-
-Dark Blue: #022449;
-
-Med Dark Blue: #C8EFF9
-
-Medium Blue: #96FFFF;
-
-Light Blue: #55BDCA;
-
-Orange: #f27d42;
-    
-Light Orange: #f7ba9c;
-
-White: #fafafa;
-
-*/
-
-/*End Colours----------------------------------------------------------------------------End Colours*/
 
 /*Globals*/
 
