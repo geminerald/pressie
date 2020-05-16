@@ -2,7 +2,9 @@ $(document).ready(function () {
     console.log("app.js is linked successfully");
 
     // Page Element Selectors
-    const wishSwitch = document.getElementById('wishlist-switch');
+    const surpriseSwitch = document.getElementById('surprise-switch');
+    const orderedSwitch = document.getElementById('ordered-switch');
+    const privateSwitch = document.getElementById('private-switch')
     const filterSearch = document.getElementById('finder-search');
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
@@ -43,10 +45,16 @@ $(document).ready(function () {
             )
         });
     };
-    if (wishSwitch) {
-        betaNotification(wishSwitch);
+    if (surpriseSwitch) {
+        betaNotification(surpriseSwitch);
     }
     if (filterSearch) {
         betaNotification(filterSearch);
+    }
+    if (orderedSwitch){
+        betaNotification(orderedSwitch);
+    }
+    if (privateSwitch){
+        betaNotification(privateSwitch);
     }
 });
