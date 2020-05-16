@@ -22,16 +22,16 @@
 				<p>Please include a link to an example of a website where your item can be purchased.</p>
 			</div>
 
-			<div class="row add-item-buttons">
-				<button id="submit" class="btn waves-effect waves-light submit-button" type="submit" name="action">
+		</div>
+		<div class="row add-item-buttons">
+			<button id="submit" class="btn waves-effect waves-light submit-button" type="submit" name="action">
                     Submit <i class="material-icons right">send</i>
 		        </button>
-				<a href="{{url_for('profile', user=session.user)}}" class="waves-effect waves-light btn back-button">
-					<i class="material-icons right">cancel</i>
-					Cancel
-				</a>
+			<a href="{{url_for('profile', user=session.user)}}" class="waves-effect waves-light btn back-button">
+				<i class="material-icons right">cancel</i>
+				Cancel
+			</a>
 
-			</div>
 		</div>
 </form>
 <p>Add as many items to your list as you wish, don't worry you can always edit it after you're done.</p>

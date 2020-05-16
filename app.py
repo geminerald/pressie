@@ -149,7 +149,6 @@ def wishlist(user):
         else:
             user_in_db = users_collection.find_one({"email": user})
             if user_in_db:
-                flash("You are logged in already!")
                 return render_template('pages/wishlist.html', title='Create a Wishlist', user=user_in_db)
     else:
         return render_template("login.html", form=LoginForm())
