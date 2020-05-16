@@ -17,7 +17,7 @@
 		<h2>Wishlists</h2>
 		{% for wishlist in wishlists %}
 		<div class="wishlist">
-			<h3>{{wishlist.first_name}}'s List</h3>
+			<h3>{{wishlist.first_name}}'s {{wishlist.last_name}} List</h3>
 			<a href="{{url_for('view_wishlist', list_id = wishlist._id)}}"
 				class="btn waves-effect waves-light submit-button"><i class="material-icons right"></i>View
 			</a>
