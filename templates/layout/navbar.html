@@ -6,7 +6,7 @@
 				<i class="material-icons">card_giftcard</i>
 			</a>
 		</div>
-		<ul id="nav-mobile" class="right hide-on-med-and-down">
+		<ul id="nav-mobile" class="right nav-links">
 			<li class="navlink"><a href="{{url_for('finder')}}">Find a Gift</a></li>
 			<li class="navlink"><a href="{{url_for('about')}}">About</a></li>
 			{% if session.user %}
@@ -17,6 +17,11 @@
 			<li class="navlink"><a href="{{url_for('login')}}">Log In</a></li>
 			<li class="navlink"><a href="{{url_for('register')}}">Sign Up</a></li>
 			{% endif %}
-		</ul>
+			
+		</ul><div class="burger">
+				<div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+			</div>
 	</div>
 </nav>
