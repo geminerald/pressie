@@ -283,7 +283,7 @@ body{
         align-items: center;
         width: 40%;
         transform:translateX(100%);
-        transition: 0.5s ease-in;
+        transition: 0.3s ease-in;
         border-radius: 5px;
     }
     .nav-links li{
