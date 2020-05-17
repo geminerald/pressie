@@ -13,8 +13,10 @@ Please feel free to read through this Readme and browse my project, if you have 
 
 * UX 
     * Project Goals
-    * Target Audience Goals
+    * User Stories
+    * User Goals
     * Site Owner Goals
+    * Site Owner Future Goals
     * User Requirements and Expectations
     * Design Choices 
         * Fonts
@@ -27,7 +29,10 @@ Please feel free to read through this Readme and browse my project, if you have 
     * Features that will be developed in the future
 * Technologies Used 
 * Testing 
-* Bugs 
+* Features
+* Bugs
+    * Resolved bugs
+    * Known ongoing bugs
 * Deployment 
 * Credits 
 
