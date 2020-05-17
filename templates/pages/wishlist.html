@@ -6,12 +6,11 @@
 <form action="{{url_for('wishlist', method='POST', user=session.user)}}" method="POST" class="col s12">
 	<div class="input-field" hidden>
 		<input  id="list_username" name="list_username" type="text" class="validate" value="{{user.email}}">
-		<label for="list_username">{{user.email}}</label>
 	</div>
 	<div class="row">
 		<div class="input-field col-sm-12 col-lg-6">
-			<input  id="phone_number" name="phone_number" type="text" class="validate hidden" required>
-			<label for="phone_number">Phone Number</label>
+			<input  id="phone_number" name="phone_number" type="text" class="validate" required>
+			
 		</div>
 		<div class="input-field col-sm-12 col-lg-6">
 			<input  id="first_name" name="first_name" type="text" class="validate" required>
