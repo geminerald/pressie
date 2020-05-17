@@ -256,7 +256,20 @@ Here is a list of known bugs that exist on the site:
 
 ## Deployment: 
 
-TBC
+This project was deployed via Heroku. For full details on deployment with Heroku you can view their documentation <a href="https://devcenter.heroku.com/articles/git">here</a>
+
+### In Summary:
+
+* A repository was created on GitHub and the code was comitted and pushed there throughout development. 
+* A repository was created on Heroku and the code was then pushed to Heroku as follows once development was sufficiently advanced.
+* First - Login to Heroku using the Command Line Interface (CLI) command: $ heroku login
+* Then deployed using the heroku commands:
+
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
+
+* Config vars were then set in Heroku for linking to the DB, the Secret Key, the IP and PORT.
 
 ## Closing Notes:
 
