@@ -266,11 +266,11 @@ This project was deployed via Heroku. For full details on deployment with Heroku
 * First - Login to Heroku using the Command Line Interface (CLI) command: $ heroku login
 * Then deployed using the heroku commands:
 
-`
+```
 $ git add .
 $ git commit -am "make it better"
 $ git push heroku master
-`
+```
 
 * Config vars were then set in Heroku for linking to the DB, the Secret Key, the IP and PORT.
 
