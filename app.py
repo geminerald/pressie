@@ -119,10 +119,10 @@ def profile(user):
         user_in_db = users_collection.find_one({"email": user})
         user_lists = lists_collection.find(
             {"list_username": user_in_db["email"]})
-        return render_template('pages/profile.html', wishlists=user_lists, user=user_in_db)
+        return render_template('pages/profile.html', wishlists=user_lists, user=user_in_db)  
     else:
         flash("You must be logged in!")
-        return redirect(url_for('home'))
+        return redirect(url_for('login'))
 
 
 @app.route('/about')
