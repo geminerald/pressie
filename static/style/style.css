@@ -26,7 +26,6 @@ html{
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 2rem;
-    
 }
 
 a{
@@ -177,7 +176,12 @@ nav .brand-logo{
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-
+    background-color: #fafafa;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 4px solid #022449;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .home-link{
