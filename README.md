@@ -234,6 +234,12 @@ Overview:
 * <strong>Fix</strong> :  The form fields were corrected and the labels updated to match the correct information that was to be updated to the DB.
 * <strong>Verdict</strong> : Bug Effectively Squashed!
 
+
+<strong>Delete Item Redirect</strong>:
+* <strong>Bug</strong> : Upon clicking on Delete Item on the View Wishlist page the redirect to the wishlist page would not show the items in the wishlist and would have sensitive information in the URL
+* <strong>Fix</strong> :  The information passed into the redirect on the Delete Wishlist function in app.py was updated and a typo removed so it now redirects with the correct information passed in.
+* <strong>Verdict</strong> : Bug Effectively Squashed!
+
 #### Known Bugs:
 
 Here is a list of known bugs that exist on the site: 
