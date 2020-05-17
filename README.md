@@ -31,6 +31,10 @@ Please feel free to read through this Readme and browse my project, if you have 
 * Credits 
 
 
+## Notes for Assessors:
+
+* This project is designed to primarily showcase CRUD functionality in Python and MongoDB. There are features that are not yet fully operational. 
+
 ## UX (User Experience) 
 ### Project Goals
 The goal of this project is to help users find meaningful gifts for people they care about or "Finding gifts they care about for the people you care about".
