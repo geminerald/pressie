@@ -3,6 +3,8 @@ Pressie
 
 Thankyou for visiting my project Pressie, a wishlist website designed to help people buy meaningful gifts for their loved ones. 
 
+This project remains in development at this time. As a submission for Code Institute's third milestone project the CRUD (Create, Read, Update, Delete) functionality has been added while other features remain yet to be completed.
+
 [View Pressie](https://mypressie.herokuapp.com/)
 
 Please feel free to read through this Readme and browse my project, if you have any questions or suggestions head to my Github contact details or <a href="geminerald.github.io/geminerals">my website</a>. 
@@ -64,7 +66,6 @@ The website needs to be visually appealing and simple enough to allow and encour
 
 #### Site Owner Current Goals:
 * Provide a great service for people looking for gifts.
-* Be able to use this myself and direct my family towards it as well
 
 
 #### Site Owner Future Goals:
@@ -159,10 +160,12 @@ Testing was conducted on an ongoing basis throughout development.
 
 As each feature was added it was thoroughly tested and each feature that it interacted with was also tested to ensure that they were not affected.
 
+Testing of new components was tested before each commit.
+
 ##### Testing Against the User Goals:
 
 * A website that serves as an online wishlist to be able to share with their friends and family.
- - The website does store wishlists on a database which can be securely accessed by a third party.
+ - The website does store wishlists on a database which will be able to be securely accessed by a third party.
 * Simple and consistent theme and styles throughout to encourage engagement and provide a good user experience across generations.
  - The design is kept simple and consistent with relatively few elements on each page.
 * A website that allows one to quickly and easily locate gifts that someone actually wants.
@@ -174,7 +177,7 @@ As each feature was added it was thoroughly tested and each feature that it inte
 * Do everything possible to ensure that a gift will be purchased before being removed from a wishlist.
  - This feature remains in delveopment at this time. . 
 * Interact across all devices of all sizes.
- - Testing was conducted across different screen sized at each deployment push to ensure responsiveness.
+ - Testing was conducted across different screen sized at each deployment push to ensure responsiveness. The nav bar was updated towards the end of the project to aid responsiveness.
 
 ### Overall:
 
@@ -192,6 +195,27 @@ As each feature was added it was thoroughly tested and each feature that it inte
 
 ### Features:
 
+#### Current Features
+
+* Create account (with secure password storage)
+* Create wishlist
+* Edit wishlist
+* Add items to wishlist
+* Delete wishlist
+* View existing wishlists
+
+#### Features in Development
+
+* Search for a wishlist
+* Additional wishlist options and updated functionality - such as ability to order wishlists etc.
+* Password reset functionality
+
+
+#### Potential Future Features
+
+* Ads on wishlist page to assist users in deciding what to add to their wishlist and generate revenue.
+* Sponsored links on view wishlist page to provide different options for where to purchase the gift and generate revenue.
+* Functionality to search major retailers and if an item is available for cheaper than the link provided by the person who creates the wishlist it can direct people there.
 
 
 ## Bugs: 
