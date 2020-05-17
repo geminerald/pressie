@@ -34,13 +34,13 @@ Please feel free to read through this Readme and browse my project, if you have 
 
 ## Notes for Assessors:
 
-* This project is designed to primarily showcase CRUD functionality in Python and MongoDB. There are features that are not yet fully operational. 
+* This project is designed to primarily showcase CRUD functionality in Python and MongoDB. There are certain features outside of this scope that are not yet fully operational. 
 
 ## UX (User Experience) 
 ### Project Goals
-The goal of this project is to help users find meaningful gifts for people they care about or "Finding gifts they care about for the people you care about".
-The project is aimed toward people who either struggle to know what to get someone for a present or people who find that too often they get unwanted gifts which are then regifted or not enjoyed. 
-The website needs to be visually appealing and simple enough to allow and encourage use for all ages and technological abilities.
+* The goal of this project is to help users **find meaningful gifts** for people they care about.
+* The project is aimed toward people who either struggle to know what to get someone for a present or people who find that too often they get unwanted gifts which are then regifted or not enjoyed. 
+* The website needs to be **visually appealing** and **simple** enough to allow and encourage use for all ages and technological abilities.
 
 #### User Stories:
 
@@ -266,9 +266,11 @@ This project was deployed via Heroku. For full details on deployment with Heroku
 * First - Login to Heroku using the Command Line Interface (CLI) command: $ heroku login
 * Then deployed using the heroku commands:
 
+`
 $ git add .
 $ git commit -am "make it better"
 $ git push heroku master
+`
 
 * Config vars were then set in Heroku for linking to the DB, the Secret Key, the IP and PORT.
 
