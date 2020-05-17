@@ -9,6 +9,7 @@ $(document).ready(function () {
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
+    const forgotPsw = document.getElementById('forgot-password');
 
 
     /**
@@ -58,5 +59,8 @@ $(document).ready(function () {
     }
     if (privateSwitch) {
         betaNotification(privateSwitch);
+    }
+    if (forgotPsw){
+        betaNotification(forgotPsw);
     }
 });
