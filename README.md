@@ -257,9 +257,7 @@ Here is a list of known bugs that exist on the site:
 
 ## Deployment: 
 
-This project was deployed via Heroku. For full details on deployment with Heroku you can view their documentation <a href="https://devcenter.heroku.com/articles/git" target="_blank">here</a>
-
-<a href="http://google.com/" target="_blank">Hello, world!</a>
+This project was deployed via Heroku. For full details on deployment with Heroku you can view their documentation <a href="https://devcenter.heroku.com/articles/git">here</a>
 
 ### In Summary:
 
