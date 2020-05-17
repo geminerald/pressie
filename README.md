@@ -22,8 +22,9 @@ Please feel free to read through this Readme and browse my project, if you have 
         * Styling
 * Wireframes
 * Features 
-    * Features that have been developed
-    *  Features that will be implemented in the future
+    * Current Features
+    * Features in Development
+    * Features that will be developed in the future
 * Technologies Used 
 * Testing 
 * Bugs 
@@ -41,16 +42,19 @@ The goal of this project is to help users find meaningful gifts for people they 
 The project is aimed toward people who either struggle to know what to get someone for a present or people who find that too often they get unwanted gifts which are then regifted or not enjoyed. 
 The website needs to be visually appealing and simple enough to allow and encourage use for all ages and technological abilities.
 
-#### User Goals:
-* A website that serves as an online wishlist to be able to share with their friends and family.
-* Simple and consistent theme and styles throughout to encourage engagement and provide a good user experience across generations.
-* A website that allows one to quickly and easily locate gifts that someone actually wants.
-* Ensure no duplication of gifts purchased.
-* Easily share a wishlist. 
-* Do everything possible to ensure that a gift will be purchased before being removed from a wishlist.
-* Interact across all devices of all sizes.
-
 #### User Stories:
+
+As a user I expect: 
+    
+ * A website that serves as an online wishlist to be able to share with their friends and family.
+ * Simple and consistent theme and styles throughout to encourage engagement and provide a good user experience across generations.
+ * A website that allows one to quickly and easily locate gifts that someone actually wants.
+ * Ensure no duplication of gifts purchased.
+ * Easily share a wishlist. 
+ * Do everything possible to ensure that a gift will be purchased before being removed from a wishlist.
+ * Interact across all devices of all sizes.
+
+#### User Goals:
 
 ##### Mr Smith: 
 <em>"I want to be able to locate gifts for my loved ones without having to ask them."</em>
