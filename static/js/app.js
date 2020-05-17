@@ -1,6 +1,6 @@
 $(document).ready(function () {
     console.log("app.js is linked successfully");
-
+    $('.tooltipped').tooltip();
     // Page Element Selectors
     const surpriseSwitch = document.getElementById('surprise-switch');
     const orderedSwitch = document.getElementById('ordered-switch');
