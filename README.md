@@ -7,7 +7,7 @@ This project remains in development at this time. As a submission for Code Insti
 
 [View Pressie](https://mypressie.herokuapp.com/)
 
-Please feel free to read through this Readme and browse my project, if you have any questions or suggestions head to my Github contact details or <a href="geminerald.github.io/geminerals">my website</a>. 
+Please feel free to read through this Readme and browse my project, if you have any questions or suggestions head to my Github contact details or <a href="https://geminerald.github.io/geminerald/">my website</a>. 
 
 ## Contents:
 
@@ -65,15 +65,9 @@ As a user I expect:
 ##### Mr Brown: 
 <em>"I want to be able to access websites easily and quickly"</em>
 
-##### Mr Adeolokun: 
-<em>"I want to be able to share my choices with my loved ones without compromising my security or personal information"</em>
-
-##### Mr Wong: 
-<em>"As a user I want to be able to quickly grasp what I want from a website and have clear instructions throughout. "</em>
-
-
 #### Site Owner Current Goals:
 * Provide a great service for people looking for gifts.
+* Facilitate the creation of online wishlists. 
 
 
 #### Site Owner Future Goals:
@@ -116,8 +110,7 @@ I chose the font <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> a
 
 ##### Colours:
 
-* The colour theme is based across a blue spectrum which encourages positivity and calmness.
-* The submit buttons are orange to keep the contrast high and the theme of positivity throughout as orange is a colour associated with action.
+* The colour theme is based across a blue spectrum which, according to <a href="https://www.verywellmind.com/the-color-psychology-of-blue-2795815">research</a> encourages positivity and calmness.
 * Dark blue was used instead of black for text and similar elements as this colour is softer and therefore more in keeping with the theme.
 
 
