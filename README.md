@@ -189,10 +189,10 @@ Testing of new components was tested before each commit.
 * <strong>Verdict</strong> : The site is responsive and a user should not be slowed down on any device. 
 
 <strong>Design -</strong>
-* <strong>Plan</strong> : 
-* <strong>Implementation</strong> : 
-* <strong>Result</strong> : 
-* <strong>Verdict</strong> :
+* <strong>Plan</strong> : The site was designed on Balsamiq using their basic mockup tool and development was ongoing based on user feedback.
+* <strong>Implementation</strong> : Design was a constant concern and throughout development I was keen to keep it consistently in mind.
+* <strong>Result</strong> : The design is consistent with the blue pallet, the elements are non-jarring and easy to comprehend.
+* <strong>Verdict</strong> : The design is in keeping with the key goals of simplicity and consistency.
 
 ### Features:
 
@@ -273,6 +273,7 @@ $ git push heroku master
 ```
 
 * Config vars were then set in Heroku for linking to the DB, the Secret Key, the IP and PORT.
+* The Project was regularly pushed to Heroku and hosted there throughout development.
 
 ## Closing Notes:
 
