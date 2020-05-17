@@ -257,7 +257,7 @@ Here is a list of known bugs that exist on the site:
 
 ## Deployment: 
 
-This project was deployed via Heroku. For full details on deployment with Heroku you can view their documentation <a href="https://devcenter.heroku.com/articles/git">here</a>
+This project was deployed via Heroku. For full details on deployment with Heroku you can view their documentation <a href="https://devcenter.heroku.com/articles/git" target = "_blank">here</a>
 
 ### In Summary:
 
@@ -268,7 +268,7 @@ This project was deployed via Heroku. For full details on deployment with Heroku
 
 ```
 $ git add .
-$ git commit -am "make it better"
+$ git commit -m "Insert Commit Message Here"
 $ git push heroku master
 ```
 
