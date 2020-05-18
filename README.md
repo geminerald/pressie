@@ -268,7 +268,7 @@ This project was deployed via Heroku. For full details on deployment with Heroku
 
 * A repository was created on GitHub and the code was comitted and pushed there throughout development. 
 * A repository was created on Heroku and the code was then pushed to Heroku as follows once development was sufficiently advanced.
-* First - Login to Heroku using the Command Line Interface (CLI) command: $ heroku login
+* First - Login to Heroku using the Command Line Interface (CLI) command: `$ heroku login`
 * Then deployed using the heroku commands:
 
 ```
