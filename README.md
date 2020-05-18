@@ -286,7 +286,7 @@ This project remains a work in progress. I intend to use and improve it myself a
 
 I would like to thank everyone who helped me on this project and detail their specific assistance but to do so would fill the entirety of GitHub.
 
-Special thanks to my mentor at Code Institute Simen who gave me the encouragement and real world feedback I needed to know how to accomplish this. He believed in me far more than I did. 
+Special thanks to my mentor at Code Institute <a href="https://dehlin.dev/">Simen Daehlin</a> who gave me the encouragement and real world feedback I needed to know how to accomplish this. He believed in me far more than I did. 
 
 I would also like to especially thank the tutors at Code Institute for their seemingly endless patience. They are while(true) willing to help.
 
@@ -294,4 +294,6 @@ Also a special mention for all the people who helped me without knowing it on St
 
 ## Credits: 
 
-* 
+* The custom Nav elements were heavily inspired by <a href="https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q">Dev Ed on YouTube</a>
+* The User Authentication System was borrowed from <a href="https://www.youtube.com/user/schafer5"> Corey Schafer on YouTube</a> and fixed by Code Institute Tutors.
+* The Colour theme was taken from <a href="https://visme.co/blog/website-color-schemes/">Visme</a>
