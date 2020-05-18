@@ -2,6 +2,7 @@
 {% block content %}
 <div class="row">
 	<h3>About your Wishlist</h3>
+    <p>Here is where you can name your wishlist and provide basic information which will help people get you meaningful gifts you want.</p>
 </div>
 <form action="{{url_for('wishlist', method='POST', user=session.user)}}" method="POST" class="col s12">
 	<div class="input-field" hidden>
@@ -11,6 +12,8 @@
 		<div class="input-field col-sm-12 col-lg-6">
 			<input  id="phone_number" name="phone_number" type="text" class="validate" required>
 			<label for="phone_number">Phone Number</label>
+            <p>This is so that someone searching on our system can locate your list. You don't have to use a phone number but the number you enter here will need to be entered into the <br>
+            site in order for someone to locate your wishlist so make sure you can remember it</p>
 		</div>
 		<div class="input-field col-sm-12 col-lg-6">
 			<input  id="first_name" name="first_name" type="text" class="validate" required>
