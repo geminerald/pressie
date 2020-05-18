@@ -34,7 +34,7 @@
 				<div class="switch">
 					<label>
                     <span class = "checkbox-info"> No, show my list in any order.</span>
-                    <input type="checkbox" id = "ordered" name = "ordered">
+                    <input type="checkbox" id = "ordered" name = "ordered" value="{{the_list.ordered}}">
                     <span class="lever"></span>
                     <span class = "checkbox-info"> Yes, I will put things I want more first.</span>
                 </label>
@@ -47,7 +47,7 @@
 				<div class="switch">
 					<label>
                     <span class = "checkbox-info"> No, keep it a surprise.</span>
-                    <input type="checkbox" id = "surprise" name = "surprise" class="beta">
+                    <input type="checkbox" id = "surprise" name = "surprise" class="beta" value="{{the_list.surprise}}" >
                     <span class="lever"></span>
                     <span class = "checkbox-info"> Yes, I want to know what has been bought.</span>
                 </label>
@@ -60,7 +60,7 @@
 				<div class="switch">
 					<label>
                     <span class = "checkbox-info"> Public, anyone can locate it with my name.</span>
-                    <input type="checkbox" id = "private" name = "private" class="beta">
+                    <input type="checkbox" id = "private" name = "private" class="beta" value="{{the_list.private}}" >
                     <span class="lever"></span>
                     <span class = "checkbox-info"> Private, I will enter phone numbers for people who can access my Wishlist.</span>
                 </label>
