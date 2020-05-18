@@ -2,75 +2,80 @@
 {% block content %}
 <div class="row">
 	<h3>About your Wishlist</h3>
-    <p>Here is where you can name your wishlist and provide basic information which will help people get you meaningful gifts you want.</p>
+	<p>Here is where you can name your wishlist and provide basic information which will help people get you meaningful
+		gifts you want.</p>
 </div>
 <form action="{{url_for('wishlist', method='POST', user=session.user)}}" method="POST" class="col s12">
 	<div class="input-field" hidden>
 		<input  id="list_username" name="list_username" type="text" class="validate" value="{{user.email}}">
 	</div>
-	<div class="row">
-		<div class="input-field col-sm-12 col-lg-6">
-			<input  id="phone_number" name="phone_number" type="text" class="validate" required>
-			<label for="phone_number">Phone Number</label>
-            <p>This is so that someone searching on our system can locate your list. You don't have to use a phone number but the number you enter here will need to be entered into the <br>
-            site in order for someone to locate your wishlist so make sure you can remember it</p>
-		</div>
-		<div class="input-field col-sm-12 col-lg-6">
-			<input  id="first_name" name="first_name" type="text" class="validate" required>
-			<label for="first_name">Your Name</label>
-            <p>Please provide your name as you would like it to appear on your list.</p>
-		</div>
+		<div class="row">
+			<div class="input-field col-sm-12 col-lg-6">
+				<input  id="phone_number" name="phone_number" type="text" class="validate" required>
+				<label for="phone_number">Phone Number</label>
+				<p class="wishlist-explanation"> <small> This is so that someone searching on our system can locate your list. You don't have to use a phone number but the number you enter here will need to be entered into the
+            site in order for someone to locate your wishlist so make sure you can remember it </small></p>
+			</div>
+			<div class="input-field col-sm-12 col-lg-6">
+				<input  id="first_name" name="first_name" type="text" class="validate" required>
+				<label for="first_name">Your Name</label>
+				<p class="wishlist-explanation">
+					<small> Please provide your name as you would like it to appear on your list.</small></p>
+			</div>
 
-		<div class="input-field col-sm-12 col-lg-6">
-			<input id="last_name" name="last_name" type="text" class="validate" required>
-			<label for="last_name">List Name</label>
-            <p>Please give your list a name - we recommend either the occasion in question (Christmas/ Birthday etc.) or the people who will be browsing your list (friends, family etc.)</p>
-		</div>
+			<div class="input-field col-sm-12 col-lg-6">
+				<input id="last_name" name="last_name" type="text" class="validate" required>
+				<label for="last_name">List Name</label>
+				<p class="wishlist-explanation">
+					<small>Please give your list a name - we recommend either the occasion in question (Christmas/ Birthday etc.) or the people who will be browsing your list (friends, family etc.)</small>
+				</p>
+			</div>
 
-	</div>
-	<div class="row">
-		<div id="ordered-switch" class="wishlist-switch col s12">
-			<p>Is your list ordered?</p>
-			<div class="switch">
-				<label>
+		</div>
+		<div class="row">
+			<div id="ordered-switch" class="wishlist-switch col s12">
+				<p>Is your list ordered?</p>
+				<div class="switch">
+					<label>
                     No, show my list in any order.
                     <input type="checkbox" id = "ordered" name = "ordered">
                     <span class="lever"></span>
                     Yes, I will put things I want more first.
                 </label>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div id="surprise-switch" class="wishlist-switch col s12 beta">
-			<p>Do you want to know what has been bought?</p>
-			<div class="switch">
-				<label>
+		<div class="row">
+			<div id="surprise-switch" class="wishlist-switch col s12 beta">
+				<p>Do you want to know what has been bought?</p>
+				<div class="switch">
+					<label>
                     No, keep it a surprise.
                     <input type="checkbox" id = "surprise" name = "surprise" class="beta">
                     <span class="lever"></span>
                     Yes, I want to know what has been bought.
                 </label>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div id="private-switch" class="wishlist-switch col s12 beta">
-			<p>Is your Wishlist private or public?</p>
-			<div class="switch">
-				<label>
+		<div class="row">
+			<div id="private-switch" class="wishlist-switch col s12 beta">
+				<p>Is your Wishlist private or public?</p>
+				<div class="switch">
+					<label>
                     Public, anyone can locate it with my name.
                     <input type="checkbox" id = "private" name = "private" class="beta">
                     <span class="lever"></span>
                     Private, I will enter phone numbers for people who can access my Wishlist.
                 </label>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row button-row">
-		{% include 'components/submitbutton.html' %}
-		{% include 'components/backtoprofile.html' %}
+		<div class="row button-row">
+            {% include 'components/backtoprofile.html' %}
+			{% include 'components/submitbutton.html' %}
+			
 
-	</div>
+		</div>
 </form>
 {% endblock %}

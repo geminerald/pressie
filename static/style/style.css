@@ -225,6 +225,9 @@ nav .brand-logo{
     flex-direction: column;
 }
 
+.input-field{
+    margin: 2rem;
+}
 
 /*Add Item Page*/
 
