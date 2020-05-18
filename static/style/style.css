@@ -229,6 +229,16 @@ nav .brand-logo{
     margin: 2rem;
 }
 
+.wishlist-explanation{
+    padding: 1rem;
+    border-radius: 3px;
+    border: 1px solid var(--light-blue)
+}
+
+.checkbox-info{
+    font-size: 1.2rem;
+}
+
 /*Add Item Page*/
 
 .item{
