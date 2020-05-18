@@ -173,17 +173,17 @@ Testing of new components was tested before each commit.
 * A website that serves as an online wishlist to be able to share with their friends and family.
     * The website does store wishlists on a database which will be able to be securely accessed by a third party.
 * Simple and consistent theme and styles throughout to encourage engagement and provide a good user experience across generations.
-    * - The design is kept simple and consistent with relatively few elements on each page.
+    *  The design is kept simple and consistent with relatively few elements on each page.
 * A website that allows one to quickly and easily locate gifts that someone actually wants.
-    * - The finder function returns the specific wishlist with just one piece of input.
+    *  The finder function returns the specific wishlist with just one piece of input.
 * Ensure no duplication of gifts purchased.
-    * - This feature remains in delveopment at this time. 
+    *  This feature remains in delveopment at this time. 
 * Easily share a wishlist. 
- - Users will only need to provide their phone number (or another number of their choice) to direct people to their wishlist. 
+    * Users will only need to provide their phone number (or another number of their choice) to direct people to their wishlist. 
 * Do everything possible to ensure that a gift will be purchased before being removed from a wishlist.
- - This feature remains in delveopment at this time. . 
+    * This feature remains in delveopment at this time. . 
 * Interact across all devices of all sizes.
- - Testing was conducted across different screen sized at each deployment push to ensure responsiveness. The nav bar was updated towards the end of the project to aid responsiveness.
+    * Testing was conducted across different screen sized at each deployment push to ensure responsiveness. The nav bar was updated towards the end of the project to aid responsiveness.
 
 ### Overall:
 
