@@ -104,11 +104,11 @@ As a user I expect:
 
 ## Design Choices: 
 
-The theme of this project is gift giving, as a result the design is themed around being upbeat and positive. The Colour theme was taken from <a href="https://visme.co/blog/website-color-schemes/">Visme</a>
+The theme of this project is **gift giving**, as a result the design is themed around being **upbeat and positive**. The Colour theme was taken from <a href="https://visme.co/blog/website-color-schemes/">Visme</a>
 
-One key issue throughout this project is the fact that this website will often be used to bridge a generational gap. At times of gift giving it would be usual for people to buy gifts for someone in a different generation and it would often be more difficult to do so compared to someone in one's own generation. 
+One key issue throughout this project is the fact that this website will often be used to bridge a **generational gap**. At times of gift giving it would be common for people to buy gifts for someone in a **different generation** and it would often be more difficult to do so compared to someone in one's own generation. 
 
-As a result of this the project had to be developed with simplicity to the forefront and had to be equally so across all devices as there is a marked difference in device use based on age ranges. <a href="https://www.klarna.com/knowledge/articles/should-you-think-mobile-first-or-mobile-only/">This</a> research shows the differing device use across ages and so it is very possible that a list will be written on one device and read on another.
+As a result of this the project had to be developed with **simplicity to the forefront** and had to be equally so across **all devices** as there is a marked difference in device use based on age ranges. <a href="https://www.klarna.com/knowledge/articles/should-you-think-mobile-first-or-mobile-only/">This</a> research shows the differing device use across ages and so it is very possible that a list will be written on one device and read on another.
 
 ##### Fonts: 
 I chose the font <a href="https://fonts.google.com/specimen/Roboto">Roboto</a> as it a very simple style which is easily readable and not in any way distracting. The content is there to facilitate the creation of lists and assist in getting the right gift at the right time and not to provide a distraction.
